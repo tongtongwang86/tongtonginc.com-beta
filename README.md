@@ -18,81 +18,90 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+# Nginx Configuration
 
-To learn more about Next.js, take a look at the following resources:
+### Key Directories
+- **Available Sites Directory**: `/etc/nginx/sites-available`
+- **Enabled Sites Directory**: `/etc/nginx/sites-enabled`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Symlink a Site Configuration**  
+  To enable a site by creating a symlink from `sites-available` to `sites-enabled`:
+  ```bash
+  ln -s /etc/nginx/sites-available/things /etc/nginx/sites-enabled/things
+  ```
 
-## Deploy on Vercel
+- **Check Nginx Syntax**  
+  Test for syntax errors in Nginx configuration:
+  ```bash
+  nginx -t
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Restart Nginx Service**  
+  Restart Nginx to apply changes:
+  ```bash
+  sudo service nginx restart
+  ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
 
+# Screen Command Reference
 
-The `screen` command is excellent for managing long-running processes on a cloud-hosted VM. Using `screen` allows you to run commands in a persistent session that stays active even if you disconnect from the terminal. Here’s how to use it on a Debian VM:
+`screen` is a terminal multiplexer that allows for managing multiple terminal sessions.
 
-### 1. Install `screen` (if not already installed)
-On Debian, you can install `screen` using:
-```bash
-sudo apt update
-sudo apt install screen
-```
+### Basic Commands
 
-### 2. Start a New Screen Session
-To start a new `screen` session, use:
-```bash
-screen -S session_name
-```
-Replace `session_name` with a name you’d like to give the session, making it easier to identify later.
+- **Start a New Screen Session**  
+  Start a screen session with a custom name:
+  ```bash
+  screen -S session_name
+  ```
+  Replace `session_name` with a descriptive name for easy identification.
 
-### 3. Run Commands Inside the Screen Session
-Inside the `screen` session, run any long-running command or process you want. The session will keep running in the background after you detach from it.
+- **Detach from a Screen Session**  
+  Detach from the current session without terminating it:
+  - Press `Ctrl + A`, then `D`.
 
-For example:
-```bash
-python my_script.py
-```
+- **Reattach to a Screen Session**  
+  To view active sessions:
+  ```bash
+  screen -ls
+  ```
+  Reattach using the session name or ID:
+  ```bash
+  screen -r session_name
+  # OR
+  screen -r session_id
+  ```
 
-### 4. Detach from the Screen Session
-To detach from the `screen` session without stopping the process, press:
-```plaintext
-Ctrl + A, then D
-```
-This will leave the session running in the background, allowing you to safely close your terminal.
+- **Close a Screen Session**  
+  Once finished with a session, reattach to it and type:
+  ```bash
+  exit
+  ```
+  This terminates the session.
 
-### 5. Reattach to the Screen Session
-If you want to return to the session later, list all `screen` sessions first:
-```bash
-screen -ls
-```
-This command will show active screen sessions with their IDs. You can reattach to the session with:
-```bash
-screen -r session_name
-```
-or, if you’re using the session ID:
-```bash
-screen -r session_id
-```
+### Advanced Usage
 
-### 6. Close the Screen Session (Optional)
-Once your process is complete and you’re done with the session, you can exit it. Reattach to the session and simply type:
-```bash
-exit
-```
-This will terminate the session entirely.
-
-### Extra Tips
-- **Start a Detached Session Directly:** You can also start a session detached right from the beginning:
+- **Start a Detached Session Directly**  
+  Run a command in a new detached session:
   ```bash
   screen -dmS session_name command
   ```
-  This will start `command` in a detached `screen` session named `session_name`.
+  This starts `command` in a detached session named `session_name`.
 
-- **Monitor Multiple Screens:** For managing multiple screens, `screen -ls` will list all sessions so you can switch between them as needed.
+- **Monitor Multiple Sessions**  
+  To manage multiple screens, use:
+  ```bash
+  screen -ls
+  ```
+  This command lists all active sessions, allowing you to switch between them as needed.
+
+---
+
+
+Reference :  
+https://certbot.eff.org/instructions?ws=nginx&os=snap  
+https://www.youtube.com/watch?v=vj34hX8jWM0&list=WL&index=3
