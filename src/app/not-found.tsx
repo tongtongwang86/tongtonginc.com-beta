@@ -1,23 +1,21 @@
-// app/not-found.tsx
 "use client";
 import * as UI from '@/components';
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
-
+import React, { useEffect, useState, useRef } from "react";
 
 const NotFound: React.FC = () => {
-  const [responseText, setResponseText] = useState<string>("");
+  const [responseWords, setResponseWords] = useState<string[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const makeApiRequest = async () => {
       const payload = {
         messages: [
-          { content: "You are a error 404 generator", role: "system" },
-          { content: "Write an creative 404 error code that is no longer than 50 words", role: "user" },
+          { content: "You are a 404 generator that writes no longer than 50 words", role: "system" },
+          { content: "Write a funny and creative 404 error message with emojis", role: "user" },
         ],
         stream: "true",
       };
-
+//https://api.tongtonginc.com/ai/v1/chat/completions
       try {
         const response = await fetch("https://api.tongtonginc.com/ai/v1/chat/completions", {
           method: "POST",
@@ -51,7 +49,8 @@ const NotFound: React.FC = () => {
 
               if (content) {
                 chatText += content;
-                setResponseText(chatText);
+                const words = chatText.split(" ").filter((word) => word); // Split into words and filter out empty ones
+                setResponseWords([...words]); // Update the array incrementally
               }
 
               accumulatedData = "";
@@ -68,74 +67,86 @@ const NotFound: React.FC = () => {
     makeApiRequest();
   }, []);
 
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.style.height = `${containerRef.current.scrollHeight}px`;
+    }
+  }, [responseWords]);
+
   return (
-    <div style={styles.fullwidthcontainer}>
-      <div style={styles.topnav}>
-        <Link href="/" style={styles.navLink}>
-          Tongtong.inc
-        </Link>
-      </div>
-
-      <h1 className="leading-none text-[#ded2b4] font-serif text-[300%] font-medium text-center">
-      Tongtong.inc
+    <>
+      <UI.BodyContainer>
+      <h1 className="leading-none text-[#ded2b4] font-serif text-[300%] text-center mb-10 drop-shadow-[0_0_5px_#ded2b4] p-2">
+      404
 </h1>
 
 
-      <h1 className="leading-none text-[#ded2b4] font-serif text-[300%] font-medium text-center">
-  404
-</h1>
 
+        {/* <h1 className="leading-none text-[#ded2b4] font-serif text-[300%] font-medium text-center">
+          404
+        </h1> */}
 
-<UI.TextContainer>
+        <UI.TextContainer>
+          <div
+            id="response-container"
+            ref={containerRef}
+            style={{
+              transition: "height 0.5s ease",
+              overflow: "hidden",
+            }}
+            className="font-sans text-[#97b2cf] text-[140%] mt-4 text-left"
+          >
+            {responseWords.map((word, index) => (
+              <span
+                key={index}
+                style={{
+                  animation: `fade-in 0.5s ease-in, glow 1s ease-out, color-change 1.5s ease-out`,
+                  opacity: 0,
+                  animationFillMode: "forwards",
+                  display: "inline-block",
+                  marginRight: "0.3rem",
+                }}
+              >
+                {word}
+              </span>
+            ))}
 
-<div id="response-container" className="font-sans text-[#97b2cf] text-[140%] mt-4 text-left">
-          {responseText}
-        </div>
+          </div>
+        </UI.TextContainer>
+<br></br><br></br>
+        <UI.HomeButton></UI.HomeButton>
+      </UI.BodyContainer>
 
-</UI.TextContainer>
+      <style jsx>{`
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
 
+        @keyframes glow {
+          from {
+            text-shadow: 0 0 5px #ffda79, 0 0 10px #ffd700, 0 0 20px #ffae42;
+          }
+          to {
+            text-shadow: none;
+          }
+        }
 
-
-      <UI.HomeButton></UI.HomeButton>
-      
-    </div>
+        @keyframes color-change {
+          from {
+            color: #ded2b4;
+          }
+          to {
+            color: #97b2cf;
+          }
+        }
+      `}</style>
+    </>
   );
-};
-
-// Inline styling
-const styles = {
-  fullwidthcontainer: {
-    paddingTop: "5em",
-    height: "70dvh",
-    textAlign: "center" as const,
-    color: "#97b2cf",
-  },
-  topnav: {
-    marginBottom: "2em",
-  },
-  navLink: {
-    fontSize: "1.5em",
-    color: "#ded2b4",
-    textDecoration: "none",
-  },
-  textcontainer: {
-    minHeight: "70dvh",
-  },
-  title: {
-    lineHeight: 1,
-    color: "#ded2b4",
-    fontFamily: "serif",
-    fontSize: "300%",
-    fontWeight: 500,
-    textAlign: "center" as const,
-  },
-  maintext: {
-    fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
-    color: "#97b2cf",
-    fontSize: "140%",
-    marginTop: "1em",
-  },
- 
 };
 
 export default NotFound;

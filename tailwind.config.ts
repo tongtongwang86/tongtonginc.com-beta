@@ -12,11 +12,13 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
-      dropShadow: {
-        'custom': '0px 0px 5px rgba(255, 255, 255, 1), 0px 0px 10px rgba(0, 0, 0, 0.605)',
-        'hover': '-10px -10px 18px rgba(255, 255, 255, 1), 8px 8px 16px rgba(0, 0, 0, 1)',
+    },
+    fontFamily: {
+      GeistMono: ["var(--font-geist-mono)"],
+      GeistSans: ["var(--font-geist-sans)"],
+      ProfBens: ["var(--font-prof-bens)"],
+
       
-      },
     },
   },
   plugins: [],
