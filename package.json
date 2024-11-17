@@ -11,8 +11,9 @@
   "dependencies": {
     "next": "15.0.2",
     "plaiceholder": "^3.0.0",
-    "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-superellipse": "^0.0.6",
     "sharp": "^0.33.5"
   },
   "devDependencies": {

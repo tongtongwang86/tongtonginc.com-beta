@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 text-center">
+    <main className="flex min-h-screen flex-col items-center justify-center  text-center">
       <h1 className="text-3xl font-bold mb-8">Welcome to My Next.js App</h1>
       <p className="mb-4">Navigate to different pages:</p>
       <div className="space-x-4">
