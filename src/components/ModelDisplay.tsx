@@ -1,10 +1,10 @@
 'use client';
-
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+
 
 interface ModelCanvasProps {
   modelName: string;
@@ -12,7 +12,7 @@ interface ModelCanvasProps {
 
 const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
   const canvasRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(true);
+  const loaderRef = useRef<HTMLDivElement>(null); // Ref for the loader
 
   useEffect(() => {
     const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -45,11 +45,16 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
       canvasRef.current.appendChild(renderer.domElement);
 
       // Environment lighting
-      rgbeLoader.load('/textures/environment.hdr', (texture) => {
+      rgbeLoader.load('/textures/cloudy_ocean_roadside_1k.hdr', (texture) => {
         texture.mapping = THREE.EquirectangularReflectionMapping;
         scene.environment = texture;
         scene.background = null;
       });
+
+      // Show loading spinner
+      if (loaderRef.current) {
+        loaderRef.current.style.display = 'flex';
+      }
 
       // Load model
       gltfLoader.load(
@@ -63,12 +68,22 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
           model.position.sub(center);
 
           scene.add(model);
-          setLoading(false); // Model loaded
+
+          // Hide loading spinner once model is loaded
+          if (loaderRef.current) {
+            loaderRef.current.style.display = 'none';
+          }
         },
-        undefined, // onProgress callback
+        (xhr) => {
+          // Optional: You can use the onProgress callback to track load progress.
+          // console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+        },
         (error) => {
           console.error('Error loading model:', error);
-          setLoading(false); // Hide loading if error occurs
+          // Hide loading spinner even if there's an error
+          if (loaderRef.current) {
+            loaderRef.current.style.display = 'none';
+          }
         }
       );
 
@@ -108,14 +123,18 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
 
   return (
     <div ref={canvasRef} className="w-full h-64 relative">
-      {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
-          <div className="border-4 border-white border-t-transparent rounded-full w-10 h-10 animate-spin"></div>
-        </div>
-      )}
+      {/* Loading spinner */}
+      <div
+        ref={loaderRef}
+        className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        style={{ display: 'none' }} // Initially hidden
+      >
+        <div className="border-4 border-white border-t-transparent rounded-full w-10 h-10 animate-spin"></div>
+      </div>
     </div>
   );
 };
+
 
 
 
