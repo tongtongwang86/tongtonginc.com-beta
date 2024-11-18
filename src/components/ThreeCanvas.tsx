@@ -2,9 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+
+
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 
 const ThreeCanvas = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -64,7 +66,8 @@ const ThreeCanvas = () => {
       });
 
       // Camera Controls
-      const controls = new OrbitControls(camera, renderer.domElement);
+      const controls = new OrbitControls(camera, renderer!.domElement);
+
       controls.enableDamping = true;
       controls.dampingFactor = 0.1;
       controls.rotateSpeed = 0.5;
@@ -79,9 +82,16 @@ const ThreeCanvas = () => {
       // Animation Loop
       const animate = () => {
         requestAnimationFrame(animate);
-        if (capRef.current) capRef.current.rotation.y = scrollRef.current;
-        controls.update();
-        renderer.render(scene, camera);
+      
+        if (capRef.current) {
+          capRef.current.rotation.y = scrollRef.current;
+        }
+      
+        if (rendererRef.current) { // Ensure renderer is not null
+          const renderer = rendererRef.current;
+          controls.update();
+          renderer.render(scene, camera);
+        }
       };
 
       animate();
@@ -101,7 +111,7 @@ const ThreeCanvas = () => {
     };
 
     // Center the 3D group object
-    const centerGroup = (group) => {
+    const centerGroup = (group: THREE.Object3D) => {
       const box = new THREE.Box3().setFromObject(group);
       const center = box.getCenter(new THREE.Vector3());
       group.position.sub(center);
