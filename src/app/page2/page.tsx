@@ -2,10 +2,13 @@
 
 import { Footer,VStack,HStack,TextContainer,HomeButton} from '@/components';
 
-
+import Image from 'next/image';
 import Link from 'next/link';
+import getBase64 from '@/lib/getLocalBase64'
 
-export default function Page2() {
+
+export default async function Page2() {
+  const myBlurDataUrl = await getBase64('http://localhost:3000/shrek.jpg')
   return (
     <main className="block min-h-screen  items-center  ">
       <h1 className="text-3xl font-bold mb-4">Page 2</h1>
@@ -18,7 +21,16 @@ export default function Page2() {
       <HStack gap={15} align="center" justify="space-between" wrap={true}>
       <div style={{ backgroundColor: 'lightblue', padding: '20px' }}>Item 1</div>
       <div style={{ backgroundColor: 'lightcoral', padding: '20px' }}>Item 2</div>
-      <div style={{ backgroundColor: 'lightgreen', padding: '20px' }}>Item 3</div>
+      <Image
+        src='/shrek.jpg'  // Use the relative path from the public folder
+        width={100}
+        height={100}
+        alt="A descriptive alt text for the image"
+        className="rounded-lg shadow-md"
+        placeholder='blur'
+        blurDataURL={myBlurDataUrl}
+        priority
+      />
       <div style={{ backgroundColor: 'lightpink', padding: '20px' }}>Item 4</div>
     </HStack>
       <div style={{ backgroundColor: 'lightgreen', padding: '20px' }}>Item 3</div>

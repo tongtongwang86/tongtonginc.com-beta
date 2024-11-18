@@ -8,107 +8,134 @@ import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 
 const ThreeCanvas = () => {
   const canvasRef = useRef<HTMLDivElement>(null);
-  const capRef = useRef<THREE.Object3D | null>(null); // Reference to revoluteCap object
-  const capRotationRef = useRef(0); // Ref to hold the current rotation value
-  const [capRotation, setCapRotation] = useState(0); // State for slider
-
-  // Sync the rotation state to the ref so the animation loop always has the latest value
-  useEffect(() => {
-    capRotationRef.current = capRotation;
-  }, [capRotation]);
+  const capRef = useRef<THREE.Object3D | null>(null);
+  const scrollRef = useRef(0);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
+  const groupRef = useRef<THREE.Group | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    const width = canvasRef.current?.clientWidth || 800;
-    const height = canvasRef.current?.clientHeight || 600;
+    // Renderer Initialization
+    const initializeRenderer = () => {
+      const renderer = new THREE.WebGLRenderer({ alpha: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      rendererRef.current = renderer;
+      if (canvasRef.current) {
+        canvasRef.current.appendChild(renderer.domElement);
+      }
+    };
 
-    // Scene
+    // Scene Setup
     const scene = new THREE.Scene();
-
-    // Camera
-    const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
     camera.position.set(0, 2, 5);
 
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    const initializeScene = () => {
+      if (!rendererRef.current) initializeRenderer();
+      if (!canvasRef.current) return;
 
-    // Attach renderer to DOM
-    if (canvasRef.current) {
-      canvasRef.current.appendChild(renderer.domElement);
-    }
+      const renderer = rendererRef.current;
 
-    // Load Environment Map
-    const rgbeLoader = new RGBELoader();
-    rgbeLoader.load('/textures/environment.hdr', (texture) => {
-      texture.mapping = THREE.EquirectangularReflectionMapping;
-      scene.environment = texture; // Illuminates objects
-      scene.background = null; // Keeps the background transparent
-    });
+      // Add environment lighting
+      const rgbeLoader = new RGBELoader();
+      rgbeLoader.load('/textures/environment.hdr', (texture) => {
+        texture.mapping = THREE.EquirectangularReflectionMapping;
+        scene.environment = texture;
+        scene.background = null;
+      });
 
-    // Load Models
-    const loader = new GLTFLoader();
-    const group = new THREE.Group(); // Group to hold both objects
+      // Load models and center them
+      const loader = new GLTFLoader();
+      const group = new THREE.Group();
+      groupRef.current = group;
+      scene.add(group);
 
-    loader.load('/models/revoluteBase.glb', (gltf) => {
-      const base = gltf.scene;
-      base.position.set(0, 0, 0); // Position at origin
-      group.add(base);
-    });
+      loader.load('/models/revoluteBase.glb', (gltf) => {
+        const base = gltf.scene;
+        group.add(base);
+        centerGroup(group);
+      });
 
-    loader.load('/models/revoluteCap.glb', (gltf) => {
-      const cap = gltf.scene;
-      cap.position.set(0, 0, 0); // Position at origin
-      capRef.current = cap; // Save a reference to the cap for rotation
-      group.add(cap);
-    });
+      loader.load('/models/revoluteCap.glb', (gltf) => {
+        const cap = gltf.scene;
+        capRef.current = cap;
+        group.add(cap);
+        centerGroup(group);
+      });
 
-    scene.add(group);
+      // Camera Controls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.1;
+      controls.rotateSpeed = 0.5;
+      controls.enablePan = false; // Disable panning
 
-    // Orbit Controls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; // Smooth dragging
-    controls.dampingFactor = 0.1;
-    controls.rotateSpeed = 0.5;
+      // Event Listeners
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleResize);
 
-    // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
+      handleResize(); // Initial resize setup
 
-      // Update cap's Y rotation based on the latest ref value
-      if (capRef.current) {
-        capRef.current.rotation.y = capRotationRef.current;
-      }
+      // Animation Loop
+      const animate = () => {
+        requestAnimationFrame(animate);
+        if (capRef.current) capRef.current.rotation.y = scrollRef.current;
+        controls.update();
+        renderer.render(scene, camera);
+      };
 
-      // Update controls
-      controls.update();
+      animate();
 
-      // Render the scene
-      renderer.render(scene, camera);
+      // Cleanup on unmount
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', handleResize);
+        controls.dispose();
+        if (rendererRef.current) {
+          rendererRef.current.dispose();
+          if (rendererRef.current.domElement && canvasRef.current) {
+            canvasRef.current.removeChild(rendererRef.current.domElement);
+          }
+        }
+      };
     };
 
-    animate();
-
-    // Cleanup
-    return () => {
-      renderer.dispose();
-      controls.dispose();
-      canvasRef.current?.removeChild(renderer.domElement);
+    // Center the 3D group object
+    const centerGroup = (group) => {
+      const box = new THREE.Box3().setFromObject(group);
+      const center = box.getCenter(new THREE.Vector3());
+      group.position.sub(center);
     };
-  }, []); // Only run once on mount
+
+    // Scroll Event Handler
+    const handleScroll = () => {
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      const scrollFraction = window.scrollY / maxScroll;
+      scrollRef.current = scrollFraction * Math.PI * 2 - Math.PI;
+    };
+
+    // Resize Event Handler
+    const handleResize = () => {
+      if (!canvasRef.current || !rendererRef.current) return;
+      const { clientWidth, clientHeight } = canvasRef.current;
+      camera.aspect = clientWidth / clientHeight;
+      camera.updateProjectionMatrix();
+      rendererRef.current.setSize(clientWidth, clientHeight);
+    };
+
+    // Initialize everything
+    setIsClient(true);
+    const cleanup = initializeScene();
+    
+    return cleanup; // Clean up when component unmounts
+  }, []);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
-      <div ref={canvasRef} className="w-full h-[90%]"></div>
-      <input
-        type="range"
-        min={-Math.PI}
-        max={Math.PI}
-        step={0.01}
-        value={capRotation}
-        onChange={(e) => setCapRotation(parseFloat(e.target.value))} // Update state
-        className="w-[80%] mt-4"
-      />
+    <div
+      ref={canvasRef}
+      className="border w-1/2 h-96 relative"
+    >
+
     </div>
   );
 };
