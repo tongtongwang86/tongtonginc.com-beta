@@ -181,7 +181,7 @@ const ModelDisplay = () => {
     <div
       className="grid gap-8 p-4 w-screen"
       style={{
-        gridTemplateColumns: 'repeat(auto-fit, minmax(25em, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(20em, 1fr))',
       }}
     >
       {models.map((model) => (
