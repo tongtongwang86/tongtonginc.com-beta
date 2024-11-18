@@ -1,13 +1,10 @@
 'use client';
 
-
-
-import { useEffect, useRef ,useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
-
 
 interface ModelCanvasProps {
   modelName: string;
@@ -15,6 +12,7 @@ interface ModelCanvasProps {
 
 const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
   const canvasRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -27,6 +25,7 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
 
     const rgbeLoader = new RGBELoader();
     const gltfLoader = new GLTFLoader();
+    let model: THREE.Group | null = null;
 
     let animationFrameId: number;
 
@@ -53,16 +52,25 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
       });
 
       // Load model
-      gltfLoader.load(`/models/teachers/${modelName}`, (gltf) => {
-        const model = gltf.scene;
+      gltfLoader.load(
+        `/models/teachers/${modelName}`,
+        (gltf) => {
+          model = gltf.scene;
 
-        // Center the model
-        const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
-        model.position.sub(center);
+          // Center the model
+          const box = new THREE.Box3().setFromObject(model);
+          const center = box.getCenter(new THREE.Vector3());
+          model.position.sub(center);
 
-        scene.add(model);
-      });
+          scene.add(model);
+          setLoading(false); // Model loaded
+        },
+        undefined, // onProgress callback
+        (error) => {
+          console.error('Error loading model:', error);
+          setLoading(false); // Hide loading if error occurs
+        }
+      );
 
       // Resize listener
       window.addEventListener('resize', handleResize);
@@ -71,6 +79,12 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
       // Animation loop
       const animate = () => {
         animationFrameId = requestAnimationFrame(animate);
+
+        if (model) {
+          // Rotate the model slowly
+          model.rotation.y += 0.01; // Adjust speed as necessary
+        }
+
         controls.update();
         renderer.render(scene, camera);
       };
@@ -92,8 +106,20 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
     };
   }, [modelName]);
 
-  return <div ref={canvasRef} className="w-full h-64"></div>;
+  return (
+    <div ref={canvasRef} className="w-full h-64 relative">
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+          <div className="border-4 border-white border-t-transparent rounded-full w-10 h-10 animate-spin"></div>
+        </div>
+      )}
+    </div>
+  );
 };
+
+
+
+
 
 const ModelDisplay = () => {
   const [models, setModels] = useState<string[]>([]);
@@ -115,6 +141,22 @@ const ModelDisplay = () => {
     fetchModels();
   }, []);
 
+  const handleDownload = (modelName: string) => {
+    const teacherName = modelName.replace('.glb', '');
+    const stlFileName = `${teacherName}.stl`; // Ensure .stl extension
+    const fileUrl = `/models/teachers/stl/${stlFileName}`; // Direct path to public folder
+    console.log(`Downloading from URL: ${fileUrl}`); // Print URL to console
+
+
+    // Dynamically create a link and trigger download
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = stlFileName; // Save as correct file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div
       className="grid gap-8 p-4 w-screen"
@@ -125,26 +167,34 @@ const ModelDisplay = () => {
       {models.map((model) => (
         <div
           key={model}
-          className="flex flex-col items-center bg-[var(--background)] p-4 rounded-3xl "
+          className="flex flex-col items-center bg-[var(--background)] p-4 rounded-3xl relative"
           style={{
-            boxShadow: 'inset 4px 4px 30px rgba(0, 0, 0, 0.25)', // Add inner shadow
-            overflow: 'hidden', // Ensures the canvas respects the rounded corners
-
+            boxShadow: 'inset 4px 4px 30px rgba(0, 0, 0, 0.25)',
+            overflow: 'hidden',
           }}
         >
           {/* Canvas for the model */}
           <div className="w-full h-64 rounded-lg overflow-hidden">
-    <ModelCanvas modelName={model} />
-  </div>
+            <ModelCanvas modelName={model} />
+          </div>
           {/* Model name below the canvas */}
           <p className="mt-2 text-white text-center text-lg font-semibold">
             {model.replace('.glb', '')}
           </p>
+          {/* Download button */}
+          <button
+            onClick={() => handleDownload(model)}
+            className="absolute bottom-4 right-4 w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600"
+            title="Download STL"
+          >
+            ⬇
+          </button>
         </div>
       ))}
     </div>
   );
 };
+
 
 
 export default ModelDisplay;
