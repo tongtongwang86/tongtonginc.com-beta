@@ -7,14 +7,6 @@ import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import type { PDFDocumentProxy } from 'pdfjs-dist/types/src/display/api';
 
-import dynamic from 'next/dynamic';
-
-const Document = dynamic(() => import('react-pdf').then((mod) => mod.Document), {
-  ssr: false,
-});
-const Page = dynamic(() => import('react-pdf').then((mod) => mod.Page), {
-  ssr: false,
-});
 
 import * as UI from '@/components';
 import Link from 'next/link';
@@ -26,7 +18,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const resizeObserverOptions = {};
 
-export default function Revolute() {
+export default function lesson2() {
   const [file] = useState<string>('/assets/eca/electronics/lesson2.pdf');
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
