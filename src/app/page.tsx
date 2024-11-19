@@ -10,6 +10,7 @@ export default function Home() {
         <Link href="/page1" className="text-blue-500 hover:underline">Page 1</Link>
         <Link href="/page2" className="text-blue-500 hover:underline">Page 2</Link>
         <Link href="/page3" className="text-blue-500 hover:underline">Page 3</Link>
+        <Link href="/revolute" className="text-blue-500 hover:underline">Revolute page</Link>
       </div>
     </main>
   );

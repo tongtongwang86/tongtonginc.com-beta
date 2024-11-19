@@ -1,7 +1,7 @@
 // app/page3/page.tsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { BodyContainer, ModelDisplay } from '@/components';
+import * as UI from '@/components';
 
 
 export default function Page3() {
@@ -9,12 +9,21 @@ export default function Page3() {
 
 
   return (
-   <BodyContainer>
 
-    <ModelDisplay>
+    <UI.BodyContainer
+  navColor="var(--background)"
+  navDropoffColor="var(--navgradient)"
+  backgroundColor="var(--background2)"
+  logoColor='var(--logocolor)'
+  hoverShadowColor='var(--logoHover)'
+>
+    <UI.ModelDisplay>
 
       
-    </ModelDisplay>
-   </BodyContainer>
+</UI.ModelDisplay>
+  </UI.BodyContainer>
+
+
+
   );
 }
