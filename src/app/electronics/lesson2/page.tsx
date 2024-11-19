@@ -18,7 +18,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const resizeObserverOptions = {};
 
-export default function lesson2() {
+export default function Lesson2() {
   const [file] = useState<string>('/assets/eca/electronics/lesson2.pdf');
   const [numPages, setNumPages] = useState<number>();
   const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
