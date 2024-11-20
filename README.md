@@ -102,6 +102,6 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 ---
 
 
-Reference :  
+Reference:  
 https://certbot.eff.org/instructions?ws=nginx&os=snap  
 https://www.youtube.com/watch?v=vj34hX8jWM0&list=WL&index=3
