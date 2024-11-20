@@ -75,8 +75,14 @@ const NotFound: React.FC = () => {
 
   return (
     <>
-      <UI.BodyContainer>
-      <h1 className="leading-none text-[#ded2b4] font-serif text-[300%] text-center mb-10 drop-shadow-[0_0_5px_#ded2b4] p-2">
+          <UI.BodyContainer
+  navColor="var(--background)"
+  navDropoffColor="var(--navgradient)"
+  backgroundColor="var(--background2)"
+  logoColor='var(--logocolor)'
+  hoverShadowColor='var(--logoHover)'
+>
+      <h1 className="leading-none text-[var(--highlightText)] font-serif text-[300%] text-center mb-10 drop-shadow-[0_0_5px_#ded2b4] p-2">
       404
 </h1>
 

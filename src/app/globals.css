@@ -3,22 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --background: #e0d2ba;
-  --background2:#fff9ee;
-  --navgradient: rgba(255, 252, 246, 0.95);
+  --background: #FBF2E6;
+  --background2:#FDF7F2;
+  --navgradient: rgba(255, 252, 246, 0);
   --logocolor: #161925ff;
   --logoHover:rgba(50, 48, 44, 0.8);
   --foreground: #161925ff;
+  --highlightText: #161925ff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #161925ff;
     --background2: #1c1d2cff;
-    --navgradient: #24253976;
+    --navgradient: #24253900;
     --foreground: #ded2b4ff;
     --logocolor: #ded2b4ff;
     --logoHover:rgba(222, 210, 180, 0.8);
+    --highlightText: #ded2b4;
     
   }
 }

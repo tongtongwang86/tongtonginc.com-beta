@@ -45,7 +45,7 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
     <>
       {/* Navigation Bar */}
       <nav
-        className={`fixed top-0 z-10 w-full flex items-start h-15 backdrop-blur-lg backdrop-brightness-75 group`}
+        className={`fixed top-0 z-10 w-full flex items-start h-15 backdrop-blur-lg backdrop-brightness-100 group`}
         style={{
           background: `linear-gradient(to bottom, ${navColor}, ${navDropoffColor})`,
         }}
