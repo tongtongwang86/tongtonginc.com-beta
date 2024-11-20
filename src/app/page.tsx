@@ -15,7 +15,7 @@ export default function Home() {
       <div className="space-x-4">
         <Link href="/page1" className="text-blue-500 hover:underline">Page 1</Link>
         <Link href="/page2" className="text-blue-500 hover:underline">Page 2</Link>
-        <Link href="/page3" className="text-blue-500 hover:underline">Page 3</Link>
+        <Link href="/3dart" className="text-blue-500 hover:underline">3d art</Link>
         <Link href="/revolute" className="text-blue-500 hover:underline">Revolute page</Link>
         <Link href="/electronics/lesson2" className="text-blue-500 hover:underline">eca</Link>
       </div>
