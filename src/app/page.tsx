@@ -18,6 +18,8 @@ export default function Home() {
         <Link href="/page3" className="text-blue-500 hover:underline">Page 3</Link>
         <Link href="/revolute" className="text-blue-500 hover:underline">Revolute page</Link>
         <Link href="/revolute" className="text-blue-500 hover:underline">Revolute page</Link>
+        <Link href="/revolute" className="text-blue-500 hover:underline">Revolute page</Link>
+        <Link href="/revolute" className="text-blue-500 hover:underline">Revolute page</Link>
         <Link href="/electronics/lesson2" className="text-blue-500 hover:underline">eca</Link>
       </div>
 
