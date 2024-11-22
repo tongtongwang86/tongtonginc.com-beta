@@ -127,7 +127,7 @@ const ModelCanvas: React.FC<ModelCanvasProps> = ({ modelName }) => {
       {/* Loading spinner */}
       <div
         ref={loaderRef}
-        className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10"
+        className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 z-0" // Adjusted z-index
         style={{ display: 'none' }} // Initially hidden
       >
         <div className="border-4 border-white border-t-transparent rounded-full w-10 h-10 animate-spin"></div>
@@ -204,7 +204,7 @@ const ModelDisplay = () => {
           {/* Download button */}
           <button
             onClick={() => handleDownload(model)}
-            className="absolute bottom-4 right-4 w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600"
+            className="absolute bottom-4 right-4 w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600 z-10" // Higher z-index
             title="Download STL"
           >
             ⬇
