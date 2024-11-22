@@ -52,10 +52,14 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
     themeMeta.setAttribute("content", color);
   };
 
-  // Set the theme color on page load
+  // Set the theme color and body background color on page load
   useEffect(() => {
+    // Set the meta theme color
     setThemeColor(backgroundColor);
-  }, [backgroundColor]); // Effect runs when backgroundColor changes
+
+    // Set the body background color
+    document.body.style.backgroundColor = navColor;
+  }, [navColor]); // Effect runs when backgroundColor changes
 
   return (
     <>

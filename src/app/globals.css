@@ -12,8 +12,13 @@
   --highlightText: #161925ff;
 
   --gradient-day: radial-gradient(ellipse at bottom, #fbf2e6 0%, #fdf7f2 100%);
+  --navbar-day: #d5d7f5;
+
   --gradient-sunset: radial-gradient(ellipse at bottom left, #fde9d7 0%, #fbf2e6 60%);
+  --navbar-sunset: #f6c0c0;
+  
   --gradient-night: radial-gradient(ellipse at bottom, #f3f3f2 0%, transparent 100%);
+  --navbar-night: #d5c3f3;
 
 }
 
@@ -28,9 +33,14 @@
     --highlightText: #ded2b4;
 
     --gradient-day: radial-gradient(ellipse at bottom, #1b2735 0%, #1c1d2c 100%);
+    --navbar-day: #1c1d2c;
+
     --gradient-sunset: radial-gradient(ellipse at bottom left, #3b2413 0%, #090a0f 60%);
+    --navbar-sunset: #000000;
+
     --gradient-night: radial-gradient(ellipse at bottom, #1b2735 0%, #000000 100%);
-    
+    --navbar-night: #000000;
+
   }
 }
 

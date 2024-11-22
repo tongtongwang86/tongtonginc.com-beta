@@ -10,11 +10,11 @@ export default function Home() {
     night: "var(--gradient-night)",
   };
 
-  // Theme colors for the meta tag
+  // Theme colors for the meta tag and body background
   const themeColors = {
-    day: "#1c1d2c",
-    sunset: "#000000",
-    night: "#000000",
+    day: "var(--navbar-day)",
+    sunset: "var(--navbar-sunset)",
+    night: "var(--navbar-night)",
   };
 
   // State for gradient and theme color
@@ -22,6 +22,32 @@ export default function Home() {
     gradient: "",
     themeColor: "",
   });
+
+  // Function to resolve CSS variables to their computed values
+  const resolveCSSVariable = (color: string) => {
+    return color.startsWith("var(")
+      ? getComputedStyle(document.documentElement).getPropertyValue(
+          color.slice(4, -1).trim()
+        )
+      : color;
+  };
+
+  // Function to update the <meta> tag and body background color
+  const updateThemeColor = (color: string) => {
+    const resolvedColor = resolveCSSVariable(color).trim();
+
+    // Update <meta> tag
+    let themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (!themeMeta) {
+      themeMeta = document.createElement("meta");
+      themeMeta.setAttribute("name", "theme-color");
+      document.head.appendChild(themeMeta);
+    }
+    themeMeta.setAttribute("content", resolvedColor);
+
+    // Update body background color
+    document.body.style.backgroundColor = resolvedColor;
+  };
 
   // Function to determine the gradient and theme color based on the time of day
   const calculateTimeBasedState = () => {
@@ -35,15 +61,11 @@ export default function Home() {
     }
   };
 
-  // Function to update the theme color meta tag
-  const updateThemeColor = (color: string) => {
-    let themeMeta = document.querySelector('meta[name="theme-color"]');
-    if (!themeMeta) {
-      themeMeta = document.createElement("meta");
-      themeMeta.setAttribute("name", "theme-color");
-      document.head.appendChild(themeMeta);
-    }
-    themeMeta.setAttribute("content", color);
+  // Function to handle light/dark mode changes
+  const handleAppearanceChange = () => {
+    const updatedState = calculateTimeBasedState();
+    setState(updatedState);
+    updateThemeColor(updatedState.themeColor);
   };
 
   // Initialize state client-side after the component mounts
@@ -59,7 +81,15 @@ export default function Home() {
       updateThemeColor(updatedState.themeColor);
     }, 60 * 1000);
 
-    return () => clearInterval(interval); // Cleanup on unmount
+    // Add event listener for system light/dark mode changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", handleAppearanceChange);
+
+    // Cleanup on unmount
+    return () => {
+      clearInterval(interval);
+      mediaQuery.removeEventListener("change", handleAppearanceChange);
+    };
   }, []);
 
   // Helper function to check if a gradient is active
