@@ -29,7 +29,7 @@
 
     --gradient-day: radial-gradient(ellipse at bottom, #1b2735 0%, #1c1d2c 100%);
     --gradient-sunset: radial-gradient(ellipse at bottom left, #3b2413 0%, #090a0f 60%);
-    --gradient-night: radial-gradient(ellipse at bottom, #1b2735 0%, transparent 100%);
+    --gradient-night: radial-gradient(ellipse at bottom, #1b2735 0%, #000000 100%);
     
   }
 }

@@ -10,42 +10,53 @@ export default function Home() {
     night: "var(--gradient-night)",
   };
 
-  // Solid background colors for the body
-  const bodyBackgrounds = {
+  // Theme colors for the meta tag
+  const themeColors = {
     day: "#1c1d2c",
     sunset: "#000000",
     night: "#000000",
   };
 
-  // State for gradient and body background
+  // State for gradient and theme color
   const [state, setState] = useState({
     gradient: "",
-    bodyColor: "",
+    themeColor: "",
   });
 
-  // Function to determine the gradient and background color based on the time of day
+  // Function to determine the gradient and theme color based on the time of day
   const calculateTimeBasedState = () => {
     const hour = new Date().getHours();
     if (hour >= 6 && hour < 18) {
-      return { gradient: gradients.day, bodyColor: bodyBackgrounds.day };
+      return { gradient: gradients.day, themeColor: themeColors.day };
     } else if (hour >= 18 && hour < 20) {
-      return { gradient: gradients.sunset, bodyColor: bodyBackgrounds.sunset };
+      return { gradient: gradients.sunset, themeColor: themeColors.sunset };
     } else {
-      return { gradient: gradients.night, bodyColor: bodyBackgrounds.night };
+      return { gradient: gradients.night, themeColor: themeColors.night };
     }
+  };
+
+  // Function to update the theme color meta tag
+  const updateThemeColor = (color: string) => {
+    let themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (!themeMeta) {
+      themeMeta = document.createElement("meta");
+      themeMeta.setAttribute("name", "theme-color");
+      document.head.appendChild(themeMeta);
+    }
+    themeMeta.setAttribute("content", color);
   };
 
   // Initialize state client-side after the component mounts
   useEffect(() => {
     const initialState = calculateTimeBasedState();
     setState(initialState);
-    document.body.style.backgroundColor = initialState.bodyColor;
+    updateThemeColor(initialState.themeColor);
 
-    // Update background color dynamically every minute
+    // Update theme color dynamically every minute
     const interval = setInterval(() => {
       const updatedState = calculateTimeBasedState();
       setState(updatedState);
-      document.body.style.backgroundColor = updatedState.bodyColor;
+      updateThemeColor(updatedState.themeColor);
     }, 60 * 1000);
 
     return () => clearInterval(interval); // Cleanup on unmount
@@ -61,7 +72,7 @@ export default function Home() {
     >
       <main className="flex flex-col justify-center items-center h-full">
         <h1 className="text-gray-900 dark:text-white text-4xl font-bold mb-8">
-          Gradient Background Test
+          Dynamic Theme Color
         </h1>
 
         {/* Button controls */}
@@ -69,9 +80,9 @@ export default function Home() {
           {/* Day Button */}
           <button
             onClick={() => {
-              const newState = { gradient: gradients.day, bodyColor: bodyBackgrounds.day };
+              const newState = { gradient: gradients.day, themeColor: themeColors.day };
               setState(newState);
-              document.body.style.backgroundColor = newState.bodyColor;
+              updateThemeColor(newState.themeColor);
             }}
             className={`px-6 py-3 rounded-lg text-white font-medium transition-all ${
               isActive(gradients.day)
@@ -85,9 +96,9 @@ export default function Home() {
           {/* Sunset Button */}
           <button
             onClick={() => {
-              const newState = { gradient: gradients.sunset, bodyColor: bodyBackgrounds.sunset };
+              const newState = { gradient: gradients.sunset, themeColor: themeColors.sunset };
               setState(newState);
-              document.body.style.backgroundColor = newState.bodyColor;
+              updateThemeColor(newState.themeColor);
             }}
             className={`px-6 py-3 rounded-lg text-white font-medium transition-all ${
               isActive(gradients.sunset)
@@ -101,9 +112,9 @@ export default function Home() {
           {/* Night Button */}
           <button
             onClick={() => {
-              const newState = { gradient: gradients.night, bodyColor: bodyBackgrounds.night };
+              const newState = { gradient: gradients.night, themeColor: themeColors.night };
               setState(newState);
-              document.body.style.backgroundColor = newState.bodyColor;
+              updateThemeColor(newState.themeColor);
             }}
             className={`px-6 py-3 rounded-lg text-white font-medium transition-all ${
               isActive(gradients.night)

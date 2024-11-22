@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ReactNode, CSSProperties } from 'react';
+import React, { ReactNode, CSSProperties, useEffect } from "react";
 
 interface BodyContainerProps {
   children: ReactNode; // Content inside the container
@@ -15,31 +15,47 @@ interface BodyContainerProps {
 
 const BodyContainer: React.FC<BodyContainerProps> = ({
   children,
-  className = '',
+  className = "",
   style,
-  navColor = '#161925', // Default nav gradient start color
-  navDropoffColor = '#24253976', // Default nav gradient end color
-  backgroundColor = '#1c1d2c', // Default body background color
-  logoColor = '#ded2b4', // Default logo color
-  hoverShadowColor = 'rgba(222, 210, 180, 0.8)', // Default hover shadow color
+  navColor = "#161925", // Default nav gradient start color
+  navDropoffColor = "#24253976", // Default nav gradient end color
+  backgroundColor = "#1c1d2c", // Default body background color
+  logoColor = "#ded2b4", // Default logo color
+  hoverShadowColor = "rgba(222, 210, 180, 0.8)", // Default hover shadow color
 }) => {
   const containerStyle: CSSProperties = {
     background: backgroundColor,
-    display: 'flex',
-    flexDirection: 'column',
-    placeItems: 'center',
-    justifyContent: 'center', // Center horizontally
-    minHeight: '100vh',
-    justifyItems: 'top',
+    display: "flex",
+    flexDirection: "column",
+    placeItems: "center",
+    justifyContent: "center", // Center horizontally
+    minHeight: "100vh",
+    justifyItems: "top",
     ...style, // Merge any additional inline styles
   };
 
   const dropoffStyle: CSSProperties = {
-    width: '100dvw',
+    width: "100dvw",
     backgroundImage: `linear-gradient(#5f583700, ${backgroundColor} 60%, ${navColor})`,
-    minHeight: '6em',
-    marginTop: '-6em',
+    minHeight: "6em",
+    marginTop: "-6em",
   };
+
+  // Function to set the <meta name="theme-color"> tag dynamically
+  const setThemeColor = (color: string) => {
+    let themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (!themeMeta) {
+      themeMeta = document.createElement("meta");
+      themeMeta.setAttribute("name", "theme-color");
+      document.head.appendChild(themeMeta);
+    }
+    themeMeta.setAttribute("content", color);
+  };
+
+  // Set the theme color on page load
+  useEffect(() => {
+    setThemeColor(backgroundColor);
+  }, [backgroundColor]); // Effect runs when backgroundColor changes
 
   return (
     <>
@@ -61,7 +77,7 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
           <span
             className="transition duration-200 ease-in-out"
             style={{
-              transition: 'text-shadow 0.2s ease-in-out',
+              transition: "text-shadow 0.2s ease-in-out",
             }}
           >
             Tongtong.inc
