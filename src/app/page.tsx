@@ -17,6 +17,7 @@ export default function Home() {
         <Link href="/page2" className="text-blue-500 hover:underline">Page 2</Link>
         <Link href="/3dart" className="text-blue-500 hover:underline">3d art</Link>
         <Link href="/revolute" className="text-blue-500 hover:underline">Revolute page</Link>
+        <Link href="/backgroundtest" className="text-blue-500 hover:underline">bgtest</Link>
         <Link href="/electronics/lesson2" className="text-blue-500 hover:underline">eca</Link>
       </div>
 

@@ -10,6 +10,11 @@
   --logoHover:rgba(50, 48, 44, 0.8);
   --foreground: #161925ff;
   --highlightText: #161925ff;
+
+  --gradient-day: radial-gradient(ellipse at bottom, #fbf2e6 0%, #fdf7f2 100%);
+  --gradient-sunset: radial-gradient(ellipse at bottom left, #fde9d7 0%, #fbf2e6 60%);
+  --gradient-night: radial-gradient(ellipse at bottom, #f3f3f2 0%, transparent 100%);
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,6 +26,10 @@
     --logocolor: #ded2b4ff;
     --logoHover:rgba(222, 210, 180, 0.8);
     --highlightText: #ded2b4;
+
+    --gradient-day: radial-gradient(ellipse at bottom, #1b2735 0%, #1c1d2c 100%);
+    --gradient-sunset: radial-gradient(ellipse at bottom left, #3b2413 0%, #090a0f 60%);
+    --gradient-night: radial-gradient(ellipse at bottom, #1b2735 0%, transparent 100%);
     
   }
 }
