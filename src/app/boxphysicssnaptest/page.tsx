@@ -2,19 +2,36 @@
 // app/page3/page.tsx
 import { useEffect, useState, useRef } from "react";
 
+// Type for a box's state
+interface BoxState {
+  x: number;
+  y: number;
+  originX: number;
+  originY: number;
+  dx: number; // Velocity X
+  dy: number; // Velocity Y
+}
+
+interface CursorPosition {
+  x: number;
+  y: number;
+}
+
 export default function Page3() {
   const numBoxes = 10; // Number of floating boxes
+  const boxWidth = 64; // Width of the floating boxes (16rem / 4 = 64px)
+  const boxHeight = 32; // Height of the floating boxes (8rem / 4 = 32px)
 
   // Parameters for forces and distances
-  const [originForce, setOriginForce] = useState(0.05); // Spring constant
-  const [damping, setDamping] = useState(0.1); // Damping factor
-  const [cursorForce, setCursorForce] = useState(0.01);
-  const [cursorEffectDistance, setCursorEffectDistance] = useState(150);
+  const [originForce, setOriginForce] = useState<number>(0.012); // Spring constant
+  const [damping, setDamping] = useState<number>(0.26); // Damping factor
+  const [cursorForce, setCursorForce] = useState<number>(0.05);
+  const [cursorEffectDistance, setCursorEffectDistance] = useState<number>(80);
 
-  const cursorPosition = useRef<{ x: number; y: number } | null>(null);
+  const cursorPosition = useRef<CursorPosition | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
-  const [boxes, setBoxes] = useState(
+  const [boxes, setBoxes] = useState<BoxState[]>(
     Array.from({ length: numBoxes }, () => {
       const originX = Math.random() * window.innerWidth;
       const originY = Math.random() * window.innerHeight;
@@ -35,9 +52,12 @@ export default function Page3() {
     const updatePositions = () => {
       setBoxes((prev) =>
         prev.map((box) => {
-          // Displacement from the anchor point
-          const dxToOrigin = box.originX - box.x;
-          const dyToOrigin = box.originY - box.y;
+          // Displacement from the center of the box to the anchor point
+          const centerX = box.x + boxWidth / 2;
+          const centerY = box.y + boxHeight / 2;
+
+          const dxToOrigin = box.originX - centerX;
+          const dyToOrigin = box.originY - centerY;
 
           // Spring force toward the anchor (F = -k * displacement)
           const forceToOriginX = dxToOrigin * originForce;
@@ -53,8 +73,8 @@ export default function Page3() {
 
           // Apply cursor attraction if the cursor is within effect distance
           if (cursorPosition.current) {
-            const dxToCursor = cursorPosition.current.x - box.x;
-            const dyToCursor = cursorPosition.current.y - box.y;
+            const dxToCursor = cursorPosition.current.x - centerX;
+            const dyToCursor = cursorPosition.current.y - centerY;
             const distanceToCursor = Math.sqrt(dxToCursor ** 2 + dyToCursor ** 2);
 
             if (distanceToCursor < cursorEffectDistance) {
@@ -95,43 +115,57 @@ export default function Page3() {
     };
   }, [originForce, damping, cursorForce, cursorEffectDistance]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     cursorPosition.current = { x: e.clientX, y: e.clientY };
   };
 
   return (
     <div className="relative w-full h-screen bg-gray-900" onMouseMove={handleMouseMove}>
       {/* Main centered element */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-32 h-32 bg-blue-500 text-white font-bold text-center flex items-center justify-center rounded-lg shadow-lg">
-          Center
-        </div>
-      </div>
+      
 
       {/* Floating boxes and anchor points */}
-      {boxes.map((box, index) => (
-        <div key={index}>
-          {/* Anchor point */}
-          <div
-            className="absolute w-2 h-2 bg-yellow-500 rounded-full"
-            style={{
-              left: `${box.originX}px`,
-              top: `${box.originY}px`,
-              transform: "translate(-50%, -50%)",
-            }}
-          ></div>
+      {boxes.map((box, index) => {
+        // Calculate if cursor is within the effect distance
+        const centerX = box.x + boxWidth / 2;
+        const centerY = box.y + boxHeight / 2;
+        const isCursorInRange =
+          cursorPosition.current &&
+          Math.sqrt(
+            (cursorPosition.current.x - centerX) ** 2 +
+            (cursorPosition.current.y - centerY) ** 2
+          ) < cursorEffectDistance;
 
-          {/* Floating box */}
-          <div
-            className="absolute w-16 h-8 bg-red-500 text-white font-medium flex items-center justify-center rounded shadow-lg"
-            style={{
-              transform: `translate(${box.x}px, ${box.y}px)`,
-            }}
-          >
-            Box {index + 1}
+        return (
+          <div key={index}>
+            {/* Anchor point */}
+            <div
+              className="absolute w-2 h-2 bg-yellow-500 rounded-full"
+              style={{
+                left: `${box.originX}px`,
+                top: `${box.originY}px`,
+                transform: "translate(-50%, -50%)",
+              }}
+            ></div>
+
+            {/* Floating box with dynamic outline */}
+            <div
+              className="absolute w-16 h-8 bg-red-500 text-white font-medium flex items-center justify-center rounded shadow-lg"
+              style={{
+                transform: `translate(${box.x}px, ${box.y}px)`,
+                border: isCursorInRange
+                  ? `2px solid rgba(255, 255, 255, 0.8)` // Show border when in range
+                  : `2px solid transparent`, // Hide border when out of range
+                boxShadow: isCursorInRange
+                  ? `0 0 ${cursorEffectDistance / 10}px rgba(255, 255, 255, 0.5)`
+                  : "none",
+              }}
+            >
+              Box {index + 1}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
 
       {/* Controls */}
       <div className="absolute bottom-5 left-5 bg-gray-800 p-4 rounded-lg shadow-lg text-white">
