@@ -46,9 +46,9 @@ export default function Page3() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center min-h-screen p-4 bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen ">
       <div
-        className={`flex flex-col md:flex-row max-w-[900px] w-[90dvw] rounded-lg shadow-lg overflow-hidden bg-white gap-4 p-6 transition-all ease-in-out duration-500`}
+        className={`flex flex-col md:flex-row max-w-[900px] w-[90dvw]   gap-4  transition-all ease-in-out duration-500`}
       >
         {/* Left Section */}
         <div
@@ -58,7 +58,7 @@ export default function Page3() {
         >
           {/* Logo Box */}
           <div
-            className={`bg-green-500 text-white rounded-md text-center transition-all duration-500 ease-in-out`}
+            className={` p-2 text-center transition-all duration-500 ease-in-out`}
             style={{
               width: selectedItem ? "40%" : "100%",
             }}
@@ -70,7 +70,7 @@ export default function Page3() {
                 textAnchor="middle"
                 fontFamily="'Profbens', sans-serif"
                 alignmentBaseline="middle"
-                fontSize="8px"
+                fontSize="7px"
                 lengthAdjust="spacingAndGlyphs"
                 fill="var(--logocolor)"
               >
@@ -82,14 +82,14 @@ export default function Page3() {
           {/* Animated Details Panel */}
           <div
             ref={detailsRef}
-            className="transition-all duration-500 ease-in-out overflow-hidden"
+            className="transition-all rounded-2xl duration-500 ease-in-out overflow-hidden"
             style={{
               height: selectedItem ? `${containerHeight}px` : 0,
               opacity: selectedItem ? 1 : 0,
             }}
           >
             {selectedItem && (
-              <div className="p-6 bg-gray-200 rounded-md text-center shadow-md">
+              <div className="p-6   bg-white/30 backdrop-blur-md text-center ">
                 <h2 className="text-xl font-bold">{selectedItem}</h2>
                 <p className="mt-2 text-gray-700">{selectedItemDetails?.description}</p>
               </div>
@@ -101,15 +101,15 @@ export default function Page3() {
         <div
           className={`flex-auto transition-all duration-500 ease-in-out ${
             selectedItem ? "basis-28" : "basis-40"
-          } p-4 bg-blue-500 rounded-md flex justify-center items-center`}
+          } p-1 rounded-md flex justify-center items-center`}
         >
           <ul className="space-y-4 w-full">
             {items.map((item) => (
               <li key={item.id} className="flex justify-center">
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-lg bg-white/40 backdrop-blur-md shadow-lg hover:bg-white/50 transition-transform duration-300 ${
-                    selectedItem === item.name ? "transform scale-110" : ""
+                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-xl bg-white/30 backdrop-blur-md shadow-lg transition-transform duration-300  ${
+                    selectedItem === item.name ? "transform scale-110 bg-white/55 " : ""
                   }`}
                 >
                   {item.name}
