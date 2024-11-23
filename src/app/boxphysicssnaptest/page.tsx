@@ -1,5 +1,4 @@
-"use client";
-// app/page3/page.tsx
+"use client"; // Ensure this component is treated as client-side only
 import { useEffect, useState, useRef } from "react";
 
 // Type for a box's state
@@ -28,50 +27,78 @@ export default function Page3() {
   const [cursorForce, setCursorForce] = useState<number>(0.05);
   const [cursorEffectDistance, setCursorEffectDistance] = useState<number>(80);
 
+  // Initialize state for window size (client-side only)
+  const [windowSize, setWindowSize] = useState<{ width: number; height: number } | null>(null);
+
   const cursorPosition = useRef<CursorPosition | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
-  const [boxes, setBoxes] = useState<BoxState[]>(
-    Array.from({ length: numBoxes }, () => {
-      const originX = Math.random() * window.innerWidth;
-      const originY = Math.random() * window.innerHeight;
+  // Initialize boxes after the client-side window size is available
+  const [boxes, setBoxes] = useState<BoxState[]>([]);
 
-      return {
-        x: originX,
-        y: originY,
-        originX, // Fixed anchor point
-        originY, // Fixed anchor point
-        dx: 0, // Velocity X
-        dy: 0, // Velocity Y
-      };
-    })
-  );
+  // Update window size on client side
+  useEffect(() => {
+    // Only run on the client side (window is available)
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    // Set the initial window size
+    handleResize();
+
+    // Attach resize event listener
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []); // Empty dependency array, runs only once when the component mounts
+
+  // Initialize boxes after the window size is available
+  useEffect(() => {
+    if (windowSize) {
+      setBoxes(
+        Array.from({ length: numBoxes }, () => {
+          const originX = Math.random() * windowSize.width;
+          const originY = Math.random() * windowSize.height;
+
+          return {
+            x: originX,
+            y: originY,
+            originX, // Fixed anchor point
+            originY, // Fixed anchor point
+            dx: 0, // Velocity X
+            dy: 0, // Velocity Y
+          };
+        })
+      );
+    }
+  }, [windowSize]); // Run when window size changes
 
   // Update physics using requestAnimationFrame
   useEffect(() => {
     const updatePositions = () => {
       setBoxes((prev) =>
         prev.map((box) => {
-          // Displacement from the center of the box to the anchor point
           const centerX = box.x + boxWidth / 2;
           const centerY = box.y + boxHeight / 2;
 
           const dxToOrigin = box.originX - centerX;
           const dyToOrigin = box.originY - centerY;
 
-          // Spring force toward the anchor (F = -k * displacement)
           const forceToOriginX = dxToOrigin * originForce;
           const forceToOriginY = dyToOrigin * originForce;
 
-          // Damping force (F = -d * velocity)
           const dampingForceX = -damping * box.dx;
           const dampingForceY = -damping * box.dy;
 
-          // Total forces
           let totalForceX = forceToOriginX + dampingForceX;
           let totalForceY = forceToOriginY + dampingForceY;
 
-          // Apply cursor attraction if the cursor is within effect distance
           if (cursorPosition.current) {
             const dxToCursor = cursorPosition.current.x - centerX;
             const dyToCursor = cursorPosition.current.y - centerY;
@@ -84,11 +111,9 @@ export default function Page3() {
             }
           }
 
-          // Update velocities
           const newDX = box.dx + totalForceX;
           const newDY = box.dy + totalForceY;
 
-          // Update positions
           const newX = box.x + newDX;
           const newY = box.y + newDY;
 
@@ -102,31 +127,35 @@ export default function Page3() {
         })
       );
 
-      // Schedule the next frame
       animationFrameRef.current = requestAnimationFrame(updatePositions);
     };
 
-    animationFrameRef.current = requestAnimationFrame(updatePositions);
+    if (windowSize) {
+      animationFrameRef.current = requestAnimationFrame(updatePositions);
+    }
 
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [originForce, damping, cursorForce, cursorEffectDistance]);
+  }, [originForce, damping, cursorForce, cursorEffectDistance, windowSize]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     cursorPosition.current = { x: e.clientX, y: e.clientY };
   };
 
+  if (!windowSize) {
+    return <div>Loading...</div>; // Optional: Show a loading indicator until window size is available
+  }
+
   return (
     <div className="relative w-full h-screen bg-gray-900" onMouseMove={handleMouseMove}>
       {/* Main centered element */}
-      
+   
 
       {/* Floating boxes and anchor points */}
       {boxes.map((box, index) => {
-        // Calculate if cursor is within the effect distance
         const centerX = box.x + boxWidth / 2;
         const centerY = box.y + boxHeight / 2;
         const isCursorInRange =
