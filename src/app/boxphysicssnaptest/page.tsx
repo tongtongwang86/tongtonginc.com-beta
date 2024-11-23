@@ -150,7 +150,7 @@ export default function Page3() {
   }
 
   return (
-    <div className="relative w-full h-screen bg-gray-900" onMouseMove={handleMouseMove}>
+    <div className="relative w-full h-screen bg-green-500" onMouseMove={handleMouseMove}>
       {/* Floating boxes and anchor points */}
       {boxes.map((box, index) => {
         const centerX = box.x + boxWidth / 2;
