@@ -19,8 +19,12 @@ export default function Page3() {
     setSelectedItem((prev) => (prev === itemName ? null : itemName));
   };
 
-  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!(e.target as HTMLElement).closest("button")) {
+  const handleClickOutside = (e: MouseEvent) => {
+    if (
+      detailsRef.current &&
+      !detailsRef.current.contains(e.target as Node) &&
+      !(e.target as HTMLElement).closest("button")
+    ) {
       setSelectedItem(null);
     }
   };
@@ -33,14 +37,18 @@ export default function Page3() {
     }
   }, [selectedItem]);
 
+  // Add event listener to detect outside clicks
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div
-      className="flex justify-center items-center min-h-screen p-4 bg-gray-100"
-      onClick={handleOutsideClick}
-    >
+    <div className="flex justify-center items-center min-h-screen p-4 bg-gray-100">
       <div
         className={`flex flex-col md:flex-row max-w-[900px] w-[90dvw] rounded-lg shadow-lg overflow-hidden bg-white gap-4 p-6 transition-all ease-in-out duration-500`}
-        onClick={(e) => e.stopPropagation()}
       >
         {/* Left Section */}
         <div
@@ -48,14 +56,14 @@ export default function Page3() {
             selectedItem ? "justify-center" : "justify-center"
           }`}
         >
-          {/* Box 1 */}
+          {/* Logo Box */}
           <div
             className={`bg-green-500 text-white rounded-md text-center transition-all duration-500 ease-in-out`}
             style={{
               width: selectedItem ? "40%" : "100%",
             }}
           >
-            <svg viewBox="0 0 43 13" className="w-full h-full drop-shadow-custom ">
+            <svg viewBox="0 0 43 13" className="w-full h-full drop-shadow-custom">
               <text
                 x="50%"
                 y="40%"
@@ -73,16 +81,15 @@ export default function Page3() {
 
           {/* Animated Details Panel */}
           <div
+            ref={detailsRef}
             className="transition-all duration-500 ease-in-out overflow-hidden"
             style={{
-              height: containerHeight !== null ? `${containerHeight}px` : 0,
+              height: selectedItem ? `${containerHeight}px` : 0,
+              opacity: selectedItem ? 1 : 0,
             }}
           >
             {selectedItem && (
-              <div
-                ref={detailsRef}
-                className="p-6 bg-gray-200 rounded-md text-center shadow-md"
-              >
+              <div className="p-6 bg-gray-200 rounded-md text-center shadow-md">
                 <h2 className="text-xl font-bold">{selectedItem}</h2>
                 <p className="mt-2 text-gray-700">{selectedItemDetails?.description}</p>
               </div>
