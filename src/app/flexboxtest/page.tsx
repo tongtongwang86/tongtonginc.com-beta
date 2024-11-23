@@ -1,16 +1,77 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import Image from 'next/image';
+import { HStack } from "@/components";
 
 export default function Page3() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [containerHeight, setContainerHeight] = useState<number | null>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
 
+  // Updated items array with buttons for each item
   const items = [
-    { id: 1, name: "Item 1", description: "This is a short description for Item 1." },
-    { id: 2, name: "Item 2", description: "This is a short description for Item 2." },
-    { id: 3, name: "Item 3", description: "This is a long description for Item 3." },
-    { id: 4, name: "Item 4", description: "This is a short description for Item 4." },
+    {
+      id: 1,
+      name: "Revolute",
+      description: "Revolute, a compact and versatile jog wheel the size of a keyboard key, it supports bluetooth and is fully wireless. Use it to improve your workflows like automating brush size, scrubbing in a timeline, or repeatedly pressing a key quickly in a game.",
+      icon: "/assets/homepage/icons/Revolute.svg",
+      photo: "/assets/homepage/hero/Revolute.png",
+      buttons: [
+        { label: "Learn More", link: "/revolute" },
+        { label: "hi", link: "/revolute" },
+        { label: "Buy Now", link: "/revolute-buy" }
+      ]
+    },
+    {
+      id: 2,
+      name: "Cloud",
+      description: "Login page for Tongtong.inc cloud.",
+      icon: "/assets/homepage/icons/Cloud.svg",
+      photo: "/assets/homepage/hero/Cloud.png",
+      buttons: [
+        { label: "Learn More", link: "/cloud" },
+        { label: "Sign Up", link: "/cloud-signup" }
+      ]
+    },
+    {
+      id: 4,
+      name: "ECA",
+      description: "I run two extracurricular classes, 3D Artmaking and Electronics engineering.",
+      icon: "/assets/homepage/icons/ECA.svg",
+      photo: "/assets/homepage/hero/ECA.png",
+      buttons: [
+        { label: "View Classes", link: "/eca-classes" },
+        { label: "Contact", link: "/eca-contact" }
+      ]
+    },
+    {
+      id: 5,
+      name: "About",
+      description: "Learn about the mastermind behind all these shenanigans.",
+      icon: "/assets/homepage/icons/About.svg",
+      photo: "/assets/homepage/hero/About.png",
+      buttons: [
+        { label: "About Me", link: "/about" },
+        { label: "Portfolio", link: "/portfolio" }
+      ]
+    },
+    {
+      id: 6,
+      name: "Other",
+      description: "Here are some other cool pages.",
+      icon: "/assets/homepage/icons/Other.svg",
+      photo: "/assets/homepage/hero/Revolute.png",
+      buttons: [
+        { label: "3D", link: "/3D" },
+        { label: "SnapTest", link: "/boxphysicssnaptest" },
+        { label: "backgroundTest", link: "/backgroundtest" },
+        { label: "gallaryTest", link: "/gallarytest" },
+        { label: "Page1", link: "/page1" },
+        { label: "Page2", link: "/page2" },
+        { label: "Page3", link: "/page3" },
+        { label: "Page3", link: "/page4" },
+      ]
+    },
   ];
 
   const selectedItemDetails = items.find((item) => item.name === selectedItem);
@@ -46,19 +107,18 @@ export default function Page3() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
+    <div className="flex justify-center items-center min-h-screen">
       <div
-        className={`flex flex-col md:flex-row max-w-[900px] w-[90dvw]   gap-4  transition-all ease-in-out duration-500`}
+        className={`flex flex-col md:flex-row max-w-[900px] w-[90dvw] gap-4 transition-all ease-in-out duration-500`}
       >
         {/* Left Section */}
         <div
-          className={`flex flex-col flex-auto gap-4 transition-all duration-500 ease-in-out ${
-            selectedItem ? "justify-center" : "justify-center"
-          }`}
+          className={`flex flex-col flex-auto gap-4 transition-all duration-500 ease-in-out ${selectedItem ? "justify-center" : "justify-center"
+            }`}
         >
           {/* Logo Box */}
           <div
-            className={` p-2 text-center transition-all duration-500 ease-in-out`}
+            className={`p-2 text-center transition-all duration-500 ease-in-out`}
             style={{
               width: selectedItem ? "40%" : "100%",
             }}
@@ -89,9 +149,36 @@ export default function Page3() {
             }}
           >
             {selectedItem && (
-              <div className="p-6   bg-white/30 backdrop-blur-md text-center ">
-                <h2 className="text-xl font-bold">{selectedItem}</h2>
-                <p className="mt-2 text-gray-700">{selectedItemDetails?.description}</p>
+              <div className="p-6 bg-white/30 backdrop-blur-md text-left">
+                <div className="items-start">
+                  <Image
+                    src={selectedItemDetails?.photo || ""}
+                    alt=""
+                    className="float-left m-2 w-36 h-36 object-cover"
+                    width="100"
+                    height="100"
+                  />
+                  <div className="items w-full">
+                    <h2 className="w-full text-5xl text-center">{selectedItem}</h2>
+                    <p className="mt-3 mx-4 text-xl">{selectedItemDetails?.description}</p>
+
+                    
+                  </div>
+                </div>
+
+                {/* Buttons positioned at the bottom-right */}
+<div className="flex flex-wrap justify-end gap-3 pt-5 w-full">
+  {selectedItemDetails?.buttons.map((button, index) => (
+    <a
+      key={index}
+      href={button.link}
+      className="text-black font-bold bg-white rounded-full px-4 py-2 hover:bg-blue-200 transition duration-300"
+    >
+      {button.label}
+    </a>
+  ))}
+</div>
+
               </div>
             )}
           </div>
@@ -108,11 +195,22 @@ export default function Page3() {
               <li key={item.id} className="flex justify-center">
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-xl bg-white/30 backdrop-blur-md shadow-lg transition-transform duration-300  ${
-                    selectedItem === item.name ? "transform scale-110 bg-white/55 " : ""
-                  }`}
+                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-xl bg-white/30 backdrop-blur-md shadow-lg transition-transform duration-300 flex flex-row items-center ${selectedItem === item.name ? "transform scale-110 bg-white/55 " : ""
+                    }`}
                 >
-                  {item.name}
+
+
+
+                  <Image
+                    src={item.icon}
+                    alt=""
+                    className="aspect-auto w-9 object-cover"
+                    width="100"
+                    height="100"
+                   style={{ filter: "var(--svg-icon)" }}
+
+                  />
+                  <div className="text-xl w-full">{item.name}</div>
                 </button>
               </li>
             ))}

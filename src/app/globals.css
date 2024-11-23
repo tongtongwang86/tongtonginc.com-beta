@@ -7,9 +7,10 @@
   --background2:#FDF7F2;
   --navgradient: rgba(255, 252, 246, 0);
   --logocolor: #161925ff;
-  --logoHover:rgba(50, 48, 44, 0.8);
+  --logoHover:rgba(44, 70, 109, 0.359);
   --foreground: #161925ff;
   --highlightText: #161925ff;
+  --svg-icon: invert(0%) sepia(91%) saturate(2064%) hue-rotate(185deg) brightness(95%) contrast(96%);
 
   --gradient-day: radial-gradient(ellipse at bottom, #fbf2e6 0%, #fdf7f2 100%);
   --navbar-day: #d5d7f5;
@@ -31,6 +32,8 @@
     --logocolor: #ded2b4ff;
     --logoHover:rgba(222, 210, 180, 0.8);
     --highlightText: #ded2b4;
+
+    --svg-icon: invert(100%) sepia(91%) saturate(1%)  brightness(100%) contrast(100%);
 
     --gradient-day: radial-gradient(ellipse at bottom, #1b2735 0%, #1c1d2c 100%);
     --navbar-day: #1c1d2c;
