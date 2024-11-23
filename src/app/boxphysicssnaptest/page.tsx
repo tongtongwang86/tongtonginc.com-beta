@@ -19,7 +19,7 @@ interface CursorPosition {
 export default function Page3() {
   const numBoxes = 10; // Number of floating boxes
   const boxWidth = 64; // Width of the floating boxes (16rem / 4 = 64px)
-  const boxHeight = 32; // Height of the floating boxes (8rem / 4 = 32px)
+  const boxHeight = 64; // Height of the floating boxes (8rem / 4 = 32px)
 
   // Parameters for forces and distances
   const [originForce, setOriginForce] = useState<number>(0.012); // Spring constant
@@ -151,19 +151,10 @@ export default function Page3() {
 
   return (
     <div className="relative w-full h-screen bg-gray-900" onMouseMove={handleMouseMove}>
-      {/* Main centered element */}
-   
-
       {/* Floating boxes and anchor points */}
       {boxes.map((box, index) => {
         const centerX = box.x + boxWidth / 2;
         const centerY = box.y + boxHeight / 2;
-        const isCursorInRange =
-          cursorPosition.current &&
-          Math.sqrt(
-            (cursorPosition.current.x - centerX) ** 2 +
-            (cursorPosition.current.y - centerY) ** 2
-          ) < cursorEffectDistance;
 
         return (
           <div key={index}>
@@ -177,21 +168,21 @@ export default function Page3() {
               }}
             ></div>
 
-            {/* Floating box with dynamic outline */}
-            <div
-              className="absolute w-16 h-8 bg-red-500 text-white font-medium flex items-center justify-center rounded shadow-lg"
+            {/* Floating box as an image */}
+            <img
+              src="/assets/boxphysicstest/cat.png"
+              alt={`Floating box ${index + 1}`}
+              className="absolute"
               style={{
-                transform: `translate(${box.x}px, ${box.y}px)`,
-                border: isCursorInRange
-                  ? `2px solid rgba(255, 255, 255, 0.8)` // Show border when in range
-                  : `2px solid transparent`, // Hide border when out of range
-                boxShadow: isCursorInRange
-                  ? `0 0 ${cursorEffectDistance / 10}px rgba(255, 255, 255, 0.5)`
-                  : "none",
+                left: `${box.x}px`,
+                top: `${box.y}px`,
+                width: `${boxWidth}px`, // Ensure image width is capped by boxWidth
+                height: `${boxHeight}px`, // Ensure image height is capped by boxHeight
+             
+            
+                boxShadow: "none", // Optional: Remove any box shadow effects
               }}
-            >
-              Box {index + 1}
-            </div>
+            />
           </div>
         );
       })}
