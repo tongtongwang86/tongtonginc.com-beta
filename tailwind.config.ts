@@ -52,6 +52,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        custom: [
+          '0 0px 13px var(--logoHover)', 
+          '0 0px 5px var(--logoHover)'
+        ],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
