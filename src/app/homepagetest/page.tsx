@@ -254,7 +254,7 @@ export default function Page3() {
 
           <SuperEllipse
             p1={17} p2={50}
-            className="transition-all overflow-hidden bg-white/30 backdrop-blur-md  rounded-2xl"
+            className="transition-all overflow-hidden bg-white/10 backdrop-blur-lg  rounded-2xl"
             style={{
               height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
               transition: "height 0.5s ease",
@@ -322,7 +322,7 @@ export default function Page3() {
 
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`justify-center w-10/12 content-center rounded-2xl overflow-hidden ${selectedItem === item.name ? "  transform transition-all scale-110 outline" : ""} `}
+                  className={`justify-center w-10/12 content-center rounded-2xl overflow-hidden ${selectedItem === item.name ? " transform transition-all scale-110 outline" : ""} `}
 
 
 
@@ -331,7 +331,7 @@ export default function Page3() {
                   <SuperEllipse
                     p1={6} p2={20}
 
-                    className={`  p-4 bg-white/30 backdrop-blur-md shadow-lg transition-all duration-500 flex flex-row items-center hover:bg-white/50 $ `}
+                    className={`  p-4 bg-white/10 backdrop-blur-lg shadow-lg transition-all duration-500 flex flex-row items-center hover:bg-white/30 $ `}
                   >
 
 
