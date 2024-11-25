@@ -115,7 +115,105 @@ export default function Page3() {
     };
   }, []);
 
+  const gradients = {
+    day: "var(--gradient-day)",
+    sunset: "var(--gradient-sunset)",
+    night: "var(--gradient-night)",
+  };
+
+  // Theme colors for the meta tag and body background
+  const themeColors = {
+    day: "var(--navbar-day)",
+    sunset: "var(--navbar-sunset)",
+    night: "var(--navbar-night)",
+  };
+
+  // State for gradient and theme color
+  const [state, setState] = useState({
+    gradient: "",
+    themeColor: "",
+  });
+
+  // Function to resolve CSS variables to their computed values
+  const resolveCSSVariable = (color: string) => {
+    return color.startsWith("var(")
+      ? getComputedStyle(document.documentElement).getPropertyValue(
+          color.slice(4, -1).trim()
+        )
+      : color;
+  };
+
+  // Function to update the <meta> tag and body background color
+  const updateThemeColor = (color: string) => {
+    const resolvedColor = resolveCSSVariable(color).trim();
+
+    // Update <meta> tag
+    let themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (!themeMeta) {
+      themeMeta = document.createElement("meta");
+      themeMeta.setAttribute("name", "theme-color");
+      document.head.appendChild(themeMeta);
+    }
+    themeMeta.setAttribute("content", resolvedColor);
+
+    // Update body background color
+    document.body.style.backgroundColor = resolvedColor;
+  };
+
+  // Function to determine the gradient and theme color based on the time of day
+  const calculateTimeBasedState = () => {
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour < 18) {
+      return { gradient: gradients.day, themeColor: themeColors.day };
+    } else if (hour >= 18 && hour < 20) {
+      return { gradient: gradients.sunset, themeColor: themeColors.sunset };
+    } else {
+      return { gradient: gradients.night, themeColor: themeColors.night };
+    }
+  };
+
+  // Function to handle light/dark mode changes
+  const handleAppearanceChange = () => {
+    const updatedState = calculateTimeBasedState();
+    setState(updatedState);
+    updateThemeColor(updatedState.themeColor);
+  };
+
+  // Initialize state client-side after the component mounts
+  useEffect(() => {
+    const initialState = calculateTimeBasedState();
+    setState(initialState);
+    updateThemeColor(initialState.themeColor);
+
+    // Update theme color dynamically every minute
+    const interval = setInterval(() => {
+      const updatedState = calculateTimeBasedState();
+      setState(updatedState);
+      updateThemeColor(updatedState.themeColor);
+    }, 60 * 1000);
+
+    // Add event listener for system light/dark mode changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", handleAppearanceChange);
+
+    // Cleanup on unmount
+    return () => {
+      clearInterval(interval);
+      mediaQuery.removeEventListener("change", handleAppearanceChange);
+    };
+  }, []);
+
+  // Helper function to check if a gradient is active
+  const isActive = (gradient: string) => state.gradient === gradient;
+
+
   return (
+    <div
+    className="h-screen w-screen transition-all duration-500"
+    style={{ backgroundImage: state.gradient }}
+  >
+    <main className="flex flex-col justify-center items-center h-full">
+    
     <div
       className="flex justify-center items-center min-h-screen "
 
@@ -262,6 +360,9 @@ export default function Page3() {
           </ul>
         </div>
       </div>
+    </div>
+
+    </main>
     </div>
   );
 }
