@@ -127,7 +127,7 @@ export default function Page3() {
       >
         {/* Box 1 and Details Pane */}
 
-        <div className="flex flex-col  flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-1">
+        <div className="flex flex-col  flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-1/2">
           {/* Box 1 */}
           <div
             className=" text-center transition-all duration-500 ease-in-out"
@@ -155,16 +155,16 @@ export default function Page3() {
           {/* Animated Details Panel */}
 
           <SuperEllipse
-          p1={6} p2={24}
-          className="transition-all overflow-hidden bg-white/30 backdrop-blur-md  rounded-2xl"
-          style={{
-            height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
-            transition: "height 0.5s ease",
-          }}
-          
+            p1={6} p2={24}
+            className="transition-all overflow-hidden bg-white/30 backdrop-blur-md  rounded-2xl"
+            style={{
+              height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
+              transition: "height 0.5s ease",
+            }}
+
           >
 
-  
+
 
 
             {selectedItem && (
@@ -206,27 +206,41 @@ export default function Page3() {
 
 
 
-</SuperEllipse>
-          </div>
-          
+          </SuperEllipse>
+        </div>
+
 
         {/* Sidebar List */}
         <div
-          className={`transition-all duration-500 ease-in-out ${selectedItem ? "basis-1/4" : "basis-1/3"
-            }   flex justify-center items-center`}
+          className={`transition-all  duration-500 ease-in-out ${selectedItem ? "basis-1/4" : "basis-1/3"
+            }  flex justify-center items-center `}
         >
-          <ul className="space-y-4 w-full">
+          <ul className="space-y-4 w-full  ">
             {items.map((item) => (
-              <li key={item.id} className="flex justify-center">
+              <li key={item.id} className={`flex justify-center  `}
+              
+              >
+
+
                 <button
                   onClick={() => handleItemClick(item.name)}
+                  className={`justify-center w-10/12 content-center rounded-2xl overflow-hidden ${selectedItem === item.name ? "  transform transition-all scale-110 outline" : "" } `}
+                  
+             
+
+                 
                 >
                   <SuperEllipse
-                  p1={6} p2={20}
+                    p1={6} p2={20}
 
-                    className={`w-3/4 max-w-xs min-w-[200px] text-center p-4   bg-white/30 backdrop-blur-md shadow-lg transition-all duration-300 flex flex-row items-center hover:bg-white/50 ${selectedItem === item.name ? "transform transition-all scale-110 bg-white/40" : ""
-                      }`}
+                    className={`  p-4 bg-white/30 backdrop-blur-md shadow-lg transition-all duration-500 flex flex-row items-center hover:bg-white/50 $
+                     
+            }
+            
+            `}
                   >
+
+                    
 
 
                     <Image

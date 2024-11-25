@@ -118,12 +118,12 @@ export default function Page3() {
       
     >
       <div
-        className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4  transition-all duration-500 ease-in-out"
+        className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4 transition-all duration-500 ease-in-out"
       
         onClick={(e) => e.stopPropagation()} // Prevent click propagation within the content
       >
         {/* Box 1 and Details Pane */}
-        <div className="flex flex-col bg-red-500 flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-1">
+        <div className="flex flex-col bg-red-500 flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-6">
           {/* Box 1 */}
           <div
             className="bg-green-500 text-center transition-all duration-500 ease-in-out"
