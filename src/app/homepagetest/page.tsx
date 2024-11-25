@@ -1,14 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Page3() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [containerHeight, setContainerHeight] = useState<number | null>(null);
+  const [containerWidth, setContainerWidth] = useState<string | null>(null);
+
+  const detailsRef = useRef<HTMLDivElement>(null);
 
   const items = [
     { id: 1, name: "Item 1", description: "This is a short description for Item 1." },
-    { id: 2, name: "Item 2", description: "This is a short description for Item 2." },
-    { id: 3, name: "Item 3", description: "This is a long description for Item 3." },
-    { id: 4, name: "Item 4", description: "This is a short description for Item 4." },
+    { id: 2, name: "Item 2", description: "This is a shortItem" },
+    { id: 3, name: "Item 3", description: "This or Item 3." },
+    { id: 4, name: "Item 4", description: "This is a longer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s songer description for Item 4 s s  s s s s s 4 s s  s s s s s 4 s s  s s s s s." },
   ];
 
   const selectedItemDetails = items.find((item) => item.name === selectedItem);
@@ -17,54 +21,87 @@ export default function Page3() {
     setSelectedItem((prev) => (prev === itemName ? null : itemName));
   };
 
-  const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!(e.target as HTMLElement).closest("button")) {
       setSelectedItem(null);
     }
   };
 
+  useEffect(() => {
+    // Adjust the height of the details container dynamically
+    if (detailsRef.current) {
+      setContainerHeight(detailsRef.current.scrollHeight);
+    } else {
+      setContainerHeight(null); // Reset height when no item is selected
+    }
+
+    // Dynamically adjust the width based on the selected item's description length
+    if (selectedItem) {
+      setContainerWidth("75%"); // When an item is selected, reduce the width
+    } else {
+      setContainerWidth("100%"); // Full width when no item is selected
+    }
+  }, [selectedItem]);
+
   return (
     <div
-      className="flex justify-center items-center min-h-screen p-4"
-      onClick={handleContainerClick}
+      className="flex justify-center items-center min-h-screen "
+      onClick={handleOutsideClick}
     >
-      <div className="flex flex-col md:flex-row max-w-[900px] w-[90dvw] rounded-lg shadow-lg overflow-hidden">
-        {/* Detail View */}
-        <div
-          className={`flex flex-col transition-all duration-500 ease-in-out ${
-            selectedItem ? "flex-[2] justify-start" : "flex-[1] justify-center"
-          } items-center`}
-        >
-          {/* Placeholder */}
+      <div
+        className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4  transition-all duration-500 ease-in-out"
+      
+        onClick={(e) => e.stopPropagation()} // Prevent click propagation within the content
+      >
+        {/* Box 1 and Details Pane */}
+        <div className="flex flex-col bg-red-500 flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-1">
+          {/* Box 1 */}
           <div
-            className={`w-full flex justify-center items-center transition-all duration-500 ${
-              selectedItem ? "h-[120px]" : "h-[150px]"
-            }`}
+            className="bg-green-500 text-center transition-all duration-500 ease-in-out"
+            style={{
+              width: selectedItem ? "40%" : "100%", // Smooth height animation
+            }}
           >
-            <p
-  className="font-bold text-center font-ProfBens outline "
-  style={{
-    color: "var(--logoHover)", // This will override any default browser styling
-    fontSize: selectedItem ? "clamp(2rem, 5vw, 3rem)" : "clamp(2rem, 10vw, 6rem)",
-    lineHeight: "1.6",
-    transition: "all 0.5s ease",
-  }}
->
-  Tongtong.inc
-</p>
+            {/* SVG to fit text dynamically */}
+            <svg viewBox="0 0 43 15" className="w-full h-full drop-shadow-custom">
+              <text
+                x="50%"
+                y="47%"
+                textAnchor="middle"
+                fontFamily="'Profbens', sans-serif"
+                alignmentBaseline="middle"
+                fontSize="7"
+                lengthAdjust="spacingAndGlyphs"
+                fill="var(--logocolor)"
+              >
+                Tongtong.inc
+              </text>
+            </svg>
           </div>
 
-          {/* Detail Content */}
-          {selectedItem && (
-            <div className="p-8 bg-white/50 backdrop-blur-md shadow-lg rounded-lg w-full max-w-lg text-center">
-              <h2 className="text-3xl font-bold">{selectedItem}</h2>
-              <p className="mt-4 text-sm">{selectedItemDetails?.description}</p>
-            </div>
-          )}
+          {/* Animated Details Panel */}
+          <div
+            className="transition-all overflow-hidden bg-red-300 rounded-lg"
+            style={{
+              height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
+              transition: "height 0.5s ease",
+            }}
+          >
+            {selectedItem && (
+              <div ref={detailsRef} className="text-wrap opacity-100 transition-opacity p-4">
+                <h2 className="text-xl font-bold">{selectedItem}</h2>
+                <p className="mt-2 text-wrap text-gray-700">{selectedItemDetails?.description}</p>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* List View */}
-        <div className="flex-1 p-6 flex justify-center items-center">
+        {/* Sidebar List */}
+        <div
+          className={`transition-all duration-500 ease-in-out ${
+            selectedItem ? "basis-1/4" : "basis-1/3"
+          }  bg-blue-500 flex justify-center items-center`}
+        >
           <ul className="space-y-4 w-full">
             {items.map((item) => (
               <li key={item.id} className="flex justify-center">
