@@ -191,10 +191,10 @@ export default function Page3() {
         >
           <ul className="space-y-4 w-full">
             {items.map((item) => (
-              <li key={item.id} className="flex justify-center">
+              <li key={item.id} className="flex transition-all duration-300 justify-center outline">
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-xl bg-white/30 backdrop-blur-md shadow-lg transition-transform duration-300 flex flex-row items-center ${selectedItem === item.name ? "transform scale-110 bg-white/55 " : ""
+                  className={`w-full max-w-xs min-w-[200px] text-center outline p-4 rounded-xl bg-white/30 backdrop-blur-md shadow-lg transition-all duration-300 flex flex-row items-center hover:scale-105 ${selectedItem === item.name ? "transform transition-all scale-110 bg-white/55" : ""
                     }`}
                 >
 
