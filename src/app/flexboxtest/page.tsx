@@ -162,22 +162,22 @@ export default function Page3() {
                     <h2 className="w-full text-5xl text-center">{selectedItem}</h2>
                     <p className="mt-3 mx-4 text-xl">{selectedItemDetails?.description}</p>
 
-                    
+
                   </div>
                 </div>
 
                 {/* Buttons positioned at the bottom-right */}
-<div className="flex flex-wrap justify-end gap-3 pt-5 w-full">
-  {selectedItemDetails?.buttons.map((button, index) => (
-    <a
-      key={index}
-      href={button.link}
-      className="text-black font-bold bg-white rounded-full px-4 py-2 hover:bg-blue-200 transition duration-300"
-    >
-      {button.label}
-    </a>
-  ))}
-</div>
+                <div className="flex flex-wrap justify-end gap-3 pt-5 w-full">
+                  {selectedItemDetails?.buttons.map((button, index) => (
+                    <a
+                      key={index}
+                      href={button.link}
+                      className="text-black font-bold bg-white rounded-full px-4 py-2 hover:bg-blue-200 transition duration-300"
+                    >
+                      {button.label}
+                    </a>
+                  ))}
+                </div>
 
               </div>
             )}
@@ -186,9 +186,8 @@ export default function Page3() {
 
         {/* Sidebar List */}
         <div
-          className={`flex-auto transition-all duration-500 ease-in-out ${
-            selectedItem ? "basis-28" : "basis-40"
-          } p-1 rounded-md flex justify-center items-center`}
+          className={`flex-auto transition-all duration-500 ease-in-out ${selectedItem ? "basis-28" : "basis-40"
+            } p-1 rounded-md flex justify-center items-center`}
         >
           <ul className="space-y-4 w-full">
             {items.map((item) => (
@@ -207,7 +206,7 @@ export default function Page3() {
                     className="aspect-auto w-9 object-cover"
                     width="100"
                     height="100"
-                   style={{ filter: "var(--svg-icon)" }}
+                    style={{ filter: "var(--svg-icon)" }}
 
                   />
                   <div className="text-xl w-full">{item.name}</div>
