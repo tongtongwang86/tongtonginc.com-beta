@@ -63,7 +63,7 @@ export default function Page3() {
       name: "Other",
       description: "Here are some other cool pages.",
       icon: "/assets/homepage/icons/Other.svg",
-      photo: "/assets/homepage/hero/Revolute.png",
+      photo: "/assets/homepage/hero/Other.png",
       buttons: [
         { label: "3D", link: "/3D" },
         { label: "SnapTest", link: "/boxphysicssnaptest" },
@@ -155,7 +155,7 @@ export default function Page3() {
           {/* Animated Details Panel */}
 
           <SuperEllipse
-            p1={6} p2={24}
+            p1={17} p2={50}
             className="transition-all overflow-hidden bg-white/30 backdrop-blur-md  rounded-2xl"
             style={{
               height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
@@ -173,7 +173,7 @@ export default function Page3() {
                   <Image
                     src={selectedItemDetails?.photo || ""}
                     alt=""
-                    className="float-left m-2 w-36 h-36 object-cover"
+                    className="rounded-2xl float-left m-2 w-36 h-36 object-cover"
                     width="100"
                     height="100"
                   />
@@ -218,35 +218,31 @@ export default function Page3() {
           <ul className="space-y-4 w-full  ">
             {items.map((item) => (
               <li key={item.id} className={`flex justify-center  `}
-              
+
               >
 
 
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`justify-center w-10/12 content-center rounded-2xl overflow-hidden ${selectedItem === item.name ? "  transform transition-all scale-110 outline" : "" } `}
-                  
-             
+                  className={`justify-center w-10/12 content-center rounded-2xl overflow-hidden ${selectedItem === item.name ? "  transform transition-all scale-110 outline" : ""} `}
 
-                 
+
+
+
                 >
                   <SuperEllipse
                     p1={6} p2={20}
 
-                    className={`  p-4 bg-white/30 backdrop-blur-md shadow-lg transition-all duration-500 flex flex-row items-center hover:bg-white/50 $
-                     
-            }
-            
-            `}
+                    className={`  p-4 bg-white/30 backdrop-blur-md shadow-lg transition-all duration-500 flex flex-row items-center hover:bg-white/50 $ `}
                   >
 
-                    
+
 
 
                     <Image
                       src={item.icon}
                       alt=""
-                      className="aspect-auto w-9 object-cover"
+                      className=" aspect-auto w-9 object-cover"
                       width="100"
                       height="100"
                       style={{ filter: "var(--svg-icon)" }}
