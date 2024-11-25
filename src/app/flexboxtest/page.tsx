@@ -1,14 +1,14 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import Image from 'next/image';
-import { HStack } from "@/components";
 
 export default function Page3() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [containerHeight, setContainerHeight] = useState<number | null>(null);
+  const [containerWidth, setContainerWidth] = useState<string | null>(null);
+
   const detailsRef = useRef<HTMLDivElement>(null);
 
-  // Updated items array with buttons for each item
   const items = [
     {
       id: 1,
@@ -73,14 +73,13 @@ export default function Page3() {
       ]
     },
   ];
-
   const selectedItemDetails = items.find((item) => item.name === selectedItem);
 
   const handleItemClick = (itemName: string) => {
     setSelectedItem((prev) => (prev === itemName ? null : itemName));
   };
 
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleOutsideClick = (e: MouseEvent) => {
     if (
       detailsRef.current &&
       !detailsRef.current.contains(e.target as Node) &&
@@ -91,46 +90,56 @@ export default function Page3() {
   };
 
   useEffect(() => {
+    // Adjust the height of the details container dynamically
     if (detailsRef.current) {
       setContainerHeight(detailsRef.current.scrollHeight);
     } else {
-      setContainerHeight(null);
+      setContainerHeight(null); // Reset height when no item is selected
+    }
+
+    // Dynamically adjust the width based on the selected item's description length
+    if (selectedItem) {
+      setContainerWidth("75%"); // When an item is selected, reduce the width
+    } else {
+      setContainerWidth("100%"); // Full width when no item is selected
     }
   }, [selectedItem]);
 
-  // Add event listener to detect outside clicks
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
+    document.addEventListener("click", handleOutsideClick);
     return () => {
-      document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div
+      className="flex justify-center items-center min-h-screen "
+      
+    >
       <div
-        className={`flex flex-col md:flex-row max-w-[900px] w-[90dvw] gap-4 transition-all ease-in-out duration-500`}
+        className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4  transition-all duration-500 ease-in-out"
+      
+        onClick={(e) => e.stopPropagation()} // Prevent click propagation within the content
       >
-        {/* Left Section */}
-        <div
-          className={`flex flex-col flex-auto gap-4 transition-all duration-500 ease-in-out ${selectedItem ? "justify-center" : "justify-center"
-            }`}
-        >
-          {/* Logo Box */}
+        {/* Box 1 and Details Pane */}
+        <div className="flex flex-col bg-red-500 flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-1">
+          {/* Box 1 */}
           <div
-            className={`p-2 text-center transition-all duration-500 ease-in-out`}
+            className="bg-green-500 text-center transition-all duration-500 ease-in-out"
             style={{
-              width: selectedItem ? "40%" : "100%",
+              width: selectedItem ? "40%" : "100%", // Smooth height animation
             }}
           >
-            <svg viewBox="0 0 43 13" className="w-full h-full drop-shadow-custom">
+            {/* SVG to fit text dynamically */}
+            <svg viewBox="0 0 43 15" className="w-full h-full drop-shadow-custom">
               <text
                 x="50%"
-                y="40%"
+                y="47%"
                 textAnchor="middle"
                 fontFamily="'Profbens', sans-serif"
                 alignmentBaseline="middle"
-                fontSize="7px"
+                fontSize="7"
                 lengthAdjust="spacingAndGlyphs"
                 fill="var(--logocolor)"
               >
@@ -141,15 +150,28 @@ export default function Page3() {
 
           {/* Animated Details Panel */}
           <div
-            ref={detailsRef}
-            className="transition-all rounded-2xl duration-500 ease-in-out overflow-hidden"
+            className="transition-all overflow-hidden bg-red-300 rounded-lg"
             style={{
-              height: selectedItem ? `${containerHeight}px` : 0,
-              opacity: selectedItem ? 1 : 0,
+              height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
+              transition: "height 0.5s ease",
             }}
           >
+
+
+
+
+
+{/* 
             {selectedItem && (
-              <div className="p-6 bg-white/30 backdrop-blur-md text-left">
+              
+              <div ref={detailsRef} className="text-wrap opacity-100 transition-opacity p-4">
+                <h2 className="text-xl font-bold">{selectedItem}</h2>
+                <p className="mt-2 text-wrap text-gray-700">{selectedItemDetails?.description}</p>
+              </div>
+            )} */}
+
+     {selectedItem && (
+              <div ref={detailsRef} className="p-6 bg-white/30 backdrop-blur-md text-left ">
                 <div className="items-start">
                   <Image
                     src={selectedItemDetails?.photo || ""}
@@ -181,35 +203,32 @@ export default function Page3() {
 
               </div>
             )}
+
+
+
+
+
+
+
           </div>
         </div>
 
         {/* Sidebar List */}
         <div
-          className={`flex-auto transition-all duration-500 ease-in-out ${selectedItem ? "basis-28" : "basis-40"
-            } p-1 rounded-md flex justify-center items-center`}
+          className={`transition-all duration-500 ease-in-out ${
+            selectedItem ? "basis-1/4" : "basis-1/3"
+          }  bg-blue-500 flex justify-center items-center`}
         >
           <ul className="space-y-4 w-full">
             {items.map((item) => (
-              <li key={item.id} className="flex transition-all duration-300 justify-center outline">
+              <li key={item.id} className="flex justify-center">
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`w-full max-w-xs min-w-[200px] text-center outline p-4 rounded-xl bg-white/30 backdrop-blur-md shadow-lg transition-all duration-300 flex flex-row items-center hover:scale-105 ${selectedItem === item.name ? "transform transition-all scale-110 bg-white/55" : ""
-                    }`}
+                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-lg bg-white/40 backdrop-blur-md shadow-lg hover:bg-white/50 transition-transform duration-300 ${
+                    selectedItem === item.name ? "transform scale-110" : ""
+                  }`}
                 >
-
-
-
-                  <Image
-                    src={item.icon}
-                    alt=""
-                    className="aspect-auto w-9 object-cover"
-                    width="100"
-                    height="100"
-                    style={{ filter: "var(--svg-icon)" }}
-
-                  />
-                  <div className="text-xl w-full">{item.name}</div>
+                  {item.name}
                 </button>
               </li>
             ))}
