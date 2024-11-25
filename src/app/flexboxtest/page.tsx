@@ -150,7 +150,7 @@ export default function Page3() {
 
           {/* Animated Details Panel */}
           <div
-            className="transition-all overflow-hidden bg-red-300 rounded-lg"
+            className="transition-all overflow-hidden bg-amber-300-300 rounded-lg"
             style={{
               height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
               transition: "height 0.5s ease",

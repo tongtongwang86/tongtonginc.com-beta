@@ -1,6 +1,9 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
 import Image from 'next/image';
+import SuperEllipse from "react-superellipse";
+import { SmoothCorners } from 'react-smooth-corners'
+
 
 export default function Page3() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -115,18 +118,19 @@ export default function Page3() {
   return (
     <div
       className="flex justify-center items-center min-h-screen "
-      
+
     >
       <div
-        className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4  transition-all duration-500 ease-in-out"
-      
+        className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]   gap-4  transition-all duration-500 ease-in-out"
+
         onClick={(e) => e.stopPropagation()} // Prevent click propagation within the content
       >
         {/* Box 1 and Details Pane */}
-        <div className="flex flex-col bg-red-500 flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-1">
+
+        <div className="flex flex-col  flex-auto gap-4 overflow-hidden transition-all duration-500 ease-in-out justify-center basis-1">
           {/* Box 1 */}
           <div
-            className="bg-green-500 text-center transition-all duration-500 ease-in-out"
+            className=" text-center transition-all duration-500 ease-in-out"
             style={{
               width: selectedItem ? "40%" : "100%", // Smooth height animation
             }}
@@ -149,29 +153,22 @@ export default function Page3() {
           </div>
 
           {/* Animated Details Panel */}
-          <div
-            className="transition-all overflow-hidden bg-red-300 rounded-lg"
-            style={{
-              height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
-              transition: "height 0.5s ease",
-            }}
+
+          <SuperEllipse
+          p1={6} p2={24}
+          className="transition-all overflow-hidden bg-white/30 backdrop-blur-md  rounded-2xl"
+          style={{
+            height: containerHeight ? `${containerHeight}px` : "0px", // Dynamic height
+            transition: "height 0.5s ease",
+          }}
+          
           >
 
+  
 
 
-
-
-{/* 
             {selectedItem && (
-              
-              <div ref={detailsRef} className="text-wrap opacity-100 transition-opacity p-4">
-                <h2 className="text-xl font-bold">{selectedItem}</h2>
-                <p className="mt-2 text-wrap text-gray-700">{selectedItemDetails?.description}</p>
-              </div>
-            )} */}
-
-     {selectedItem && (
-              <div ref={detailsRef} className="p-6 bg-white/30 backdrop-blur-md text-left ">
+              <div ref={detailsRef} className="p-6  text-left ">
                 <div className="items-start">
                   <Image
                     src={selectedItemDetails?.photo || ""}
@@ -209,27 +206,47 @@ export default function Page3() {
 
 
 
-
+</SuperEllipse>
           </div>
-        </div>
+          
 
         {/* Sidebar List */}
         <div
-          className={`transition-all duration-500 ease-in-out ${
-            selectedItem ? "basis-1/4" : "basis-1/3"
-          }  bg-blue-500 flex justify-center items-center`}
+          className={`transition-all duration-500 ease-in-out ${selectedItem ? "basis-1/4" : "basis-1/3"
+            }   flex justify-center items-center`}
         >
           <ul className="space-y-4 w-full">
             {items.map((item) => (
               <li key={item.id} className="flex justify-center">
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-lg bg-white/40 backdrop-blur-md shadow-lg hover:bg-white/50 transition-transform duration-300 ${
-                    selectedItem === item.name ? "transform scale-110" : ""
-                  }`}
                 >
-                  {item.name}
+                  <SuperEllipse
+                  p1={6} p2={20}
+
+                    className={`w-3/4 max-w-xs min-w-[200px] text-center p-4   bg-white/30 backdrop-blur-md shadow-lg transition-all duration-300 flex flex-row items-center hover:bg-white/50 ${selectedItem === item.name ? "transform transition-all scale-110 bg-white/40" : ""
+                      }`}
+                  >
+
+
+                    <Image
+                      src={item.icon}
+                      alt=""
+                      className="aspect-auto w-9 object-cover"
+                      width="100"
+                      height="100"
+                      style={{ filter: "var(--svg-icon)" }}
+
+                    />
+
+
+                    <div className="text-xl w-full">{item.name}</div>
+
+
+                  </SuperEllipse>
+
                 </button>
+
               </li>
             ))}
           </ul>
