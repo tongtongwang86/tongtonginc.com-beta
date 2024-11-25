@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from 'next/image';
 import SuperEllipse from "react-superellipse";
-import { SmoothCorners } from 'react-smooth-corners'
+
 
 
 export default function Page3() {
