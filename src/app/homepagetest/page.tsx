@@ -21,8 +21,12 @@ export default function Page3() {
     setSelectedItem((prev) => (prev === itemName ? null : itemName));
   };
 
-  const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!(e.target as HTMLElement).closest("button")) {
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (
+      detailsRef.current &&
+      !detailsRef.current.contains(e.target as Node) &&
+      !(e.target as HTMLElement).closest("button")
+    ) {
       setSelectedItem(null);
     }
   };
@@ -43,10 +47,17 @@ export default function Page3() {
     }
   }, [selectedItem]);
 
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div
       className="flex justify-center items-center min-h-screen "
-      onClick={handleOutsideClick}
+      
     >
       <div
         className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4  transition-all duration-500 ease-in-out"
