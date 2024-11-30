@@ -10,12 +10,22 @@ export default function revolute() {
   
   return (
     <UI.BodyContainer
-  navColor="var(--background)"
-  navDropoffColor="var(--navgradient)"
-  backgroundColor="var(--background2)"
-  logoColor='var(--logocolor)'
-  hoverShadowColor='var(--logoHover)'
+  navColor="#121212"
+  backgroundColor="#000000"
+  logoColor='#ded2b4ff'
+  hoverShadowColor='rgba(222, 210, 180, 0.8)'
 >
+
+  <div
+  
+  
+  className=' h-10 w-full p-36 bg-[#1a1a1a] text-white'
+  >
+
+navColornavColornavColornavColor
+
+
+  </div>
 <h1>
 hi
 

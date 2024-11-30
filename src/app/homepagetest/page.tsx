@@ -30,7 +30,7 @@ export default function Page3() {
       name: "Cloud",
       description: "Login page for Tongtong.inc cloud.",
       icon: "/assets/homepage/icons/Cloud.svg",
-      photo: "/assets/homepage/hero/Cloud.png",
+      photo: "/assets/homepage/hero/Cloud.svg",
       buttons: [
         { label: "Learn More", link: "/cloud" },
         { label: "Sign Up", link: "/cloud-signup" },
@@ -41,7 +41,7 @@ export default function Page3() {
       name: "ECA",
       description: "I run two extracurricular classes, 3D Artmaking and Electronics engineering.",
       icon: "/assets/homepage/icons/ECA.svg",
-      photo: "/assets/homepage/hero/ECA.png",
+      photo: "/assets/homepage/hero/ECA.svg",
       buttons: [
         { label: "View Classes", link: "/eca-classes" },
         { label: "Contact", link: "/eca-contact" },
@@ -63,7 +63,7 @@ export default function Page3() {
       name: "Other",
       description: "Here are some other cool pages.",
       icon: "/assets/homepage/icons/Other.svg",
-      photo: "/assets/homepage/hero/Other.png",
+      photo: "/assets/homepage/hero/Other.svg",
       buttons: [
         { label: "3D", link: "/3D" },
         { label: "SnapTest", link: "/boxphysicssnaptest" },

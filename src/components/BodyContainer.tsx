@@ -7,7 +7,6 @@ interface BodyContainerProps {
   className?: string; // Custom CSS or Tailwind classes
   style?: CSSProperties; // Optional inline styles for extra customization
   navColor?: string; // Navigation bar color (gradient start)
-  navDropoffColor?: string; // Navigation dropoff color (gradient end)
   backgroundColor?: string; // Background color of the body container
   logoColor?: string; // Logo text color
   hoverShadowColor?: string; // Hover drop-shadow color
@@ -18,21 +17,11 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
   className = "",
   style,
   navColor = "#161925", // Default nav gradient start color
-  navDropoffColor = "#24253976", // Default nav gradient end color
   backgroundColor = "#1c1d2c", // Default body background color
   logoColor = "#ded2b4", // Default logo color
   hoverShadowColor = "rgba(222, 210, 180, 0.8)", // Default hover shadow color
 }) => {
-  const containerStyle: CSSProperties = {
-    background: backgroundColor,
-    display: "flex",
-    flexDirection: "column",
-    placeItems: "center",
-    justifyContent: "center", // Center horizontally
-    minHeight: "100vh",
-    justifyItems: "top",
-    ...style, // Merge any additional inline styles
-  };
+
 
   const dropoffStyle: CSSProperties = {
     width: "100dvw",
@@ -55,7 +44,7 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
   // Set the theme color and body background color on page load
   useEffect(() => {
     // Set the meta theme color
-    setThemeColor(backgroundColor);
+    setThemeColor(navColor);
 
     // Set the body background color
     document.body.style.backgroundColor = navColor;
@@ -67,7 +56,7 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
       <nav
         className={`fixed top-0 z-10 w-full flex items-start h-15 backdrop-blur-lg backdrop-brightness-100 group`}
         style={{
-          background: `linear-gradient(to bottom, ${navColor}, ${navDropoffColor})`,
+          background: `linear-gradient(to bottom, ${navColor}, #24253900)`,
         }}
       >
         <a
@@ -96,7 +85,10 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
       </nav>
 
       {/* Body Container */}
-      <div style={containerStyle} className={className}>
+      <div
+      style={{background: backgroundColor}}
+       className={`flex flex-col items-center justify-center min-h-screen ${className}`}
+       >
         <div className="pt-24"></div>
         {children}
         <div className="pt-24"></div>
