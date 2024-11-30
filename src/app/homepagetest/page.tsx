@@ -61,18 +61,17 @@ export default function Page3() {
     {
       id: 6,
       name: "Other",
-      description: "Here are some other cool pages.",
+      description: "Here are some test pages for development.",
       icon: "/assets/homepage/icons/Other.svg",
       photo: "/assets/homepage/hero/Other.svg",
       buttons: [
-        { label: "3D", link: "/3D" },
-        { label: "SnapTest", link: "/boxphysicssnaptest" },
         { label: "backgroundTest", link: "/backgroundtest" },
-        { label: "gallaryTest", link: "/gallarytest" },
         { label: "Page1", link: "/page1" },
-        { label: "Page2", link: "/page2" },
+        { label: "Page2", link: "/boxphysicssnaptest" },
         { label: "Page3", link: "/page3" },
-        { label: "Page3", link: "/page4" },
+        { label: "Revolute", link: "/revolute" },
+        { label: "flexboxtest", link: "/flexboxtest" },
+        { label: "lesson2", link: "/electronics/lesson2" },
       ],
     },
   ];
