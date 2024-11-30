@@ -77,7 +77,6 @@ const NotFound: React.FC = () => {
     <>
           <UI.BodyContainer
   navColor="var(--background)"
-  navDropoffColor="var(--navgradient)"
   backgroundColor="var(--background2)"
   logoColor='var(--logocolor)'
   hoverShadowColor='var(--logoHover)'
