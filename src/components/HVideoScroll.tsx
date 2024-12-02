@@ -99,27 +99,32 @@ export default function HVideoScroll({
         style={{
           scrollBehavior: "smooth",
           overflowY: "hidden",
-          scrollbarWidth: "none",
+          overflowX: "auto", // Make sure horizontal scroll is enabled but hidden
         }}
         onWheel={handleWheel}
       >
         {/* Hide scrollbar for WebKit */}
         <style jsx>{`
           div::-webkit-scrollbar {
-            display: none;
+            display: none; /* Hide scrollbar for WebKit browsers */
+          }
+
+          div {
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
           }
         `}</style>
+
         <div className="flex" style={{ minWidth: "100%" }}>
           {slides.map((slide, index) => (
             <div
               key={index}
               className="flex-none snap-start"
               style={{
-                width: "80%",
-                marginRight: "10px",
-                border: "2px solid #ccc",
-                borderRadius: "8px",
-                padding: "10px",
+                width: "80%", // Each slide takes up 80% of the container width
+                marginRight: "10px", // Space between slides
+                border: "2px solid #ccc", // Border around each slide
+                borderRadius: "8px", // Optional: rounded corners for the slides
+                padding: "10px", // Optional: padding inside the slide
               }}
             >
               {slide}
