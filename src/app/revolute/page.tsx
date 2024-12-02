@@ -7,29 +7,106 @@ import Link from 'next/link';
 
 
 export default function revolute() {
-  
+
+  const videoSlides = [
+    <video
+      key="1"
+      autoPlay
+      loop
+      muted
+      playsInline
+      src="/assets/revolute/demo/1.mp4"
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    />,
+    <video
+      key="2"
+      autoPlay
+      loop
+      muted
+      playsInline
+      src="/assets/revolute/demo/2.mp4"
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    />,
+    <video
+      key="3"
+      autoPlay
+      loop
+      muted
+      playsInline
+      src="/assets/revolute/demo/3.mp4"
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    />,
+    <video
+      key="4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      src="/assets/revolute/demo/4.mp4"
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    />,
+  ];
+
+
+
   return (
     <UI.BodyContainer
-  navColor="#121212"
-  backgroundColor="#000000"
-  logoColor='#ded2b4ff'
-  hoverShadowColor='rgba(222, 210, 180, 0.8)'
->
+      navColor="#121212"
+      backgroundColor="#000000"
+      logoColor='#ded2b4ff'
+      hoverShadowColor='rgba(222, 210, 180, 0.8)'
+    >
 
-  <div
-  
-  
-  className=' h-10 w-full p-36 bg-[#1a1a1a] text-white'
-  >
+      <div
+        className=' w-full bg-[#1a1a1a] text-white '
+      >
+        <h1> 
+          navColornavColornavColornavColor
+        </h1>
 
-navColornavColornavColornavColor
+      </div>
 
 
-  </div>
-<h1>
-hi
+      <div
+        className=' w-full bg-[#1a1a1a] text-white '
+      >
 
-</h1>
-</UI.BodyContainer>
+<div className="relative w-full mx-auto">
+        <UI.HVideoScroll autoSlide={false}>
+          {videoSlides}
+        </UI.HVideoScroll>
+      </div>
+
+      </div>
+
+
+      <h1>
+        hi
+
+      </h1>
+  <div className="relative w-full mx-auto">
+        <UI.HVideoScroll autoSlide={false}>
+          {videoSlides}
+        </UI.HVideoScroll>
+      </div>
+    
+
+
+
+
+
+    </UI.BodyContainer>
   );
 }
