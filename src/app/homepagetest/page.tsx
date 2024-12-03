@@ -2,6 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import SuperEllipse from "react-superellipse";
+import * as UI from '@/components';
 
 export default function Page3() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -198,7 +199,32 @@ export default function Page3() {
 
   return (
     <div className="h-screen w-screen transition-all duration-500" style={{ backgroundImage: state.gradient }}>
+
+<Image
+        src="/assets/homepage/christmas/bg.svg"  // Path relative to the public folder
+        alt="Christmas Background"
+        className="absolute right-0 bottom-0 w-screen "
+        layout="intrinsic"
+        width={1200}
+        height={800}  // Cover the entire container
+        objectFit="cover"  // Make the image cover the container area
+        priority  // Optional: Use this if the image is critical for loading above-the-fold
+      />
+
+
+      <UI.Snow
+        snowflakeCount={200}        // Number of snowflakes
+        speedMin={0.5}              // Minimum falling speed
+        speedMax={1.5}              // Maximum falling speed
+        windSpeedMin={-0.5}         // Minimum horizontal speed (wind)
+        windSpeedMax={0.5}          // Maximum horizontal speed (wind)
+        radiusMin={2}               // Minimum radius (size)
+        radiusMax={4}               // Maximum radius (size)
+      />
+      
       <main className="flex flex-col justify-center items-center h-full">
+
+
         <div className="flex justify-center items-center min-h-screen">
           <div
             className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw] gap-4 transition-all duration-500 ease-in-out"
