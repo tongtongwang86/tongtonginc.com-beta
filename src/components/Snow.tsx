@@ -1,6 +1,5 @@
 "use client";
 
-
 import React, { useEffect, useRef } from "react";
 
 interface SnowfallCanvasProps {
@@ -11,6 +10,8 @@ interface SnowfallCanvasProps {
   windSpeedMax: number;
   radiusMin: number;
   radiusMax: number;
+  timeScale?: number; // Optional prop to adjust the speed
+  horizontalSpeedScale?: number; // New prop to adjust horizontal drift speed
 }
 
 const SnowfallCanvas: React.FC<SnowfallCanvasProps> = ({
@@ -21,11 +22,14 @@ const SnowfallCanvas: React.FC<SnowfallCanvasProps> = ({
   windSpeedMax,
   radiusMin,
   radiusMax,
+  timeScale = 2, // Default scaling factor to 2x (can be adjusted)
+  horizontalSpeedScale = 2, // Default horizontal speed scaling factor (can be adjusted)
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const mousePosition = useRef<{ x: number; y: number }>({ x: -100, y: -100 });
   const flakesRef = useRef<any[]>([]);
   const mouseVelocity = useRef<{ x: number; y: number }>({ x: 0, y: 0 }); // To store mouse velocity for smoother transition
+  const lastFrameTime = useRef<number>(performance.now());
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -71,6 +75,13 @@ const SnowfallCanvas: React.FC<SnowfallCanvasProps> = ({
     };
 
     const snow = () => {
+      const currentTime = performance.now();
+      const deltaTime = (currentTime - lastFrameTime.current) / 1000; // Convert to seconds
+      lastFrameTime.current = currentTime;
+
+      // Apply timeScale to deltaTime to control animation speed
+      const scaledDeltaTime = deltaTime * timeScale;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       const { x: mX, y: mY } = mousePosition.current;
@@ -97,11 +108,14 @@ const SnowfallCanvas: React.FC<SnowfallCanvasProps> = ({
         } else {
           flake.velX *= 0.98;
           if (flake.velY <= flake.speed) flake.velY = flake.speed;
-          flake.velX += Math.cos(flake.step += 0.05) * flake.stepSize;
+          flake.velX += Math.cos((flake.step += 0.05)) * flake.stepSize;
         }
 
-        flake.y += flake.velY;
-        flake.x += flake.velX;
+        // Apply scaled deltaTime to vertical movement
+        flake.y += flake.velY * scaledDeltaTime;
+        
+        // Apply horizontalSpeedScale to horizontal movement (velX)
+        flake.x += flake.velX * scaledDeltaTime * horizontalSpeedScale;
 
         if (flake.y >= canvas.height || flake.y <= 0 || flake.x >= canvas.width || flake.x <= 0) {
           reset(flake);
@@ -146,11 +160,13 @@ const SnowfallCanvas: React.FC<SnowfallCanvasProps> = ({
     windSpeedMax,
     radiusMin,
     radiusMax,
+    timeScale, // Include timeScale in dependencies
+    horizontalSpeedScale, // Include horizontalSpeedScale in dependencies
   ]);
 
   return (
-    <div className="absolute top-0 left-0  overflow-hidden w-full h-screen z-0">
-      <canvas ref={canvasRef} className="absolute top-0 left-0 "></canvas>
+    <div className="absolute top-0 left-0 overflow-hidden w-full h-screen z-0">
+      <canvas ref={canvasRef} className="absolute top-0 left-0"></canvas>
     </div>
   );
 };

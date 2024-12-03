@@ -220,6 +220,8 @@ export default function Page3() {
         windSpeedMax={0.5}          // Maximum horizontal speed (wind)
         radiusMin={2}               // Minimum radius (size)
         radiusMax={4}               // Maximum radius (size)
+        timeScale={100}
+        horizontalSpeedScale={1} 
       />
       
       <main className="flex flex-col justify-center items-center h-full">

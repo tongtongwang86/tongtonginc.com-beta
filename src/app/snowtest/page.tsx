@@ -20,6 +20,8 @@ export default function revolute() {
         windSpeedMax={0.5}          // Maximum horizontal speed (wind)
         radiusMin={2}               // Minimum radius (size)
         radiusMax={4}               // Maximum radius (size)
+        timeScale={100}
+        horizontalSpeedScale={1} 
       />
 
   );
