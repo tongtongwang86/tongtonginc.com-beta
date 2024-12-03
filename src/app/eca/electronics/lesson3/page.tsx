@@ -210,85 +210,95 @@ void loop() {
 
   return (
     <UI.BodyContainer
-    navColor="var(--background)"
-    backgroundColor="var(--background2)"
-    logoColor="var(--logocolor)"
-    hoverShadowColor="var(--logoHover)"
-  >
+      navColor="var(--background)"
+      backgroundColor="var(--background2)"
+      logoColor="var(--logocolor)"
+      hoverShadowColor="var(--logoHover)"
+    >
+      {/* Add the pulsating CSS animation directly into the component */}
+      <style jsx>{`
+        @keyframes pulsate {
+          0% {
+            transform: scale(0.9);
+            opacity: 1;
+          }
+          50% {
+            transform: scale(1);
+            opacity: 0.8;
+          }
+          100% {
+            transform: scale(0.9);
+            opacity: 1;
+          }
+        }
+
+        .pulsating {
+          animation: pulsate 3s ease-in-out infinite;
+        }
+      `}</style>
+
       <h1 className="text-6xl font-bold mb-8 center"> --- Lesson 3 Resource --- </h1>
 
       <h1 className="text-5xl font-bold mb-8 center">1. Arduino cheat sheet:</h1>
 
       <UI.PDFViewer file="/assets/eca/electronics/ArduinoCheatSheet.pdf" />
 
-
       <h1 className="text-5xl font-bold mb-8 center pt-10">2. Tick tack toe game:</h1>
 
       <UI.HStack>
+        <a
+          className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl pulsating"
+          href="https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-serial-monitor/"
+          target="_blank"
+        >
+          Serial Monitor Guide
+        </a>
 
-      <a className='px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl' href="https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-serial-monitor/" target="_blank">
-  Serial Monitor Guide
-</a>
-
-<a className='px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl' href="https://www.arduino.cc/en/software" target="_blank">
-  Arduino IDE Download
-</a>
-
+        <a
+          className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl pulsating"
+          href="https://www.arduino.cc/en/software"
+          target="_blank"
+        >
+          Arduino IDE Download
+        </a>
       </UI.HStack>
 
-      <div className='w-4/6'>
-
-    
-        {/* Code Block */}
+      <div className="w-4/6">
         <SyntaxHighlighter language="cpp" style={atomOneDark} showLineNumbers wrapLongLines className="rounded-2xl">
           {codeString}
         </SyntaxHighlighter>
 
         <CopyToClipboard text={codeString} onCopy={() => setCopied(true)}>
           <button className="px-4 py-2 bg-[#727272] text-white rounded-xl hover:bg-blue-600 transition z-10">
-
             {copied ? <span className="text-green-300">Copied!</span> : 'Copy Code'}
           </button>
         </CopyToClipboard>
-      {/* Confirmation message */}
-
       </div>
-
 
       <h1 className="text-5xl font-bold mb-8 center">2. Controlling Servo:</h1>
 
-<UI.HStack>
+      <UI.HStack>
+        <a
+          className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl pulsating"
+          href="https://www.makerguides.com/servo-arduino-tutorial/"
+          target="_blank"
+        >
+          Servo wiring guide
+        </a>
+      </UI.HStack>
 
-<a className='px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl' href="https://www.makerguides.com/servo-arduino-tutorial/" target="_blank">
-Servo wiring guide
-</a>
+      <div className="w-4/6">
+        <SyntaxHighlighter language="cpp" style={atomOneDark} showLineNumbers wrapLongLines className="rounded-2xl">
+          {codeString2}
+        </SyntaxHighlighter>
 
-
-</UI.HStack>
-
-
-<div className='w-4/6'>
-
-    
-{/* Code Block */}
-<SyntaxHighlighter language="cpp" style={atomOneDark} showLineNumbers wrapLongLines className="rounded-2xl">
-  {codeString2}
-</SyntaxHighlighter>
-
-<CopyToClipboard text={codeString} onCopy={() => setCopied(true)}>
-  <button className="px-4 py-2 bg-[#727272] text-white rounded-xl hover:bg-blue-600 transition z-10">
-
-    {copied ? <span className="text-green-300">Copied!</span> : 'Copy Code'}
-  </button>
-</CopyToClipboard>
-{/* Confirmation message */}
-
-</div>
-      
- 
-
-     
-</UI.BodyContainer>
+        <CopyToClipboard text={codeString} onCopy={() => setCopied(true)}>
+          <button className="px-4 py-2 bg-[#727272] text-white rounded-xl hover:bg-blue-600 transition z-10">
+            {copied ? <span className="text-green-300">Copied!</span> : 'Copy Code'}
+          </button>
+        </CopyToClipboard>
+      </div>
+    </UI.BodyContainer>
   );
 };
 

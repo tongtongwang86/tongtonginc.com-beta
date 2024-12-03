@@ -44,7 +44,7 @@ export default function Page3() {
       icon: "/assets/homepage/icons/ECA.svg",
       photo: "/assets/homepage/hero/ECA.svg",
       buttons: [
-        { label: "View Classes", link: "/eca-classes" },
+        { label: "View Classes", link: "/eca" },
         { label: "Contact", link: "/eca-contact" },
       ],
     },
