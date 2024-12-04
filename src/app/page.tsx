@@ -194,15 +194,15 @@ export default function Page3() {
   };
 
   return (
-    <div className="h-screen w-screen transition-all duration-500" style={{ backgroundImage: state.gradient }}>
+    <div className="relative h-fit w-screen transition-all duration-500 " style={{ backgroundImage: state.gradient }}>
 
 <Image
         src="/assets/homepage/christmas/bg.svg"  // Path relative to the public folder
         alt="Christmas Background"
-        className="absolute right-0 bottom-0 w-screen "
+        className="absolute bottom-0 w-screen "
         layout="intrinsic"
         width={1200}
-        height={800}  // Cover the entire container
+        height={1200}  // Cover the entire container
         objectFit="cover"  // Make the image cover the container area
         priority  // Optional: Use this if the image is critical for loading above-the-fold
       />
@@ -220,7 +220,7 @@ export default function Page3() {
         horizontalSpeedScale={1} 
       />
       
-      <main className="flex flex-col justify-center items-center h-full">
+      <main className="flex flex-col justify-center items-center h-full  ">
 
 
         <div className="flex justify-center items-center min-h-screen">
@@ -276,7 +276,7 @@ export default function Page3() {
             </div>
 
             {/* Sidebar List */}
-            <div className={`transition-all duration-500 ease-in-out ${selectedItem ? "basis-1/4" : "basis-1/3"} flex justify-center items-center`}>
+            <div className={`transition-all py-5 duration-500 ease-in-out ${selectedItem ? "basis-1/4" : "basis-1/3"} flex justify-center items-center`}>
               <ul className="space-y-4 w-full">
                 {items.map((item) => (
                   <li key={item.id} className="flex justify-center">
