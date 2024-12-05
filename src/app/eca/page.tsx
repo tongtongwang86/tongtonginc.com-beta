@@ -24,6 +24,10 @@ const Lesson2 = () => {
 
    <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="/eca/3dart/teachermodel">Models</Link>
 
+   <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="https://www.tinkercad.com/joinclass/XP55X7CJJ">Tinkercad login</Link>
+
+   <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="/eca/3dart/lesson2">Lesson2</Link>
+
 
 
    </UI.HStack>
