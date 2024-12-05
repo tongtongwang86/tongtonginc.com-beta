@@ -165,8 +165,8 @@ const SnowfallCanvas: React.FC<SnowfallCanvasProps> = ({
   ]);
 
   return (
-    <div className="absolute top-0 left-0 overflow-hidden w-full h-screen z-0">
-      <canvas ref={canvasRef} className="absolute top-0 left-0"></canvas>
+    <div className="absolute top-0 left-0 overflow-hidden w-full h-full z-0">
+      <canvas ref={canvasRef} className="absolute top-0 h-full left-0"></canvas>
     </div>
   );
 };

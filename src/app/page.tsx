@@ -194,7 +194,7 @@ export default function Page3() {
   };
 
   return (
-    <div className="relative h-fit w-screen transition-all duration-500 " style={{ backgroundImage: state.gradient }}>
+    <div className="relative h-full w-screen transition-all duration-500 " style={{ backgroundImage: state.gradient }}>
 
 <Image
         src="/assets/homepage/christmas/bg.svg"  // Path relative to the public folder
@@ -219,6 +219,8 @@ export default function Page3() {
         timeScale={100}
         horizontalSpeedScale={1} 
       />
+
+
       
       <main className="flex flex-col justify-center items-center h-full  ">
 
