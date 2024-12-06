@@ -38,5 +38,5 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y rsync  # Install rsync
 
       - run: ssh vps "pm2 stop tongtonginc"
-      - run: rsync -re ssh ./.next/ vps:/home/root/tongtonginc.com-beta/.next
+      - run: rsync -re ssh ./.next/ vps:/root/tongtonginc.com-beta/.next
       - run: ssh vps "pm2 start tongtonginc"
