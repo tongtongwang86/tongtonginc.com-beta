@@ -194,20 +194,22 @@ export default function Page3() {
   };
 
   return (
-    <div className="relative h-full w-screen transition-all duration-500 " style={{ backgroundImage: state.gradient }}>
-
-<Image
-        src="/assets/homepage/christmas/bg.svg"  // Path relative to the public folder
+    (<div className="relative h-full w-screen transition-all duration-500 " style={{ backgroundImage: state.gradient }}>
+      <Image
+        // Path relative to the public folder
+        src="/assets/homepage/christmas/bg.svg"
         alt="Christmas Background"
         className="absolute bottom-0 w-screen "
-        layout="intrinsic"
         width={1200}
-        height={1200}  // Cover the entire container
-        objectFit="cover"  // Make the image cover the container area
-        priority  // Optional: Use this if the image is critical for loading above-the-fold
-      />
-
-
+        // Cover the entire container
+        height={1200}
+        // Optional: Use this if the image is critical for loading above-the-fold
+        priority
+        style={{
+          maxWidth: "100%",
+          height: "auto",
+          objectFit: "cover"
+        }} />
       <UI.Snow
         snowflakeCount={200}        // Number of snowflakes
         speedMin={0.5}              // Minimum falling speed
@@ -219,9 +221,6 @@ export default function Page3() {
         timeScale={100}
         horizontalSpeedScale={1} 
       />
-
-
-      
       <main className="flex flex-col justify-center items-center h-full  ">
 
 
@@ -256,7 +255,11 @@ export default function Page3() {
                           width={100}
                           height={100}
                           onLoadingComplete={handleImageLoad}
-                        />
+                          style={{
+                            maxWidth: "100%",
+                            height: "auto",
+                            objectFit: "cover"
+                          }} />
                       </div>
                       <div className="items w-full">
                         <h2 className="w-full text-5xl text-center">{selectedItem}</h2>
@@ -287,7 +290,18 @@ export default function Page3() {
                       className={`justify-center w-10/12 content-center rounded-2xl overflow-hidden ${selectedItem === item.name ? "transform transition-all scale-110 outline" : ""}`}
                     >
                       <SuperEllipse p1={6} p2={20} className={`p-4 bg-white/10 backdrop-blur-lg shadow-lg transition-all duration-500 flex flex-row items-center hover:bg-white/30`}>
-                        <Image src={item.icon} alt="" className="aspect-auto w-9 object-cover" width={100} height={100} style={{ filter: "var(--svg-icon)" }} />
+                        <Image
+                          src={item.icon}
+                          alt=""
+                          className="aspect-auto w-9 object-cover"
+                          width={100}
+                          height={100}
+                          style={{
+                            filter: "var(--svg-icon)",
+                            maxWidth: "100%",
+                            height: "auto",
+                            objectFit: "cover"
+                          }} />
                         <div className="text-xl w-full">{item.name}</div>
                       </SuperEllipse>
                     </button>
@@ -298,6 +312,6 @@ export default function Page3() {
           </div>
         </div>
       </main>
-    </div>
+    </div>)
   );
 }

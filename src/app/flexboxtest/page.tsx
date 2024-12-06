@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Page3() {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -113,10 +113,10 @@ export default function Page3() {
   }, []);
 
   return (
-    <div
-      className="flex justify-center items-center min-h-screen "
-      
-    >
+    (<div
+        className="flex justify-center items-center min-h-screen "
+        
+      >
       <div
         className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4 transition-all duration-500 ease-in-out"
       
@@ -179,7 +179,12 @@ export default function Page3() {
                     className="float-left m-2 w-36 h-36 object-cover"
                     width="100"
                     height="100"
-                  />
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto",
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} />
                   <div className="items w-full">
                     <h2 className="w-full text-5xl text-center">{selectedItem}</h2>
                     <p className="mt-3 mx-4 text-xl">{selectedItemDetails?.description}</p>
@@ -235,6 +240,6 @@ export default function Page3() {
           </ul>
         </div>
       </div>
-    </div>
+    </div>)
   );
 }
