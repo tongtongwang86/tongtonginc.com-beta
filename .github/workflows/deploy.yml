@@ -45,8 +45,8 @@ jobs:
           echo -e "Host vps\n\tUser root\n\tHostname $VPS_ADDR\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
 
       # Deploy to VPS
-      - name: 🚦 Stop Existing App on VPS
-        run: ssh vps "pm2 stop tongtonginc"
+      # - name: 🚦 Stop Existing App on VPS
+      #   run: ssh vps "pm2 stop tongtonginc"
 
       - name: 📤 Upload Build Files to VPS
         run: rsync -re ssh ./.next/ vps:/root/tongtonginc.com-beta/.next
