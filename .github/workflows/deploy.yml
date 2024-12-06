@@ -52,4 +52,4 @@ jobs:
         run: rsync -re ssh ./.next/ vps:/root/tongtonginc.com-beta/.next
 
       - name: 🔄 Restart App on VPS
-        run: ssh vps "pm2 start tongtonginc"
+        run: ssh vps "pm2 restart tongtonginc"
