@@ -33,6 +33,9 @@ jobs:
 
       - run: |
           echo -e "Host vps\n\tUser root\n\tHostname $VPS_ADDR\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
+          
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync  # Install rsync
 
       - run: ssh vps "pm2 stop tongtonginc"
       - run: rsync -re ssh ./.next/ vps:/home/root/tongtonginc.com-beta/.next
