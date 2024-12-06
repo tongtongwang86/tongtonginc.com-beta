@@ -213,9 +213,8 @@ export default function Page3() {
           maxWidth: "100%",
           height: "auto",
           objectFit: "cover",
-          maxWidth: "100%",
-          height: "auto"
         }} />
+        
       <UI.Snow
         snowflakeCount={200}        // Number of snowflakes
         speedMin={0.5}              // Minimum falling speed
@@ -265,8 +264,7 @@ export default function Page3() {
                             maxWidth: "100%",
                             height: "auto",
                             objectFit: "cover",
-                            maxWidth: "100%",
-                            height: "auto"
+                    
                           }} />
                       </div>
                       <div className="items w-full">
@@ -309,8 +307,7 @@ export default function Page3() {
                             maxWidth: "100%",
                             height: "auto",
                             objectFit: "cover",
-                            maxWidth: "100%",
-                            height: "auto"
+                       
                           }} />
                         <div className="text-xl w-full">{item.name}</div>
                       </SuperEllipse>

@@ -114,12 +114,12 @@ export default function Page3() {
 
   return (
     (<div
-        className="flex justify-center items-center min-h-screen "
-        
-      >
+      className="flex justify-center items-center min-h-screen "
+
+    >
       <div
         className="flex flex-col ou md:flex-row max-w-[900px] w-[90dvw]  bg-white gap-4 transition-all duration-500 ease-in-out"
-      
+
         onClick={(e) => e.stopPropagation()} // Prevent click propagation within the content
       >
         {/* Box 1 and Details Pane */}
@@ -161,7 +161,7 @@ export default function Page3() {
 
 
 
-{/* 
+            {/* 
             {selectedItem && (
               
               <div ref={detailsRef} className="text-wrap opacity-100 transition-opacity p-4">
@@ -170,7 +170,7 @@ export default function Page3() {
               </div>
             )} */}
 
-     {selectedItem && (
+            {selectedItem && (
               <div ref={detailsRef} className="p-6 bg-white/30 backdrop-blur-md text-left ">
                 <div className="items-start">
                   <Image
@@ -180,11 +180,10 @@ export default function Page3() {
                     width="100"
                     height="100"
                     style={{
-                      maxWidth: "100%",
-                      height: "auto",
-                      maxWidth: "100%",
-                      height: "auto"
-                    }} />
+                      maxWidth: "100%", // Keep only one instance of maxWidth
+                      height: "auto", // Keep only one instance of height
+                    }}
+                  />
                   <div className="items w-full">
                     <h2 className="w-full text-5xl text-center">{selectedItem}</h2>
                     <p className="mt-3 mx-4 text-xl">{selectedItemDetails?.description}</p>
@@ -220,18 +219,16 @@ export default function Page3() {
 
         {/* Sidebar List */}
         <div
-          className={`transition-all duration-500 ease-in-out ${
-            selectedItem ? "basis-1/4" : "basis-1/3"
-          }  bg-blue-500 flex justify-center items-center`}
+          className={`transition-all duration-500 ease-in-out ${selectedItem ? "basis-1/4" : "basis-1/3"
+            }  bg-blue-500 flex justify-center items-center`}
         >
           <ul className="space-y-4 w-full">
             {items.map((item) => (
               <li key={item.id} className="flex justify-center">
                 <button
                   onClick={() => handleItemClick(item.name)}
-                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-lg bg-white/40 backdrop-blur-md shadow-lg hover:bg-white/50 transition-transform duration-300 ${
-                    selectedItem === item.name ? "transform scale-110" : ""
-                  }`}
+                  className={`w-3/4 max-w-xs min-w-[200px] text-center p-4 rounded-lg bg-white/40 backdrop-blur-md shadow-lg hover:bg-white/50 transition-transform duration-300 ${selectedItem === item.name ? "transform scale-110" : ""
+                    }`}
                 >
                   {item.name}
                 </button>
