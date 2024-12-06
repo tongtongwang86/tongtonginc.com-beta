@@ -69,11 +69,31 @@ export default function revolute() {
       hoverShadowColor='rgba(222, 210, 180, 0.8)'
     >
 
+<div className=' px-10 font-sans text-xl '> 
+          Revolute
+        </div><div className=' px-10 font-sans text-xl '> 
+          Revolute
+        </div><div className=' px-10 font-sans text-xl '> 
+          Revolute
+        </div><div className=' px-10 font-sans text-xl '> 
+          Revolute
+        </div><div className=' px-10 font-sans text-xl '> 
+          Revolute
+        </div><div className=' px-10 font-sans text-xl '> 
+          Revolute
+        </div>
+
+
       <div
         className=' w-full bg-[#1a1a1a] text-white '
       >
+         <div className=' px-10 font-sans text-xl '> 
+          Revolute
+        </div>
+
+
         <h1> 
-          navColornavColornavColornavColor
+          text
         </h1>
 
       </div>
