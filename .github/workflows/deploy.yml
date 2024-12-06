@@ -1,4 +1,4 @@
-name: Deploy Next App
+name: 🚀 Deploy Next App
 
 on:
   push:
@@ -16,25 +16,40 @@ jobs:
       VPS_ADDR: ${{ secrets.VPS_ADDR }}  # Set VPS_ADDR as an environment variable
 
     steps:
-      - uses: actions/checkout@master
+      # Checkout the code
+      - name: 📂 Checkout Code
+        uses: actions/checkout@master
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      # Set up Node.js
+      - name: 🔧 Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
 
-      - run: npm i
-      - run: npm run build
+      # Build the website
+      - name: 🏗️ Build Website
+        run: |
+          npm i
+          npm run build
 
-      - run: mkdir ~/.ssh
-      - run: echo "$SSH_KEY" >> ~/.ssh/github-action
-      - run: chmod 400 ~/.ssh/github-action
+      # Configure SSH
+      - name: 🔑 Set up SSH Key
+        run: |
+          mkdir ~/.ssh
+          echo "$SSH_KEY" >> ~/.ssh/github-action
+          chmod 400 ~/.ssh/github-action
 
-      - run: |
+      - name: ⚙️ Configure SSH
+        run: |
           echo -e "Host vps\n\tUser root\n\tHostname $VPS_ADDR\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
-          
 
-      - run: ssh vps "pm2 stop tongtonginc"
-      - run: rsync -re ssh ./.next/ vps:/root/tongtonginc.com-beta/.next
-      - run: ssh vps "pm2 start tongtonginc"
+      # Deploy to VPS
+      - name: 🚦 Stop Existing App on VPS
+        run: ssh vps "pm2 stop tongtonginc"
+
+      - name: 📤 Upload Build Files to VPS
+        run: rsync -re ssh ./.next/ vps:/root/tongtonginc.com-beta/.next
+
+      - name: 🔄 Restart App on VPS
+        run: ssh vps "pm2 start tongtonginc"
