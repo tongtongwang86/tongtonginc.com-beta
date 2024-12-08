@@ -11,7 +11,6 @@ export default function Page3() {
     const [containerHeight, setContainerHeight] = useState<number | null>(null);
     const [containerWidth, setContainerWidth] = useState<string | null>(null);
 
-  
 
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -33,6 +32,8 @@ export default function Page3() {
     gradient: "",
     themeColor: "",
   });
+
+  
 
   const updateThemeColor = (color: string) => {
     const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -145,6 +146,11 @@ export default function Page3() {
       setSelectedItem(null);
     }
   };
+
+  const handleImageLoad = () => {
+    setLoading(false); // Image loaded, set loading to false
+  };
+  
 
   return (
     <div
@@ -284,6 +290,7 @@ export default function Page3() {
                 value={dayStartColor}
                 onChange={(e) => setDayStartColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{dayStartColor}</div>
             </div>
             <div>
               <label className="text-sm text-white block mb-1">End Color</label>
@@ -292,6 +299,7 @@ export default function Page3() {
                 value={dayEndColor}
                 onChange={(e) => setDayEndColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{dayEndColor}</div>
             </div>
             <div>
               <label className="text-sm text-white block mb-1">Navbar Color</label>
@@ -300,6 +308,7 @@ export default function Page3() {
                 value={dayNavbarColor}
                 onChange={(e) => setDayNavbarColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{dayNavbarColor}</div>
             </div>
           </div>
         </div>
@@ -315,6 +324,7 @@ export default function Page3() {
                 value={sunsetStartColor}
                 onChange={(e) => setSunsetStartColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{sunsetStartColor}</div>
             </div>
             <div>
               <label className="text-sm text-white block mb-1">End Color</label>
@@ -323,6 +333,7 @@ export default function Page3() {
                 value={sunsetEndColor}
                 onChange={(e) => setSunsetEndColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{sunsetEndColor}</div>
             </div>
             <div>
               <label className="text-sm text-white block mb-1">Navbar Color</label>
@@ -331,6 +342,7 @@ export default function Page3() {
                 value={sunsetNavbarColor}
                 onChange={(e) => setSunsetNavbarColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{sunsetNavbarColor}</div>
             </div>
           </div>
         </div>
@@ -346,6 +358,7 @@ export default function Page3() {
                 value={nightStartColor}
                 onChange={(e) => setNightStartColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{nightStartColor}</div>
             </div>
             <div>
               <label className="text-sm text-white block mb-1">End Color</label>
@@ -354,6 +367,7 @@ export default function Page3() {
                 value={nightEndColor}
                 onChange={(e) => setNightEndColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{nightEndColor}</div>
             </div>
             <div>
               <label className="text-sm text-white block mb-1">Navbar Color</label>
@@ -362,11 +376,12 @@ export default function Page3() {
                 value={nightNavbarColor}
                 onChange={(e) => setNightNavbarColor(e.target.value)}
               />
+              <div className="text-xs text-white mt-1">{nightNavbarColor}</div>
             </div>
           </div>
         </div>
 
-        {/* Apply Button */}
+        {/* Apply Buttons */}
         <div className="mt-4 flex justify-between">
           <button
             className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
