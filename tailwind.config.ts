@@ -57,6 +57,11 @@ const config: Config = {
           '0 0px 13px var(--logoHover)', 
           '0 0px 5px var(--logoHover)'
         ],
+        
+      },
+      boxShadow: {
+        'visionpro': 'inset 1px 1.5px 2px #fff9, inset 1px -0.5px 2px #ffffff4d, 0 0.6021873017743928px 0.6021873017743928px -1.25px #0000002e, 0 2.288533303243457px 2.288533303243457px -2.5px #00000029, 0 10px 10px -3.75px #00000010',
+        'visionprohome':'inset 1px 1.5px 2px #fff9, inset 1px -0.5px 2px #ffffff4d, 0 0.6021873017743928px 0.6021873017743928px -1.25px #0000002e, 0 2.288533303243457px 2.288533303243457px -2.5px #00000029, 0 10px 10px -3.75px #00000010',
       },
       colors: {
         background: "var(--background)",

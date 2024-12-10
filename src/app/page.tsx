@@ -211,9 +211,9 @@ export default function Page3() {
           objectFit: "cover"
         }} />
       <UI.Snow
-        snowflakeCount={200}        // Number of snowflakes
-        speedMin={0.5}              // Minimum falling speed
-        speedMax={1.5}              // Maximum falling speed
+        snowflakeCount={50}        // Number of snowflakes
+        speedMin={0.2}              // Minimum falling speed
+        speedMax={1}              // Maximum falling speed
         windSpeedMin={-0.5}         // Minimum horizontal speed (wind)
         windSpeedMax={0.5}          // Maximum horizontal speed (wind)
         radiusMin={2}               // Minimum radius (size)
@@ -287,9 +287,11 @@ export default function Page3() {
                   <li key={item.id} className="flex justify-center">
                     <button
                       onClick={() => handleItemClick(item.name)}
-                      className={`justify-center w-10/12 content-center rounded-2xl overflow-hidden ${selectedItem === item.name ? "transform transition-all scale-110 outline" : ""}`}
+                      className={`justify-center w-10/12 content-center rounded-2xl  overflow-hidden ${selectedItem === item.name ? "transform transition-all scale-110 outline" : ""}`}
                     >
-                      <SuperEllipse p1={6} p2={20} className={`p-4 bg-white/10 backdrop-blur-lg shadow-lg transition-all duration-500 flex flex-row items-center hover:bg-white/30`}>
+                      <SuperEllipse p1={6} p2={20} className={` bg-white/10 backdrop-blur-lg  transition-all duration-500 hover:bg-white/30 `}>
+
+                      <div className="w-full  items-center p-4 flex flex-row rounded-2xl shadow-visionprohome transition-all">
                         <Image
                           src={item.icon}
                           alt=""
@@ -303,6 +305,10 @@ export default function Page3() {
                             objectFit: "cover"
                           }} />
                         <div className="text-xl w-full">{item.name}</div>
+                        </div>
+
+
+
                       </SuperEllipse>
                     </button>
                   </li>

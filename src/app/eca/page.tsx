@@ -13,24 +13,24 @@ const Lesson2 = () => {
       logoColor="var(--logocolor)"
       hoverShadowColor="var(--logoHover)"
     >
-   
-   <h1 className="text-6xl font-bold mb-8 "> 3D Art making </h1>
-
-   <UI.HStack>
+  <div className='max-w-full'>
+   <h1 className="text-5xl font-bold mb-8 mx-5"> 3D Art making </h1>
 
 
-   <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="https://sculptgl.tongtonginc.com">SculptGL</Link>
+    <div className='flex flex-row item-center  max-w-full flex-wrap'>
 
 
-   <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="/eca/3dart/teachermodel">Models</Link>
+    <Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="https://sculptgl.tongtonginc.com">SculptGL</Link>
 
-   <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="https://www.tinkercad.com/joinclass/XP55X7CJJ">Tinkercad login</Link>
+<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/3dart/teachermodel">Models</Link>
 
-   <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="/eca/3dart/lesson2">Lesson2</Link>
+<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="https://www.tinkercad.com/joinclass/XP55X7CJJ">Tinkercad login</Link>
+
+<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/3dart/lesson2">Lesson2</Link>
 
 
 
-   </UI.HStack>
+   </div>
 
 
 
@@ -42,19 +42,21 @@ const Lesson2 = () => {
    </br>
    <br>
    </br>
-      <h1 className="text-6xl font-bold mb-8 "> Electronics Engineering ECA </h1>
+      <h1 className="text-5xl font-bold mb-8 mx-5"> Electronics Engineering ECA </h1>
 
 
-      <UI.HStack>
+      <div className='flex flex-row item-center  max-w-full flex-wrap'>
 
-      <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="/eca/electronics/lesson2/">Lesson 2</Link>
+      <Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/electronics/lesson2/">Lesson 2</Link>
 
-      <Link className="px-5 py-3 m-3 bg-slate-800 outline rounded-full font-bold underline text-2xl " href="/eca/electronics/lesson3/">Lesson 3</Link>
+<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/electronics/lesson3/">Lesson 3</Link>
+
+<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/electronics/lesson4/">Lesson 3</Link>
 
 
      
-      </UI.HStack>
-
+      </div>
+      </div>
     </UI.BodyContainer>
   );
 };
