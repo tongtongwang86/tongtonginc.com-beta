@@ -51,7 +51,7 @@ const Lesson2 = () => {
 
 <Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/electronics/lesson3/">Lesson 3</Link>
 
-<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/electronics/lesson4/">Lesson 3</Link>
+<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/electronics/lesson4/">Lesson 4</Link>
 
 
      
