@@ -28,6 +28,8 @@ const Lesson2 = () => {
 
 <Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/3dart/lesson2">Lesson2</Link>
 
+<Link className="px-5 py-3 m-3 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold underline text-2xl" href="/eca/3dart/lesson3">Lesson3</Link>
+
 
 
    </div>
