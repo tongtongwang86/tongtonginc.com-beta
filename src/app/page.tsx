@@ -247,7 +247,7 @@ export default function Page3() {
                   <div ref={detailsRef} className="p-6 text-left">
                     <div className="items-start">
                       <div
-                        className={`rounded-2xl float-left m-2 w-36 h-36 object-cover transition-opacity duration-500 ${loading ? "opacity-0" : "opacity-100 "}`}
+                        className={`rounded-2xl overflow-hidden float-left m-2 w-36 h-36 object-cover transition-opacity duration-500 ${loading ? "opacity-0" : "opacity-100 "}`}
                       >
                         <Image
                           src={selectedItemDetails?.photo || ""}
