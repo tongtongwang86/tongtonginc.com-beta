@@ -1,16 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import * as UI from "@/components";
-import Image from 'next/image';
-
-type ShadowState = {
-    horizontal: number;
-    vertical: number;
-    blur: number;
-    spread?: number; // Optional for main and third shadow
-    color: string;
-  };
-  
+import Image from "next/image";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Lesson2 = () => {
    // State for first inset shadow
@@ -54,17 +46,17 @@ const Lesson2 = () => {
       ${thirdHorizontal}px ${thirdVertical}px ${thirdBlur}px -2.5px ${thirdColor},
       ${fourthHorizontal}px ${fourthVertical}px ${fourthBlur}px -3.75px ${fourthColor}
     `,
- 
   };
 
-  const handleColorChange = (
-    colorSetter: React.Dispatch<React.SetStateAction<string>>
-  ) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    colorSetter(event.target.value);
-  };
-  
-  // Handle color change
-
+  // Generate CSS for CopyToClipboard
+  const boxShadowCSS = `
+    box-shadow: 
+      inset ${inset1Horizontal}px ${inset1Vertical}px ${inset1Blur}px ${inset1Spread}px ${inset1Color},
+      inset ${inset2Horizontal}px ${inset2Vertical}px ${inset2Blur}px ${inset2Spread}px ${inset2Color},
+      ${mainHorizontal}px ${mainVertical}px ${mainBlur}px -1.25px ${mainColor},
+      ${thirdHorizontal}px ${thirdVertical}px ${thirdBlur}px -2.5px ${thirdColor},
+      ${fourthHorizontal}px ${fourthVertical}px ${fourthBlur}px -3.75px ${fourthColor};
+  `.trim();
 
   return (
     <UI.BodyContainer
@@ -73,31 +65,31 @@ const Lesson2 = () => {
       logoColor="var(--logocolor)"
       hoverShadowColor="var(--logoHover)"
     >
+      <div className="flex align-middle items-center w-screen justify-center">
+        <Image
+          src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+          alt="Apple Champs Elysees Boardroom"
+          layout="intrinsic"
+          width={400}
+          height={500}
+          className="rounded-lg"
+        />
 
+        <div className="absolute">
+          <div
+            style={boxShadowStyle}
+            className="w-36 h-36 rounded-2xl backdrop-blur-md bg-[#d5c9c90b] text-white"
+          ></div>
+          <div
+            className="w-10 h-10 rounded-full backdrop-blur-md bg-[#d5c9c90b] text-white"
+            style={boxShadowStyle}
+          ></div>
+        </div>
 
-    
-  
-<div className="flex align-middle items-center  w-screen justify-center ">
-
-
-
-<Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
-        alt="Apple Champs Elysees Boardroom"
-        layout="intrinsic"
-        width={400} // set appropriate dimensions
-        height={500}
-        className="rounded-lg"
-      />
-
-<div className="absolute">
-
-<div style={boxShadowStyle} className="  w-36 h-36 rounded-2xl backdrop-blur-md bg-[#d5c9c90b] text-white "></div>
-
-<div className="  w-10 h-10 rounded-full backdrop-blur-md  bg-[#d5c9c90b] text-white " style={boxShadowStyle}></div>
-
-</div>
-
+        <div
+          className="w-36 h-10 rounded-full backdrop-blur-md bg-[#d5c9c90b] text-white"
+          style={boxShadowStyle}
+        ></div>
 
 
 
@@ -107,11 +99,8 @@ const Lesson2 = () => {
 
 </div>
 
-
-     
-
-      <div className="text-center">
-        <h3>Adjust Box Shadow</h3>
+      <div className="text-center mt-8">
+        <h3 className="text-xl font-semibold mb-4">Adjust Box Shadow</h3>
 
          {/* First Inset Shadow */}
          <h4>First Inset Shadow</h4>
@@ -346,6 +335,14 @@ const Lesson2 = () => {
             onChange={(e) => setFourthBlur(parseFloat(e.target.value))}
           />
           <span>{fourthBlur}px</span>
+        </div>
+        {/* Copy to Clipboard Button */}
+        <div className="mt-4 text-center">
+          <CopyToClipboard text={boxShadowCSS}>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+              Copy Box Shadow CSS
+            </button>
+          </CopyToClipboard>
         </div>
       </div>
     </UI.BodyContainer>
