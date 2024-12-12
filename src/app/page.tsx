@@ -242,7 +242,7 @@ export default function Page3() {
 
               {/* Animated Details Panel */}
               <SuperEllipse p1={17} p2={50} className="transition-all  bg-white/10 backdrop-blur-lg rounded-2xl" style={{ height: containerHeight ? `${containerHeight}px` : "0px", transition: "height 0.5s ease" }}>
-              <div className="rounded-[45px] shadow-visionprohome transition-all ">
+              <div className="rounded-[45px] shadow-visionprohome  " style={{ height: containerHeight ? `${containerHeight}px` : "0px", transition: "height 0.5s ease" }}>
                 {selectedItem && (
                   <div ref={detailsRef} className="p-6 text-left">
                     <div className="items-start">
