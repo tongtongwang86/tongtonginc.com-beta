@@ -5,14 +5,10 @@ import { ChevronLeft, ChevronRight } from "react-feather";
 
 interface HVideoScrollProps {
   children: ReactNode[]; // Accepts an array of React elements as slides
-  autoSlide?: boolean; // Optional autoSlide prop
-  autoSlideInterval?: number; // Optional autoSlide interval in milliseconds
 }
 
 export default function HVideoScroll({
   children: slides,
-  autoSlide = false,
-  autoSlideInterval = 3000,
 }: HVideoScrollProps) {
   const [curr, setCurr] = useState(0);
   const carouselRef = useRef<HTMLDivElement | null>(null);
@@ -21,28 +17,37 @@ export default function HVideoScroll({
 
   const slideCount = slides.length;
 
-  // Handle navigation to previous or next slide
-  const prev = () => {
-    setCurr((curr) => (curr === 0 ? slideCount - 1 : curr - 1));
-  };
-  const next = () => {
-    setCurr((curr) => (curr === slideCount - 1 ? 0 : curr + 1));
+  // Calculate the effective slide width for partial slides (75% width)
+  const getSlideWidth = () => {
+    return carouselRef.current ? carouselRef.current.offsetWidth * 0.75 : 0;
   };
 
-  // Scroll to the current slide index programmatically
+  // Navigate to the previous slide
+  const prev = () => {
+    setCurr((curr) => (curr > 0 ? curr - 1 : curr));
+  };
+
+  // Navigate to the next slide
+  const next = () => {
+    setCurr((curr) => (curr < slideCount - 1 ? curr + 1 : curr));
+  };
+
+  // Scroll to the current slide position programmatically
   useEffect(() => {
     const carousel = carouselRef.current;
-    const slideWidth = carousel?.offsetWidth ? carousel.offsetWidth * 0.8 : 0;
 
     if (carousel) {
+      const slideWidth = getSlideWidth(); // Use partial slide width
+      const offset = curr * slideWidth;
+
       carousel.scrollTo({
-        left: curr * slideWidth,
+        left: offset,
         behavior: "smooth",
       });
     }
   }, [curr]);
 
-  // Handle mouse wheel scrolling to move carousel
+  // Handle wheel scrolling for carousel navigation
   const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     if (isScrollingRef.current) return;
 
@@ -57,17 +62,10 @@ export default function HVideoScroll({
     clearTimeout(scrollTimeoutRef.current as NodeJS.Timeout);
     scrollTimeoutRef.current = setTimeout(() => {
       isScrollingRef.current = false;
-    }, 150);
+    }, 200); // Delay ensures smoother scrolling
   };
 
-  // Auto-slide functionality
-  useEffect(() => {
-    if (!autoSlide) return;
-    const slideInterval = setInterval(next, autoSlideInterval);
-    return () => clearInterval(slideInterval);
-  }, [autoSlide, autoSlideInterval]);
-
-  // Snap to nearest slide after scroll stops
+  // Snap to the nearest slide after scroll stops
   useEffect(() => {
     const carousel = carouselRef.current;
 
@@ -77,10 +75,10 @@ export default function HVideoScroll({
       }
 
       scrollTimeoutRef.current = setTimeout(() => {
-        const slideWidth = carousel?.offsetWidth ? carousel.offsetWidth * 0.8 : 0;
+        const slideWidth = getSlideWidth();
         const newIndex = Math.round((carousel?.scrollLeft ?? 0) / slideWidth);
         setCurr(newIndex);
-      }, 150);
+      }, 200);
     };
 
     carousel?.addEventListener("scroll", handleScroll);
@@ -90,44 +88,36 @@ export default function HVideoScroll({
     };
   }, []);
 
+  // Center the first slide on component mount
+  useEffect(() => {
+    const carousel = carouselRef.current;
+
+    if (carousel) {
+      const slideWidth = getSlideWidth();
+      carousel.scrollTo({
+        left: curr * slideWidth,
+        behavior: "smooth",
+      });
+    }
+  }, []);
+
   return (
-    <div className="relative w-full mx-auto">
+    <div className="relative w-full">
       {/* Carousel Container */}
       <div
         ref={carouselRef}
-        className="relative w-full overflow-x-auto snap-x snap-mandatory"
-        style={{
-          scrollBehavior: "smooth",
-          overflowY: "hidden",
-          overflowX: "auto", // Make sure horizontal scroll is enabled but hidden
-        }}
+        className="relative w-full overflow-x-auto snap-x snap-mandatory scroll-smooth"
         onWheel={handleWheel}
       >
-        {/* Hide scrollbar for WebKit */}
-        <style jsx>{`
-          div::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for WebKit browsers */
-          }
-
-          div {
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-          }
-        `}</style>
-
-        <div className="flex" style={{ minWidth: "100%" }}>
+        <div className="flex">
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="flex-none snap-start"
-              style={{
-                width: "80%", // Each slide takes up 80% of the container width
-                marginRight: "10px", // Space between slides
-                border: "2px solid #ccc", // Border around each slide
-                borderRadius: "8px", // Optional: rounded corners for the slides
-                padding: "10px", // Optional: padding inside the slide
-              }}
+              className="flex-none snap-center px-2 py-4 w-9/12" // Partial width slide
             >
-              {slide}
+              <div className="relative w-full bg-black rounded-3xl overflow-hidden outline scale-90">
+                {slide}
+              </div>
             </div>
           ))}
         </div>
