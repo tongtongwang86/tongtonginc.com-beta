@@ -241,12 +241,13 @@ export default function Page3() {
               </div>
 
               {/* Animated Details Panel */}
-              <SuperEllipse p1={17} p2={50} className="transition-all overflow-hidden bg-white/10 backdrop-blur-lg rounded-2xl" style={{ height: containerHeight ? `${containerHeight}px` : "0px", transition: "height 0.5s ease" }}>
+              <SuperEllipse p1={17} p2={50} className="transition-all  bg-white/10 backdrop-blur-lg rounded-2xl" style={{ height: containerHeight ? `${containerHeight}px` : "0px", transition: "height 0.5s ease" }}>
+              <div className="rounded-[45px] shadow-visionprohome transition-all ">
                 {selectedItem && (
                   <div ref={detailsRef} className="p-6 text-left">
                     <div className="items-start">
                       <div
-                        className={`rounded-2xl float-left m-2 w-36 h-36 object-cover transition-opacity duration-500 ${loading ? "opacity-0" : "opacity-100 overflow-hidden"}`}
+                        className={`rounded-2xl float-left m-2 w-36 h-36 object-cover transition-opacity duration-500 ${loading ? "opacity-0" : "opacity-100 "}`}
                       >
                         <Image
                           src={selectedItemDetails?.photo || ""}
@@ -277,6 +278,7 @@ export default function Page3() {
                     </div>
                   </div>
                 )}
+                </div>
               </SuperEllipse>
             </div>
 
