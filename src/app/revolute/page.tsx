@@ -104,7 +104,7 @@ export default function revolute() {
       >
 
 <div className="relative w-full mx-auto">
-        <UI.HVideoScroll autoSlide={false}>
+        <UI.HVideoScroll >
           {videoSlides}
         </UI.HVideoScroll>
       </div>
@@ -117,7 +117,7 @@ export default function revolute() {
 
       </h1>
   <div className="relative w-full mx-auto">
-        <UI.HVideoScroll autoSlide={false}>
+        <UI.HVideoScroll >
           {videoSlides}
         </UI.HVideoScroll>
       </div>

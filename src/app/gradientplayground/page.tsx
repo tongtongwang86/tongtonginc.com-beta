@@ -1,57 +1,70 @@
 "use client";
 import React, { useState } from "react";
 import * as UI from "@/components";
+import Image from 'next/image';
+
+type ShadowState = {
+    horizontal: number;
+    vertical: number;
+    blur: number;
+    spread?: number; // Optional for main and third shadow
+    color: string;
+  };
+  
 
 const Lesson2 = () => {
-  // State for inset shadows
-  const [horizontalOffset, setHorizontalOffset] = useState(1);
-  const [verticalOffset, setVerticalOffset] = useState(1.5);
-  const [blurRadius, setBlurRadius] = useState(2);
-  const [spreadRadius, setSpreadRadius] = useState(0);
-
-  // State for inset colors
-  const [shadowColor, setShadowColor] = useState("#fff9");
-  const [secondColor, setSecondColor] = useState("#ffffff4d");
-
-  // State for non-inset main shadow
-  const [mainHorizontal, setMainHorizontal] = useState(0);
-  const [mainVertical, setMainVertical] = useState(0.6);
-  const [mainBlur, setMainBlur] = useState(0.6);
-  const [mainColor, setMainColor] = useState("#0000002e");
-
-  // State for third shadow
-  const [thirdHorizontal, setThirdHorizontal] = useState(0);
-  const [thirdVertical, setThirdVertical] = useState(2.28);
-  const [thirdBlur, setThirdBlur] = useState(2.28);
-  const [thirdColor, setThirdColor] = useState("#00000029");
-
-  // State for fourth shadow
-  const [fourthHorizontal, setFourthHorizontal] = useState(0);
-  const [fourthVertical, setFourthVertical] = useState(10);
-  const [fourthBlur, setFourthBlur] = useState(10);
-  const [fourthColor, setFourthColor] = useState("#00000010");
-
+   // State for first inset shadow
+   const [inset1Horizontal, setInset1Horizontal] = useState(1);
+   const [inset1Vertical, setInset1Vertical] = useState(1.5);
+   const [inset1Blur, setInset1Blur] = useState(2);
+   const [inset1Spread, setInset1Spread] = useState(0);
+   const [inset1Color, setInset1Color] = useState("#fff9");
+ 
+   // State for second inset shadow
+   const [inset2Horizontal, setInset2Horizontal] = useState(-0.5);
+   const [inset2Vertical, setInset2Vertical] = useState(-0.75);
+   const [inset2Blur, setInset2Blur] = useState(2);
+   const [inset2Spread, setInset2Spread] = useState(0);
+   const [inset2Color, setInset2Color] = useState("#ffffff4d");
+ 
+   // State for non-inset main shadow
+   const [mainHorizontal, setMainHorizontal] = useState(0);
+   const [mainVertical, setMainVertical] = useState(0.6);
+   const [mainBlur, setMainBlur] = useState(0.6);
+   const [mainColor, setMainColor] = useState("#0000002e");
+ 
+   // State for third shadow
+   const [thirdHorizontal, setThirdHorizontal] = useState(0);
+   const [thirdVertical, setThirdVertical] = useState(2.28);
+   const [thirdBlur, setThirdBlur] = useState(2.28);
+   const [thirdColor, setThirdColor] = useState("#00000029");
+ 
+   // State for fourth shadow
+   const [fourthHorizontal, setFourthHorizontal] = useState(0);
+   const [fourthVertical, setFourthVertical] = useState(10);
+   const [fourthBlur, setFourthBlur] = useState(10);
+   const [fourthColor, setFourthColor] = useState("#00000010");
+ 
   // Box shadow style based on current state
   const boxShadowStyle = {
     boxShadow: `
-      inset ${horizontalOffset}px ${verticalOffset}px ${blurRadius}px ${shadowColor}, 
-      inset -${horizontalOffset / 2}px ${-verticalOffset / 2}px ${blurRadius}px ${secondColor}, 
+      inset ${inset1Horizontal}px ${inset1Vertical}px ${inset1Blur}px ${inset1Spread}px ${inset1Color},
+      inset ${inset2Horizontal}px ${inset2Vertical}px ${inset2Blur}px ${inset2Spread}px ${inset2Color},
       ${mainHorizontal}px ${mainVertical}px ${mainBlur}px -1.25px ${mainColor},
       ${thirdHorizontal}px ${thirdVertical}px ${thirdBlur}px -2.5px ${thirdColor},
       ${fourthHorizontal}px ${fourthVertical}px ${fourthBlur}px -3.75px ${fourthColor}
     `,
-    borderRadius: "12px", // Rounded corners
-    padding: "50px",
-    width: "300px",
-    height: "300px",
-    margin: "50px auto",
-    transition: "all 0.3s ease",
+ 
   };
 
-  // Handle color change
-  const handleColorChange = (colorSetter) => (event) => {
+  const handleColorChange = (
+    colorSetter: React.Dispatch<React.SetStateAction<string>>
+  ) => (event: React.ChangeEvent<HTMLInputElement>) => {
     colorSetter(event.target.value);
   };
+  
+  // Handle color change
+
 
   return (
     <UI.BodyContainer
@@ -60,52 +73,162 @@ const Lesson2 = () => {
       logoColor="var(--logocolor)"
       hoverShadowColor="var(--logoHover)"
     >
-      <div style={boxShadowStyle}>
-        {/* The rounded rectangle with shadow */}
-        <div>Interactive Box Shadow</div>
-      </div>
 
-      <div style={{ padding: "20px", textAlign: "center" }}>
+
+    
+  
+<div className="flex align-middle items-center  w-screen justify-center ">
+
+
+
+<Image
+        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        alt="Apple Champs Elysees Boardroom"
+        layout="intrinsic"
+        width={400} // set appropriate dimensions
+        height={500}
+        className="rounded-lg"
+      />
+
+<div className="absolute">
+
+<div style={boxShadowStyle} className="  w-36 h-36 rounded-2xl backdrop-blur-md bg-[#d5c9c90b] text-white "></div>
+
+<div className="  w-10 h-10 rounded-full backdrop-blur-md  bg-[#d5c9c90b] text-white " style={boxShadowStyle}></div>
+
+</div>
+
+
+
+
+<div className="w-36 h-10 rounded-full backdrop-blur-md  bg-[#d5c9c90b] text-white " style={boxShadowStyle}></div>
+
+<div className="w-10 h-10 rounded-full backdrop-blur-md  bg-[#d5c9c90b] text-white " style={boxShadowStyle}></div>
+
+</div>
+
+
+     
+
+      <div className="text-center">
         <h3>Adjust Box Shadow</h3>
 
-        {/* Sliders for inset shadows */}
+         {/* First Inset Shadow */}
+         <h4>First Inset Shadow</h4>
         <div>
-          <label>Horizontal Offset (Inset):</label>
+          <label>Horizontal Offset:</label>
           <input
             type="range"
             min="-50"
             max="50"
             step="0.01"
-            value={horizontalOffset}
-            onChange={(e) => setHorizontalOffset(parseFloat(e.target.value))}
+            value={inset1Horizontal}
+            onChange={(e) => setInset1Horizontal(parseFloat(e.target.value))}
           />
-          <span>{horizontalOffset}px</span>
+          <span>{inset1Horizontal}px</span>
         </div>
-
         <div>
-          <label>Vertical Offset (Inset):</label>
+          <label>Vertical Offset:</label>
           <input
             type="range"
             min="-50"
             max="50"
             step="0.01"
-            value={verticalOffset}
-            onChange={(e) => setVerticalOffset(parseFloat(e.target.value))}
+            value={inset1Vertical}
+            onChange={(e) => setInset1Vertical(parseFloat(e.target.value))}
           />
-          <span>{verticalOffset}px</span>
+          <span>{inset1Vertical}px</span>
         </div>
-
         <div>
-          <label>Blur Radius (Inset):</label>
+          <label>Blur Radius:</label>
           <input
             type="range"
             min="0"
             max="50"
             step="0.01"
-            value={blurRadius}
-            onChange={(e) => setBlurRadius(parseFloat(e.target.value))}
+            value={inset1Blur}
+            onChange={(e) => setInset1Blur(parseFloat(e.target.value))}
           />
-          <span>{blurRadius}px</span>
+          <span>{inset1Blur}px</span>
+        </div>
+        <div>
+          <label>Spread Radius:</label>
+          <input
+            type="range"
+            min="-50"
+            max="50"
+            step="0.01"
+            value={inset1Spread}
+            onChange={(e) => setInset1Spread(parseFloat(e.target.value))}
+          />
+          <span>{inset1Spread}px</span>
+        </div>
+        <div>
+          <label>Color:</label>
+          <input
+            type="color"
+            value={inset1Color}
+            onChange={(e) => setInset1Color(e.target.value)}
+          />
+        </div>
+
+        {/* Second Inset Shadow */}
+        <h4>Second Inset Shadow</h4>
+        <div>
+          <label>Horizontal Offset:</label>
+          <input
+            type="range"
+            min="-50"
+            max="50"
+            step="0.01"
+            value={inset2Horizontal}
+            onChange={(e) => setInset2Horizontal(parseFloat(e.target.value))}
+          />
+          <span>{inset2Horizontal}px</span>
+        </div>
+        <div>
+          <label>Vertical Offset:</label>
+          <input
+            type="range"
+            min="-50"
+            max="50"
+            step="0.01"
+            value={inset2Vertical}
+            onChange={(e) => setInset2Vertical(parseFloat(e.target.value))}
+          />
+          <span>{inset2Vertical}px</span>
+        </div>
+        <div>
+          <label>Blur Radius:</label>
+          <input
+            type="range"
+            min="0"
+            max="50"
+            step="0.01"
+            value={inset2Blur}
+            onChange={(e) => setInset2Blur(parseFloat(e.target.value))}
+          />
+          <span>{inset2Blur}px</span>
+        </div>
+        <div>
+          <label>Spread Radius:</label>
+          <input
+            type="range"
+            min="-50"
+            max="50"
+            step="0.01"
+            value={inset2Spread}
+            onChange={(e) => setInset2Spread(parseFloat(e.target.value))}
+          />
+          <span>{inset2Spread}px</span>
+        </div>
+        <div>
+          <label>Color:</label>
+          <input
+            type="color"
+            value={inset2Color}
+            onChange={(e) => setInset2Color(e.target.value)}
+          />
         </div>
 
         {/* Sliders for Main Shadow */}

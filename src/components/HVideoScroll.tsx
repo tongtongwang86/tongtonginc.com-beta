@@ -102,20 +102,31 @@ export default function HVideoScroll({
   }, []);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full ">
       {/* Carousel Container */}
       <div
         ref={carouselRef}
-        className="relative w-full overflow-x-auto snap-x snap-mandatory scroll-smooth"
+        className="relative w-full overflow-x-scroll snap-x snap-mandatory scroll-smooth hideScrollbar"
         onWheel={handleWheel}
+        style={{
+          msOverflowStyle: "none", // IE and Edge
+          scrollbarWidth: "none", // Firefox
+        }}
       >
+        <style>
+          {` 
+          .hideScrollbar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, and Opera */
+          }
+          `}
+        </style>
         <div className="flex">
           {slides.map((slide, index) => (
             <div
               key={index}
               className="flex-none snap-center px-2 py-4 w-9/12" // Partial width slide
             >
-              <div className="relative w-full bg-black rounded-3xl overflow-hidden outline scale-90">
+              <div className="relative w-full bg-black rounded-[30px] overflow-hidden outline outline-4 outline-[#7070703b] scale-90">
                 {slide}
               </div>
             </div>
@@ -124,17 +135,17 @@ export default function HVideoScroll({
       </div>
 
       {/* Buttons below the carousel */}
-      <div className="flex justify-end items-center mt-4">
+      <div className="flex justify-end items-center mb-4">
         <button
           onClick={prev}
-          className="p-2 bg-gray-400 rounded-full shadow hover:bg-gray-500 mr-2"
+          className="p-2 bg-[#ffffff28] backdrop-blur-2xl rounded-full shadow-visionpro hover:bg-[#ffffff3e] hover:scale-110  mr-4 transition-all duration-150"
           aria-label="Previous Slide"
         >
           <ChevronLeft size={24} />
         </button>
         <button
           onClick={next}
-          className="p-2 bg-gray-400 rounded-full shadow hover:bg-gray-500"
+          className="p-2 bg-[#ffffff28] backdrop-blur-2xl rounded-full shadow-visionpro hover:bg-[#ffffff3e] hover:scale-110  mr-4 transition-all duration-150"
           aria-label="Next Slide"
         >
           <ChevronRight size={24} />
