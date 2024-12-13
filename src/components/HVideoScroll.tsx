@@ -126,7 +126,7 @@ export default function HVideoScroll({
               key={index}
               className="flex-none snap-center px-2 py-4 w-9/12" // Partial width slide
             >
-              <div className="relative w-full bg-black rounded-[30px] overflow-hidden outline outline-4 outline-[#7070703b] scale-90">
+              <div className="relative w-full bg-black rounded-[30px] overflow-hidden outline outline-3 outline-[#7070703b] scale-90">
                 {slide}
               </div>
             </div>
