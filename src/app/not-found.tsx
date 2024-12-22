@@ -119,7 +119,9 @@ const NotFound: React.FC = () => {
           </div>
         </UI.TextContainer>
 <br></br><br></br>
+<div className=' flex justify-center'>
         <UI.HomeButton></UI.HomeButton>
+        </div>
       </UI.BodyContainer>
 
       <style jsx>{`
