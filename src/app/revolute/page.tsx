@@ -19,7 +19,7 @@ export default async function revolute() {
       muted
       playsInline
       preload="auto"
-      poster="/assets/revolute/demo/1.png"
+      poster="/assets/revolute/demo/1_Small.png"
       src="/assets/revolute/demo/1.mp4"
       className='aspect w-full h-full'
      
@@ -31,6 +31,7 @@ export default async function revolute() {
       muted
       playsInline
       preload="auto"
+      poster="/assets/revolute/demo/2_Small.png"
       src="/assets/revolute/demo/2.mp4"
       className='aspect w-full h-full'
      
@@ -42,6 +43,7 @@ export default async function revolute() {
       muted
       playsInline
       preload="auto"
+      poster="/assets/revolute/demo/3_Small.png"
       src="/assets/revolute/demo/3.mp4"
       className='aspect w-full h-full'
       
@@ -53,6 +55,7 @@ export default async function revolute() {
       muted
       playsInline
       preload="auto"
+      poster="/assets/revolute/demo/4_Small.png"
       src="/assets/revolute/demo/4.mp4"
       className='aspect w-full h-full'
       
