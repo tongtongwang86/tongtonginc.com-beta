@@ -47,6 +47,9 @@ jobs:
       # Deploy to VPS
       - name: ☞ Pull new files from github
         run: ssh vps "cd ~/tongtonginc.com-beta && git pull"
+        
+      - name: ☞ Update node packages on VPS
+        run: ssh vps "cd ~/tongtonginc.com-beta && npm i"
 
       - name: ☃︎ Upload Build Files to VPS
         run: rsync -re ssh ./.next/ vps:/root/tongtonginc.com-beta/.next

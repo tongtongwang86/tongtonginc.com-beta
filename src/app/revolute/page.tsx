@@ -8,20 +8,21 @@ import Image from "next/image";
 
 
 
-export default function revolute() {
+export default async function revolute() {
 
   const videoSlides = [
+    
     <video
       key="1"
       autoPlay
       loop
       muted
       playsInline
+      preload="auto"
+      poster="/assets/revolute/demo/1.png"
       src="/assets/revolute/demo/1.mp4"
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
+      className='aspect w-full h-full'
+     
     />,
     <video
       key="2"
@@ -29,11 +30,10 @@ export default function revolute() {
       loop
       muted
       playsInline
+      preload="auto"
       src="/assets/revolute/demo/2.mp4"
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
+      className='aspect w-full h-full'
+     
     />,
     <video
       key="3"
@@ -41,11 +41,10 @@ export default function revolute() {
       loop
       muted
       playsInline
+      preload="auto"
       src="/assets/revolute/demo/3.mp4"
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
+      className='aspect w-full h-full'
+      
     />,
     <video
       key="4"
@@ -53,11 +52,10 @@ export default function revolute() {
       loop
       muted
       playsInline
+      preload="auto"
       src="/assets/revolute/demo/4.mp4"
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
+      className='aspect w-full h-full'
+      
     />,
   ];
 

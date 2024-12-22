@@ -120,13 +120,14 @@ export default function HVideoScroll({
           }
           `}
         </style>
-        <div className="flex">
+        <div className="flex" style={{ paddingLeft: 'calc(50vw - 150px)' }}> {/* Adjust paddingLeft */}
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="flex-none snap-center px-2 py-4 w-9/12" // Partial width slide
+              className="flex-none snap-center px-2 py-4 w-full" // Removed width class
+
             >
-              <div className="relative w-full bg-black rounded-[30px] overflow-hidden outline outline-3 outline-[#7070703b] scale-90">
+              <div className="relative max-w-screen-xl bg-black rounded-[30px] overflow-hidden outline outline-3 outline-[#7070703b] scale-90">
                 {slide}
               </div>
             </div>
