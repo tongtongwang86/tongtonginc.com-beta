@@ -9,8 +9,23 @@ export default function Page3() {
   const [containerHeight, setContainerHeight] = useState<number | null>(null);
   const [containerWidth, setContainerWidth] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false); // Track image loading state
+  const [testPages, setTestPages] = useState<string[]>([]);
 
   const detailsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const fetchTestPages = async () => {
+      try {
+        const response = await fetch('/api/tests');
+        const data = await response.json();
+        setTestPages(data);
+      } catch (error) {
+        console.error('Error fetching test pages:', error);
+      }
+    };
+
+    fetchTestPages();
+  }, []);
 
   const items = [
     {
@@ -61,15 +76,7 @@ export default function Page3() {
       description: "Here are some development test pages.",
       icon: "/assets/homepage/icons/Other.svg",
       photo: "/assets/homepage/hero/Other.svg",
-      buttons: [
-        { label: "backgroundTest", link: "/backgroundtest" },
-        { label: "Page1", link: "/page1" },
-        { label: "Page2", link: "/boxphysicssnaptest" },
-        { label: "Page3", link: "/page3" },
-        { label: "Revolute", link: "/revolute" },
-        { label: "flexboxtest", link: "/flexboxtest" },
-        { label: "lesson2", link: "/electronics/lesson2" },
-      ],
+      buttons: testPages.map(page => ({ label: page, link: `/tests/${page}` })),
     },
   ];
   const selectedItemDetails = items.find((item) => item.name === selectedItem);
