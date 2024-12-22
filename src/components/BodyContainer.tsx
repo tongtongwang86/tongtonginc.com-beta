@@ -86,11 +86,19 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
 
       {/* Body Container */}
       <div
-      style={{background: backgroundColor}}
+      style={{background: backgroundColor }}
        className={`flex flex-col items-center justify-center min-h-screen ${className}`}
        >
         <div className="pt-24"></div>
-        {children}
+        <div
+        className="w-full"
+        style={{all: 'unset'}}
+        >
+    {children}
+
+        </div>
+        
+        
         <div className="pt-24"></div>
       </div>
 

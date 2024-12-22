@@ -102,7 +102,7 @@ export default function HVideoScroll({
   }, []);
 
   return (
-    <div className="relative w-full ">
+    <div className="relative w-full h-full ">
       {/* Carousel Container */}
       <div
         ref={carouselRef}
@@ -124,10 +124,10 @@ export default function HVideoScroll({
           {slides.map((slide, index) => (
             <div
               key={index}
-              className="flex-none snap-center px-2 py-4 w-full" // Removed width class
+              className="flex-none snap-center px-2 py-4 w-full" 
 
             >
-              <div className="relative max-w-screen-xl bg-black rounded-[30px] overflow-hidden outline outline-3 outline-[#7070703b] scale-90">
+              <div className="relative max-w-screen-xl bg-black rounded-[30px] overflow-hidden outline outline-3 outline-[#7070703b] scale-95 ">
                 {slide}
               </div>
             </div>
@@ -136,7 +136,8 @@ export default function HVideoScroll({
       </div>
 
       {/* Buttons below the carousel */}
-      <div className="flex justify-end items-center mb-4">
+      
+      <div className="flex justify-end items-center  mx-auto mb-8" style={{ maxWidth: '100em' }}>
         <button
           onClick={prev}
           className="p-2 bg-[#ffffff28] backdrop-blur-2xl rounded-full shadow-visionpro hover:bg-[#ffffff3e] hover:scale-110  mr-4 transition-all duration-150"
@@ -146,12 +147,16 @@ export default function HVideoScroll({
         </button>
         <button
           onClick={next}
-          className="p-2 bg-[#ffffff28] backdrop-blur-2xl rounded-full shadow-visionpro hover:bg-[#ffffff3e] hover:scale-110  mr-4 transition-all duration-150"
+          className="p-2 bg-[#ffffff28] backdrop-blur-2xl rounded-full shadow-visionpro hover:bg-[#ffffff3e] hover:scale-110  mr-10 transition-all duration-150"
           aria-label="Next Slide"
         >
           <ChevronRight size={24} />
         </button>
       </div>
+
+
+   
+   
     </div>
   );
 }
