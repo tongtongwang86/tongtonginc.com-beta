@@ -72,20 +72,7 @@ export default async function revolute() {
       key="1">
       <div className='py-5 text-2xl'>MX-Mechanical Key attachment</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
-        alt="outside"
-        width={400}
-        height={100}
-        className="rounded-lg w-full"
-      />
-    </div>,
-
-
-    <div className='flex flex-col items-center'
-      key="2">
-      <div className='py-5 text-2xl'>Adhesive attachments</div>
-      <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/accessories/key.png'
         alt="outside"
         width={400}
         height={100}
@@ -95,9 +82,9 @@ export default async function revolute() {
 
     <div className='flex flex-col items-center'
       key="3">
-      <div className='py-5 text-2xl'>Magnetic attachments</div>
+      <div className='py-5 text-2xl'>Adhesive / Magnetic attachments</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/accessories/adhesive.png'
         alt="outside"
         width={400}
         height={100}
@@ -109,7 +96,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Phone attachments</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/accessories/phone.png'
         alt="outside"
         width={400}
         height={100}
@@ -125,7 +112,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Keyboard keys</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/configurator/keys.png'
         alt="outside"
         width={400}
         height={100}
@@ -136,7 +123,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>High resolution scrolling</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/configurator/scroll.png'
         alt="outside"
         width={400}
         height={100}
@@ -148,7 +135,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Consumer Control</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/configurator/consumer.png'
         alt="outside"
         width={400}
         height={100}
@@ -160,7 +147,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Gamepad</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/configurator/gamepad.png'
         alt="outside"
         width={400}
         height={100}
@@ -171,7 +158,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Surface dial</div>
       <Image
-        src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+        src='/assets/revolute/configurator/dial.png'
         alt="outside"
         width={400}
         height={100}
@@ -248,7 +235,7 @@ export default async function revolute() {
 
 
         <Image
-          src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+          src='/assets/revolute/poster/design.png'
           alt="outside"
           width={400}
           height={500}
@@ -260,7 +247,7 @@ export default async function revolute() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
         <Image
-          src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+          src='/assets/revolute/poster/connectivity.png'
           alt="outside"
           width={400}
           height={500}
@@ -320,7 +307,7 @@ export default async function revolute() {
           </div>
 
           <Image
-            src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+            src='/assets/revolute/accessories/phone.png'
             alt="outside"
             width={400}
             height={500}
@@ -342,7 +329,7 @@ export default async function revolute() {
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
         <Image
-          src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+          src='/assets/revolute/configurator/configurator.png'
           alt="outside"
           width={400}
           height={500}
@@ -380,7 +367,7 @@ style={{ color: '#f4f4f4' }}>
 
 
           <Image
-            src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+            src='/assets/revolute/poster/magneticenc.png'
             alt="outside"
             width={400}
             height={500}
@@ -397,7 +384,7 @@ style={{ color: '#f4f4f4' }}>
         <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
           <Image
-            src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+            src='/assets/revolute/poster/magtick.png'
             alt="outside"
             width={400}
             height={500}
@@ -428,7 +415,7 @@ style={{ color: '#f4f4f4' }}>
 
 
 <Image
-  src="https://images.unsplash.com/photo-1615118265620-d8decf628275?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bmF0dXJlJTIwbGFuZHNjYXBlfGVufDB8fDB8fHww&w=1000&q=80"
+  src='/assets/revolute/poster/developer.png'
   alt="outside"
   width={400}
   height={500}
