@@ -184,11 +184,11 @@ export default async function revolute() {
         <div className='w-full text-[#fff2ea] flex justify-center absolute z-1 top-[10%]'>
 
 
-          <svg viewBox="0 0 43 15" className="w-full max-w-[55rem] h-full drop-shadow-revolute">
+          {/* <svg viewBox="0 0 43 15" className="w-full max-w-[55rem] h-full drop-shadow-revolute">
             <text x="50%" y="50%" textAnchor="middle" fontFamily="'Helvetica', sans-serif" alignmentBaseline="middle" fontSize="7" lengthAdjust="spacingAndGlyphs" fill="#fff2ea">
               Revolute
             </text>
-          </svg>
+          </svg> */}
 
         </div>
 
@@ -196,9 +196,8 @@ export default async function revolute() {
           autoPlay
           muted
           playsInline
-          preload="auto"
-          poster="/assets/revolute/demo/1_Small.png"
-          src="/assets/revolute/demo/1.mp4"
+          poster="/assets/revolute/poster/hero.png"
+          src="/assets/revolute/poster/hero.mp4"
           className='w-full max-w-4xl mx-auto mt-8 '
         />
       </div>
@@ -227,7 +226,7 @@ export default async function revolute() {
 
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
-        <div className="text-left w-full ">
+        <div className="text-left flex-shrink basis-3/6">
           <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Design. </div>
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>3D printed outer shell houses an Ultra compact, custom logic board slightly bigger than a coin-cell battery. This makes revolute extremely versions, allowing you to easily carry on the go.</span>
 
@@ -239,7 +238,7 @@ export default async function revolute() {
           alt="outside"
           width={400}
           height={500}
-          className="rounded-lg w-full"
+          className="rounded-lg flex-grow basis-4/6"
         />
 
       </div>
