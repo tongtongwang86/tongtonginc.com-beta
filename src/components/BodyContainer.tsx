@@ -92,7 +92,7 @@ const BodyContainer: React.FC<BodyContainerProps> = ({
         <div className="pt-24"></div>
         <div
         className="w-full"
-        style={{all: 'unset'}}
+
         >
     {children}
 

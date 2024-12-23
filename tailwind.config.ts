@@ -57,6 +57,9 @@ const config: Config = {
           '0 0px 13px var(--logoHover)', 
           '0 0px 5px var(--logoHover)'
         ],
+        revolute: [
+          '0 0px 8px #fff6c9', 
+        ],
         
       },
       boxShadow: {
