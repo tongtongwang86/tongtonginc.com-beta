@@ -32,7 +32,7 @@ export default function HVideoScroll({
     setCurr((curr) => (curr < slideCount - 1 ? curr + 1 : curr));
   };
 
-  // Center the first slide on component mount
+  // Center the slide whenever curr changes
   useEffect(() => {
     const carousel = carouselRef.current;
 
@@ -43,7 +43,7 @@ export default function HVideoScroll({
         behavior: "smooth",
       });
     }
-  }, []);
+  }, [curr]);
 
   return (
     <div className="relative w-full h-full ">
@@ -97,10 +97,6 @@ export default function HVideoScroll({
           <ChevronRight size={24} />
         </button>
       </div>
-
-
-   
-   
     </div>
   );
 }
