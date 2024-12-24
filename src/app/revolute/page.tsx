@@ -9,7 +9,7 @@ import { useIsVisible } from "@/hooks/useIsVisible"; // Adjust the path as neede
 
 
 
-export default function revolute() {
+export default function Revolute() {
 
   const ref1 = useRef<HTMLDivElement>(null);
   const isVisible1 = useIsVisible(ref1);
