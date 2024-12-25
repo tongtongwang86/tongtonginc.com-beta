@@ -34,11 +34,16 @@ const ARButton: React.FC<ARButtonProps> = ({ usdzFile }) => {
     <a
       href={usdzFile}
       rel="ar"
-      className="inline-block no-underline text-blue-400 pt-2 text-lg"
+      className=" underline text-blue-400 pt-2 text-lg inline-flex items-center"
+
     >
+      View in AR
+      <img 
+        src="/assets/revolute/ar.svg" 
+        alt="View in AR" 
 
-        View in AR
-
+        style={{ width: '1em', height: '1em' }} 
+      />
     </a>
   );
 };

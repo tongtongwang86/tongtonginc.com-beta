@@ -79,7 +79,6 @@ const ThreeCanvas = () => {
 
       // Event Listeners
       window.addEventListener('scroll', handleScroll);
-      window.addEventListener('resize', handleResize);
 
       handleResize(); // Initial resize setup
 
@@ -122,19 +121,18 @@ const ThreeCanvas = () => {
     };
 
     // Scroll Event Handler
-    // Scroll Event Handler
     const handleScroll = () => {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const scrollFraction = window.scrollY / maxScroll;
       scrollRef.current = (scrollFraction * Math.PI * 2 - Math.PI) * 2; // scale to 200%
     };
 
-
+   
     // Resize Event Handler
     const handleResize = () => {
       if (!canvasRef.current || !rendererRef.current) return;
       const { clientWidth, clientHeight } = canvasRef.current;
-      camera.aspect = clientWidth / clientHeight;
+      camera.aspect = 1;
       camera.updateProjectionMatrix();
       rendererRef.current.setSize(clientWidth, clientHeight);
     };
@@ -149,9 +147,9 @@ const ThreeCanvas = () => {
   return (
     <div
       ref={canvasRef}
-      className=" w-full aspect-square relative" style={{ aspectRatio: '1.8' }}
+      className=" aspect-square h-full max-w-full"
+      
     >
-
     </div>
   );
 };
