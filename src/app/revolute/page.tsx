@@ -190,7 +190,7 @@ export default async function revolute() {
 
         </div>
 
-       <UI.Hero/>
+        <UI.Hero />
 
       </div>
 
@@ -211,13 +211,23 @@ export default async function revolute() {
           </UI.HVideoScroll>
         </div>
 
+
       </div>
 
 
       {/* not gray */}
+      <div className="text-left w-full p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', paddingTop: '3em', maxWidth: '100em' }}>
+        <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>See Revolute in 3D. </div>
+        <div className="w-full flex justify-center">
+            <UI.ThreeCanvas />
+        </div>
+
+      </div>
 
 
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
+
+
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '-5em', maxWidth: '100em' }}>
 
         <UI.ScrollFade className="text-left flex-shrink basis-3/6">
           <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Design. </div>
@@ -247,11 +257,11 @@ export default async function revolute() {
         />
 
 
-          <UI.ScrollFade className="text-left w-full ">
-            <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Connectivity. </div>
-            <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Connect wirelessly to your device through Bluetooth Low Energy, works on any device with bluetooth.</span>
+        <UI.ScrollFade className="text-left w-full ">
+          <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Connectivity. </div>
+          <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Connect wirelessly to your device through Bluetooth Low Energy, works on any device with bluetooth.</span>
 
-          </UI.ScrollFade>
+        </UI.ScrollFade>
 
       </div>
 
@@ -270,15 +280,15 @@ export default async function revolute() {
 
 
 
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
 
 
-            <UI.ScrollFade className="text-left w-full ">
-              <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Accessories. </div>
-            </UI.ScrollFade>
+          <UI.ScrollFade className="text-left w-full ">
+            <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Accessories. </div>
+          </UI.ScrollFade>
 
-          </div>
+        </div>
 
 
         <UI.ScrollFade>

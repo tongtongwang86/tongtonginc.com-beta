@@ -19,7 +19,7 @@ const ThreeCanvas = () => {
   useEffect(() => {
     // Renderer Initialization
     const initializeRenderer = () => {
-      const renderer = new THREE.WebGLRenderer({ alpha: true });
+      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true }); // Enable anti-aliasing
       renderer.setPixelRatio(window.devicePixelRatio);
       rendererRef.current = renderer;
       if (canvasRef.current) {
@@ -29,8 +29,8 @@ const ThreeCanvas = () => {
 
     // Scene Setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 1000);
-    camera.position.set(0, 2, 5);
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 1000);
+    camera.position.set(-4, 3, 7);
 
     const initializeScene = () => {
       if (!rendererRef.current) initializeRenderer();
@@ -66,12 +66,16 @@ const ThreeCanvas = () => {
       });
 
       // Camera Controls
+      // Camera Controls
       const controls = new OrbitControls(camera, renderer!.domElement);
 
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.1;
-      controls.rotateSpeed = 0.5;
+      controls.enableDamping = true; // Enable damping for smooth motion
+      controls.dampingFactor = 0.06; // Adjust for smoother slowing down (lower = smoother)
+      controls.rotateSpeed = 0.4; // Lower rotation speed for less sensitivity
       controls.enablePan = false; // Disable panning
+      controls.enableZoom = false; // Disable zooming
+
+
 
       // Event Listeners
       window.addEventListener('scroll', handleScroll);
@@ -82,11 +86,11 @@ const ThreeCanvas = () => {
       // Animation Loop
       const animate = () => {
         requestAnimationFrame(animate);
-      
+
         if (capRef.current) {
           capRef.current.rotation.y = scrollRef.current;
         }
-      
+
         if (rendererRef.current) { // Ensure renderer is not null
           const renderer = rendererRef.current;
           controls.update();
@@ -118,11 +122,13 @@ const ThreeCanvas = () => {
     };
 
     // Scroll Event Handler
+    // Scroll Event Handler
     const handleScroll = () => {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       const scrollFraction = window.scrollY / maxScroll;
-      scrollRef.current = scrollFraction * Math.PI * 2 - Math.PI;
+      scrollRef.current = (scrollFraction * Math.PI * 2 - Math.PI) * 2; // scale to 200%
     };
+
 
     // Resize Event Handler
     const handleResize = () => {
@@ -136,14 +142,14 @@ const ThreeCanvas = () => {
     // Initialize everything
     setIsClient(true);
     const cleanup = initializeScene();
-    
+
     return cleanup; // Clean up when component unmounts
   }, []);
 
   return (
     <div
       ref={canvasRef}
-      className="border w-1/2 h-96 relative"
+      className=" w-full aspect-square relative" style={{ aspectRatio: '1.8' }}
     >
 
     </div>
