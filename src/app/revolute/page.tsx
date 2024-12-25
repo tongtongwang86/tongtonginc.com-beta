@@ -1,6 +1,4 @@
 // app/page1/page.tsx
-
-
 import dynamic from 'next/dynamic';
 import * as UI from '@/components';
 import Link from 'next/link';
@@ -180,8 +178,8 @@ export default async function revolute() {
 
     >
 
-      <div className="relative ">
-        <div className='w-full text-[#fff2ea] flex justify-center absolute z-1 top-[10%]'>
+      <div className="relative " style={{ marginTop: '-4em' }}>
+        <div className='w-full text-[#fff2ea] flex justify-center absolute z-1'>
 
 
           {/* <svg viewBox="0 0 43 15" className="w-full max-w-[55rem] h-full drop-shadow-revolute">
@@ -192,14 +190,8 @@ export default async function revolute() {
 
         </div>
 
-        <video
-          autoPlay
-          muted
-          playsInline
-          poster="/assets/revolute/poster/hero.webp"
-          src="/assets/revolute/poster/hero.mp4"
-          className='w-full max-w-4xl mx-auto mt-8 '
-        />
+       <UI.Hero/>
+
       </div>
 
       {/* grey */}
