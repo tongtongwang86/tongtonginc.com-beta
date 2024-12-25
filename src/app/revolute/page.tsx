@@ -19,7 +19,7 @@ export default async function revolute() {
         muted
         playsInline
         preload="auto"
-        poster="/assets/revolute/demo/1_Small.png"
+        poster="/assets/revolute/demo/1_Small.webp"
         src="/assets/revolute/demo/1.mp4"
         className='aspect w-full h-full' />
       <div className='py-3'>Changing brush size in Blender</div> </div>
@@ -32,7 +32,7 @@ export default async function revolute() {
         muted
         playsInline
         preload="auto"
-        poster="/assets/revolute/demo/2_Small.png"
+        poster="/assets/revolute/demo/2_Small.webp"
         src="/assets/revolute/demo/2.mp4"
         className='aspect w-full h-full' />
       <div className='py-3'>Rotating items in KiCad</div> </div>
@@ -45,7 +45,7 @@ export default async function revolute() {
         muted
         playsInline
         preload="auto"
-        poster="/assets/revolute/demo/3_Small.png"
+        poster="/assets/revolute/demo/3_Small.webp"
         src="/assets/revolute/demo/3.mp4"
         className='aspect w-full h-full' />
       <div className='py-3'>Davinci Resolve Timeline Zoom</div> </div>
@@ -58,7 +58,7 @@ export default async function revolute() {
         muted
         playsInline
         preload="auto"
-        poster="/assets/revolute/demo/4_Small.png"
+        poster="/assets/revolute/demo/4_Small.webp"
         src="/assets/revolute/demo/4.mp4"
         className='aspect w-full h-full' />
       <div className='py-3'>Scroll wheel pick up in games</div> </div>
@@ -72,7 +72,7 @@ export default async function revolute() {
       key="1">
       <div className='py-5 text-2xl'>MX-Mechanical Key attachment</div>
       <Image
-        src='/assets/revolute/accessories/key.png'
+        src='/assets/revolute/accessories/key.webp'
         alt="outside"
         width={400}
         height={100}
@@ -84,7 +84,7 @@ export default async function revolute() {
       key="3">
       <div className='py-5 text-2xl'>Adhesive / Magnetic attachments</div>
       <Image
-        src='/assets/revolute/accessories/adhesive.png'
+        src='/assets/revolute/accessories/adhesive.webp'
         alt="outside"
         width={400}
         height={100}
@@ -96,7 +96,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Phone attachments</div>
       <Image
-        src='/assets/revolute/accessories/phone.png'
+        src='/assets/revolute/accessories/phone.webp'
         alt="outside"
         width={400}
         height={100}
@@ -112,7 +112,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Keyboard keys</div>
       <Image
-        src='/assets/revolute/configurator/keys.png'
+        src='/assets/revolute/configurator/keys.webp'
         alt="outside"
         width={400}
         height={100}
@@ -123,7 +123,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>High resolution scrolling</div>
       <Image
-        src='/assets/revolute/configurator/scroll.png'
+        src='/assets/revolute/configurator/scroll.webp'
         alt="outside"
         width={400}
         height={100}
@@ -135,7 +135,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Consumer Control</div>
       <Image
-        src='/assets/revolute/configurator/consumer.png'
+        src='/assets/revolute/configurator/consumer.webp'
         alt="outside"
         width={400}
         height={100}
@@ -147,7 +147,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Gamepad</div>
       <Image
-        src='/assets/revolute/configurator/gamepad.png'
+        src='/assets/revolute/configurator/gamepad.webp'
         alt="outside"
         width={400}
         height={100}
@@ -158,7 +158,7 @@ export default async function revolute() {
       key="4">
       <div className='py-5 text-2xl'>Surface dial</div>
       <Image
-        src='/assets/revolute/configurator/dial.png'
+        src='/assets/revolute/configurator/dial.webp'
         alt="outside"
         width={400}
         height={100}
@@ -196,7 +196,7 @@ export default async function revolute() {
           autoPlay
           muted
           playsInline
-          poster="/assets/revolute/poster/hero.png"
+          poster="/assets/revolute/poster/hero.webp"
           src="/assets/revolute/poster/hero.mp4"
           className='w-full max-w-4xl mx-auto mt-8 '
         />
@@ -226,15 +226,16 @@ export default async function revolute() {
 
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
-        <div className="text-left flex-shrink basis-3/6">
+
+        <UI.ScrollFade className="text-left flex-shrink basis-3/6">
           <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Design. </div>
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>3D printed outer shell houses an Ultra compact, custom logic board slightly bigger than a coin-cell battery. This makes revolute extremely versions, allowing you to easily carry on the go.</span>
 
-        </div>
+        </UI.ScrollFade>
 
 
         <Image
-          src='/assets/revolute/poster/design.png'
+          src='/assets/revolute/poster/design.webp'
           alt="outside"
           width={400}
           height={500}
@@ -246,7 +247,7 @@ export default async function revolute() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
         <Image
-          src='/assets/revolute/poster/connectivity.png'
+          src='/assets/revolute/poster/connectivity.webp'
           alt="outside"
           width={400}
           height={500}
@@ -254,11 +255,11 @@ export default async function revolute() {
         />
 
 
-        <div className="text-left w-full ">
-          <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Connectivity. </div>
-          <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Connect wirelessly to your device through Bluetooth Low Energy, works on any device with bluetooth.</span>
+          <UI.ScrollFade className="text-left w-full ">
+            <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Connectivity. </div>
+            <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Connect wirelessly to your device through Bluetooth Low Energy, works on any device with bluetooth.</span>
 
-        </div>
+          </UI.ScrollFade>
 
       </div>
 
@@ -277,19 +278,22 @@ export default async function revolute() {
 
 
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
 
 
-          <div className="text-left w-full ">
-            <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Accessories. </div>
+            <UI.ScrollFade className="text-left w-full ">
+              <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Accessories. </div>
+            </UI.ScrollFade>
+
           </div>
 
-        </div>
-        <UI.HVideoScroll >
-          {itemSlides}
-        </UI.HVideoScroll>
 
+        <UI.ScrollFade>
+          <UI.HVideoScroll >
+            {itemSlides}
+          </UI.HVideoScroll>
+        </UI.ScrollFade>
 
 
 
@@ -299,14 +303,14 @@ export default async function revolute() {
 
 
 
-          <div className="text-left w-full ">
+          <UI.ScrollFade className="text-left w-full ">
             <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Revo-pod. </div>
             <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Carrying case for revolute that recharges its battery. Revo-pod has multiple compartments to store your Revolute Accessories.</span>
 
-          </div>
+          </UI.ScrollFade>
 
           <Image
-            src='/assets/revolute/accessories/phone.png'
+            src='/assets/revolute/accessories/phone.webp'
             alt="outside"
             width={400}
             height={500}
@@ -328,7 +332,7 @@ export default async function revolute() {
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
         <Image
-          src='/assets/revolute/configurator/configurator.png'
+          src='/assets/revolute/configurator/configurator.webp'
           alt="outside"
           width={400}
           height={500}
@@ -336,11 +340,11 @@ export default async function revolute() {
         />
 
 
-        <div className="text-left w-full ">
+        <UI.ScrollFade className="text-left w-full ">
           <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Revolute Configurator App. </div>
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Available for IOS, MacOS,and Windows. Revolute configurator lets you define wheel sensitivity, deadzone and actions for scroll, Wirelessly. Configurations saved on-board Revolute, allowing you to use revolute even on devices that dont support Revolute Configurator. </span>
 
-        </div>
+        </UI.ScrollFade>
       </div>
       <div
         style={{ color: '#f4f4f4' }}>
@@ -358,15 +362,15 @@ export default async function revolute() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
-          <div className="text-left flex-shrink basis-3/6">
+          <UI.ScrollFade className="text-left flex-shrink basis-3/6">
             <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Magnetic Rotary Encoder </div>
             <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>A Non-Contact magnetic encoder measures the absolute position of Revolute to sub-degree accuracy. Combined with a bearing, physical wear would be significantly reduced, revolute can widthstand whatever life throws at it.</span>
 
-          </div>
+          </UI.ScrollFade>
 
 
           <Image
-            src='/assets/revolute/poster/magneticenc.png'
+            src='/assets/revolute/poster/magneticenc.webp'
             alt="outside"
             width={400}
             height={500}
@@ -383,7 +387,7 @@ export default async function revolute() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
           <Image
-            src='/assets/revolute/poster/magtick.png'
+            src='/assets/revolute/poster/magtick.webp'
             alt="outside"
             width={400}
             height={500}
@@ -391,11 +395,11 @@ export default async function revolute() {
           />
 
 
-          <div className="text-left flex-shrink basis-3/6">
+          <UI.ScrollFade className="text-left flex-shrink basis-3/6">
             <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Optional Mag-Ticks addon  </div>
             <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>A ring of 36 Precision-Placed Magnets provides a incremental ident feel, which allows for controlled Single Stepping</span>
 
-          </div>
+          </UI.ScrollFade>
 
         </div>
       </div>
@@ -406,15 +410,15 @@ export default async function revolute() {
 
 
 
-        <div className="text-left flex-shrink basis-3/6">
+        <UI.ScrollFade className="text-left flex-shrink basis-3/6">
           <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Developer friendly</div>
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>A ring of 36 Precision-Placed Magnets provides a incremental ident feel, which allows for controlled Single Stepping</span>
 
-        </div>
+        </UI.ScrollFade>
 
 
         <Image
-          src='/assets/revolute/poster/developer.png'
+          src='/assets/revolute/poster/developer.webp'
           alt="outside"
           width={400}
           height={500}

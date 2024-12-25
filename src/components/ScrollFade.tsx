@@ -1,9 +1,13 @@
 "use client";
-import React, { useRef, PropsWithChildren } from 'react';
-import Image from 'next/image';
+import React, { useRef } from 'react';
 import { useIsVisible } from "@/hooks/useIsVisible"; // Adjust the path as needed
 
-const ScrollFade = ({ children }: PropsWithChildren) => {
+interface ScrollFadeProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const ScrollFade: React.FC<ScrollFadeProps> = ({ children, className = "" }) => {
   const ref1 = useRef<HTMLDivElement>(null);
   const isVisible1 = useIsVisible(ref1);
 
@@ -13,7 +17,7 @@ const ScrollFade = ({ children }: PropsWithChildren) => {
         className={`transition-all ease-out transform ${isVisible1
           ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-10'
-        }`}
+        } ${className}`}
         style={{ transitionDuration: '1500ms' }}
       >
         {children}
