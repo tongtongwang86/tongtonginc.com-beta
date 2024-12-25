@@ -218,8 +218,11 @@ export default async function revolute() {
       {/* not gray */}
       <div className="text-left w-full p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', paddingTop: '3em', maxWidth: '100em' }}>
         <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>See Revolute in 3D. </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex flex-col justify-center">
+        <UI.ARButton usdzFile='/assets/revolute/models/revolute.usdz' />
             <UI.ThreeCanvas />
+
+          
         </div>
 
       </div>

@@ -52,13 +52,13 @@ const ThreeCanvas = () => {
       groupRef.current = group;
       scene.add(group);
 
-      loader.load('/models/revoluteBase.glb', (gltf) => {
+      loader.load('/assets/revolute/models/revoluteBase.glb', (gltf) => {
         const base = gltf.scene;
         group.add(base);
         centerGroup(group);
       });
 
-      loader.load('/models/revoluteCap.glb', (gltf) => {
+      loader.load('/assets/revolute/models/revoluteCap.glb', (gltf) => {
         const cap = gltf.scene;
         capRef.current = cap;
         group.add(cap);
