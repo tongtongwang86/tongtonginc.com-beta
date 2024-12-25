@@ -1,6 +1,4 @@
 // app/page1/page.tsx
-
-
 import dynamic from 'next/dynamic';
 import * as UI from '@/components';
 import Link from 'next/link';

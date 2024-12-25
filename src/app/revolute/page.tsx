@@ -534,8 +534,6 @@ style={{ transitionDuration: '1500ms' }}
       </div>
 
 
-
-
     </UI.BodyContainer>
   );
 }
