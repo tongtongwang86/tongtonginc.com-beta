@@ -36,7 +36,7 @@ export default function Page3() {
       icon: "/assets/homepage/icons/Revolute.svg",
       photo: "/assets/homepage/hero/Revolute.png",
       buttons: [
-        { label: "Learn More", link: "https://depricated.tongtonginc.com/revolute" },
+        { label: "Learn More", link: "/revolute" },
       ],
     },
     {
