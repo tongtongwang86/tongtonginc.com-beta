@@ -16,7 +16,6 @@ export default async function revolute() {
         loop
         muted
         playsInline
-        preload="auto"
         poster="/assets/revolute/demo/1_Small.webp"
         src="/assets/revolute/demo/1.mp4"
         className='aspect w-full h-full' />
@@ -29,7 +28,6 @@ export default async function revolute() {
         loop
         muted
         playsInline
-        preload="auto"
         poster="/assets/revolute/demo/2_Small.webp"
         src="/assets/revolute/demo/2.mp4"
         className='aspect w-full h-full' />
@@ -42,7 +40,6 @@ export default async function revolute() {
         loop
         muted
         playsInline
-        preload="auto"
         poster="/assets/revolute/demo/3_Small.webp"
         src="/assets/revolute/demo/3.mp4"
         className='aspect w-full h-full' />
@@ -55,7 +52,7 @@ export default async function revolute() {
         loop
         muted
         playsInline
-        preload="auto"
+        
         poster="/assets/revolute/demo/4_Small.webp"
         src="/assets/revolute/demo/4.mp4"
         className='aspect w-full h-full' />
@@ -107,7 +104,7 @@ export default async function revolute() {
 
   const configurationSlide = [
     <div className='flex flex-col items-center'
-      key="4">
+      key="1">
       <div className='py-5 text-2xl'>Keyboard keys</div>
       <Image
         src='/assets/revolute/configurator/keys.webp'
@@ -118,7 +115,7 @@ export default async function revolute() {
       />
     </div>,
     <div className='flex flex-col items-center'
-      key="4">
+      key="2">
       <div className='py-5 text-2xl'>High resolution scrolling</div>
       <Image
         src='/assets/revolute/configurator/scroll.webp'
@@ -130,7 +127,7 @@ export default async function revolute() {
     </div>,
 
     <div className='flex flex-col items-center'
-      key="4">
+      key="3">
       <div className='py-5 text-2xl'>Consumer Control</div>
       <Image
         src='/assets/revolute/configurator/consumer.webp'
@@ -153,7 +150,7 @@ export default async function revolute() {
       />
     </div>,
     <div className='flex flex-col items-center'
-      key="4">
+      key="5">
       <div className='py-5 text-2xl'>Surface dial</div>
       <Image
         src='/assets/revolute/configurator/dial.webp'
@@ -321,7 +318,7 @@ export default async function revolute() {
           </UI.ScrollFade>
 
           <Image
-            src='/assets/revolute/accessories/phone.webp'
+            src='/assets/revolute/accessories/pod.webp'
             alt="outside"
             width={400}
             height={500}

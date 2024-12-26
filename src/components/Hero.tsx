@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => {
     const checkVideoPlayback = () => {
       if (videoRef.current) {
         videoRef.current.play().catch(() => {
-          setShowFallback(true);
+          setShowFallback(true); // Show fallback if video cannot play
         });
       }
     };
@@ -19,30 +19,28 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full max-w-4xl mx-auto mt-8"
-    style={{ aspectRatio: "1080 / 800" }}>
+    <div
+      className="w-full h-full max-w-4xl mx-auto mt-8"
+      style={{ aspectRatio: "1080 / 800" }}
+    >
       {showFallback ? (
         <Image
           src="/assets/revolute/poster/herofull.webp"
           alt="Hero Poster"
           className="w-full"
           width={1080}
-        height={800}
+          height={800}
         />
       ) : (
         <video
           ref={videoRef}
           muted
           autoPlay
-          poster="/assets/revolute/poster/hero.webp"
+          preload="auto" // This ensures the video is fetched early without redundancy
+          poster="/assets/revolute/poster/hero.webp" // Poster shown before video starts
           src="/assets/revolute/poster/hero.mp4"
           style={{ width: "100%", height: "100%" }}
           controls={false} // Remove playback controls
-          onClick={() => {
-            if (videoRef.current) {
-              videoRef.current.play();
-            }
-          }} // Optional: Handle click to play the video
         />
       )}
     </div>
