@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-
-
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
@@ -15,6 +13,9 @@ const ThreeCanvas = () => {
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const groupRef = useRef<THREE.Group | null>(null);
   const [isClient, setIsClient] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [modelLoaded, setModelLoaded] = useState(false);
+  const [hdrLoaded, setHdrLoaded] = useState(false);
 
   useEffect(() => {
     // Renderer Initialization
@@ -44,6 +45,7 @@ const ThreeCanvas = () => {
         texture.mapping = THREE.EquirectangularReflectionMapping;
         scene.environment = texture;
         scene.background = null;
+        setHdrLoaded(true);
       });
 
       // Load models and center them
@@ -63,9 +65,9 @@ const ThreeCanvas = () => {
         capRef.current = cap;
         group.add(cap);
         centerGroup(group);
+        setModelLoaded(true);
       });
 
-      // Camera Controls
       // Camera Controls
       const controls = new OrbitControls(camera, renderer!.domElement);
 
@@ -144,12 +146,20 @@ const ThreeCanvas = () => {
     return cleanup; // Clean up when component unmounts
   }, []);
 
+  useEffect(() => {
+    if (modelLoaded && hdrLoaded) {
+      setLoading(false);
+    }
+  }, [modelLoaded, hdrLoaded]);
+
   return (
-    <div
-      ref={canvasRef}
-      className=" aspect-square h-full max-w-full"
-      
-    >
+    <div className='h-full w-max-full'>
+      {loading && (
+      <div className="mx-auto animate-pulse bg-zinc-900 rounded-3xl h-[50vh] aspect-square  max-w-full flex justify-center items-center text-center text-white text-2xl" style={{ opacity: loading ? 1 : 0 }}>
+        Loading
+      </div>
+      )}
+      <div ref={canvasRef} className=" aspect-square h-full max-w-full" style={{ opacity: loading ? 0 : 1 }} />
     </div>
   );
 };

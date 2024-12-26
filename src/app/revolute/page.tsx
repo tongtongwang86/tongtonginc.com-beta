@@ -8,7 +8,7 @@ import React from 'react'; // Add this import
 
 export default async function revolute() {
 
-  const videoSlides = React.useMemo(() => [
+  const videoSlides =  [
     <div className='flex flex-col items-center'
       key="1">
       <video
@@ -58,7 +58,7 @@ export default async function revolute() {
         className='aspect w-full h-full' />
       <div className='py-3'>Scroll wheel pick up in games</div> </div>
     ,
-  ], []);
+  ]
 
   const itemSlides = [
 
@@ -199,7 +199,7 @@ export default async function revolute() {
 
 
 
-      <div className=' w-full bg-[#1a1a1a] text-white'>
+      <div className=' w-full bg-[#1a1a1a] text-white py-1'>
         <div className="text-left w-full p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', paddingTop: '3em', maxWidth: '100em' }}>
           <div className="text-6xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Control at your fingertips. </div>
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Revolute is a customizable jog wheel attachment that simplifies computer workflows.</span>
