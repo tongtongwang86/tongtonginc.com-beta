@@ -3,12 +3,12 @@ import dynamic from 'next/dynamic';
 import * as UI from '@/components';
 import Link from 'next/link';
 import Image from "next/image";
-
+import React from 'react'; // Add this import
 
 
 export default async function revolute() {
 
-  const videoSlides = [
+  const videoSlides = React.useMemo(() => [
     <div className='flex flex-col items-center'
       key="1">
       <video
@@ -58,7 +58,7 @@ export default async function revolute() {
         className='aspect w-full h-full' />
       <div className='py-3'>Scroll wheel pick up in games</div> </div>
     ,
-  ];
+  ], []);
 
   const itemSlides = [
 
