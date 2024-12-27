@@ -44,15 +44,14 @@ jobs:
         run: |
           echo -e "Host vps\n\tUser root\n\tHostname $VPS_ADDR\n\tIdentityFile ~/.ssh/github-action\n\tStrictHostKeyChecking No" >> ~/.ssh/config
 
-      # Deploy to VPS
-      - name: ☞ Pull new files from github
-        run: ssh vps "cd ~/tongtonginc.com-beta && git pull"
-        
-      - name: ☞ Update node packages on VPS
-        run: ssh vps "cd ~/tongtonginc.com-beta && npm i"
+      # Stop PM2 process
+      - name: 🛑 Stop PM2 Process
+        run: ssh vps "pm2 stop tongtonginc || true"
 
-      - name: ☃︎ Upload Build Files to VPS
-        run: rsync -re ssh ./.next/ vps:/root/tongtonginc.com-beta/.next
+      # Sync entire project directory
+      - name: 📂 Sync Project Directory to VPS
+        run: rsync -az --delete -e ssh ./ vps:/root/tongtonginc.com-beta/
 
-      - name: 🔄 Restart App on VPS
-        run: ssh vps "pm2 restart tongtonginc"
+      # Start PM2 process
+      - name: ▶️ Start PM2 Process
+        run: ssh vps "pm2 start tongtonginc"
