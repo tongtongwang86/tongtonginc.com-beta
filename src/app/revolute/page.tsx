@@ -201,7 +201,9 @@ export default async function revolute() {
 
       <div className=' w-full bg-[#1a1a1a] text-white py-1'>
         <div className="text-left w-full p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', paddingTop: '3em', maxWidth: '100em' }}>
-          <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Control at your fingertips. </div>
+        <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Control at your fingertips. </div>
+
+        
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Revolute is a customizable jog wheel attachment that simplifies computer workflows.</span>
 
         </div>
@@ -218,7 +220,8 @@ export default async function revolute() {
 
       {/* not gray */}
       <div className="text-left w-full p-10  " style={{ marginLeft: 'auto', marginRight: 'auto', paddingTop: '3em', maxWidth: '100em' }}>
-        <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>See Revolute in 3D. </div>
+      <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>See Revolute in 3D. </div>
+     
         <div className="w-full h-fit flex flex-col justify-center ">
           <UI.ARButton usdzFile='/assets/revolute/models/revolute.usdz' />
 
@@ -240,7 +243,8 @@ export default async function revolute() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '-5em', maxWidth: '100em' }}>
 
         <UI.ScrollFade className="text-left flex-shrink basis-3/6">
-          <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Design. </div>
+        <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Design </div>
+   
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>3D printed outer shell houses an Ultra compact, custom logic board slightly bigger than a coin-cell battery. This makes revolute extremely versions, allowing you to easily carry on the go.</span>
 
         </UI.ScrollFade>
@@ -268,7 +272,7 @@ export default async function revolute() {
 
 
         <UI.ScrollFade className="text-left w-full ">
-          <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Connectivity. </div>
+          <div className="text-5xl font-sans font-semibold break-words" style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Connectivity </div>
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Connect wirelessly to your device through Bluetooth Low Energy, works on any device with bluetooth.</span>
 
         </UI.ScrollFade>
@@ -295,7 +299,7 @@ export default async function revolute() {
 
 
           <UI.ScrollFade className="text-left w-full ">
-            <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Accessories. </div>
+          <div className="text-5xl font-sans font-semibold break-words" style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Accessories </div>
           </UI.ScrollFade>
 
         </div>
@@ -316,7 +320,9 @@ export default async function revolute() {
 
 
           <UI.ScrollFade className="text-left w-full ">
-            <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Revo-pod. </div>
+          <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Revo-pod. </div>
+
+
             <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Carrying case for revolute that recharges its battery. Revo-pod has multiple compartments to store your Revolute Accessories.</span>
 
           </UI.ScrollFade>
@@ -353,7 +359,8 @@ export default async function revolute() {
 
 
         <UI.ScrollFade className="text-left w-full ">
-          <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Revolute Configurator App. </div>
+        <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Revolute Configurator App.</div>
+   
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Available for IOS, MacOS,and Windows. Revolute configurator lets you define wheel sensitivity, deadzone and actions for scroll, Wirelessly. Configurations saved on-board Revolute, allowing you to use revolute even on devices that dont support Revolute Configurator. </span>
 
         </UI.ScrollFade>
@@ -375,7 +382,8 @@ export default async function revolute() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
           <UI.ScrollFade className="text-left flex-shrink basis-3/6">
-            <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Magnetic Rotary Encoder </div>
+          <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Magnetic Rotary Encoder</div>
+        
             <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>A Non-Contact magnetic encoder measures the absolute position of Revolute to sub-degree accuracy. Combined with a bearing, physical wear would be significantly reduced, revolute can widthstand whatever life throws at it.</span>
 
           </UI.ScrollFade>
@@ -408,7 +416,8 @@ export default async function revolute() {
 
 
           <UI.ScrollFade className="text-left flex-shrink basis-3/6">
-            <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Optional Mag-Ticks addon  </div>
+          <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Optional Mag-Ticks addon</div>
+         
             <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>A ring of 36 Precision-Placed Magnets provides a incremental ident feel, which allows for controlled Single Stepping</span>
 
           </UI.ScrollFade>
@@ -423,7 +432,8 @@ export default async function revolute() {
 
 
         <UI.ScrollFade className="text-left flex-shrink basis-3/6">
-          <div className="text-5xl font-sans font-semibold " style={{ color: '#f4f4f4' }}>Developer friendly</div>
+        <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)",color: '#f4f4f4' }}>Developer friendly</div>
+       
           <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Revolute and its components are still under development. With support for developer tools like nRF Connect, Zephyr RTOS, custom debugger boards, and open-source hardware and software files, the system welcomes contributions from all developers.</span>
 
         </UI.ScrollFade>
