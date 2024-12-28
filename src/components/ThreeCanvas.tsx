@@ -81,6 +81,7 @@ const ThreeCanvas = () => {
 
       // Event Listeners
       window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleResize);
 
       handleResize(); // Initial resize setup
 
@@ -160,7 +161,7 @@ const ThreeCanvas = () => {
       </div>
       )}
 
-      <div ref={canvasRef} className=" aspect-square h-full max-w-full transition-opacity duration-1000" style={{ opacity: loading ? 0 : 1 }} />
+      <div ref={canvasRef} className=" aspect-square h-full max-w-full transition-opacity duration-1000 outline" style={{ maxHeight: "50dvh" , opacity: loading ? 0 : 1 }} />
     </>
   );
 };

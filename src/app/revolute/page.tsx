@@ -225,13 +225,25 @@ export default async function revolute() {
         <div className="w-full h-fit flex flex-col justify-center ">
           <UI.ARButton usdzFile='/assets/revolute/models/revolute.usdz' />
 
-          <div className='flex w-full justify-center  h-[1/2vh] overflow-hidden' >
+          <div 
+  className='flex w-full justify-center  outline' 
+  style={{ maxHeight: "50dvh" }} 
+>
+  <div 
+    className='bg-slate-500 outline' 
+    style={{ 
+      aspectRatio: "1/1", 
+      height: "min(50dvh, 100%)", 
+      width: "min(50dvh, 100%)" 
+    }} 
+  >
+<UI.ThreeCanvas /> 
+  </div>
 
+  
+</div>
 
-            <UI.ThreeCanvas />
-          </div>
-
-
+          {/* <UI.ThreeCanvas /> */}
 
         </div>
 
@@ -315,7 +327,7 @@ export default async function revolute() {
 
 
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6  px-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
 
 
 
@@ -348,7 +360,7 @@ export default async function revolute() {
 
 
 
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6  p-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6  px-10 " style={{ marginLeft: 'auto', marginRight: 'auto', marginTop: '3em', maxWidth: '100em' }}>
         <Image
           src='/assets/revolute/configurator/configurator.webp'
           alt="outside"
@@ -462,13 +474,13 @@ export default async function revolute() {
             <p className='p-3 text-lg text-[#ededed]'>Github</p>
           </a>
 
-            <a href="mailto:tongtong@tongtonginc.com" className='hover:scale-110 transition-all duration-300 flex flex-col items-center '> 
+          <a href="mailto:tongtong@tongtonginc.com" className='hover:scale-110 transition-all duration-300 flex flex-col items-center '>
 
             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 1.2 .8">
-            <g>
-  <rect height="0.842285" opacity="0" width="1.26318" x="0" y="0"/>
-  <path d="M0.15332 0.842285L1.03955 0.842285C1.12695 0.842285 1.17822 0.791504 1.17822 0.690918L1.17822 0.151855C1.17822 0.0512695 1.12646 0.000488281 1.0249 0.000488281L0.138672 0.000488281C0.0512695 0.000488281 0 0.0512695 0 0.151855L0 0.690918C0 0.791504 0.0517578 0.842285 0.15332 0.842285ZM0.150391 0.767578C0.102051 0.767578 0.074707 0.740723 0.074707 0.69043L0.074707 0.151367C0.074707 0.101562 0.102051 0.0751953 0.150391 0.0751953L1.02734 0.0751953C1.07568 0.0751953 1.10352 0.101562 1.10352 0.151855L1.10352 0.690918C1.10352 0.740723 1.07568 0.767578 1.02734 0.767578ZM0.588867 0.549805C0.620117 0.549805 0.650391 0.538086 0.678223 0.512695L1.1377 0.0991211L1.08691 0.0478516L0.635742 0.45459C0.620605 0.468262 0.60498 0.474609 0.588867 0.474609C0.572754 0.474609 0.557129 0.468262 0.541992 0.45459L0.0908203 0.0478516L0.0400391 0.0991211L0.499512 0.512695C0.527344 0.538086 0.557617 0.549805 0.588867 0.549805ZM0.0981445 0.779785L0.444824 0.432617L0.394043 0.381836L0.0473633 0.728516ZM1.08057 0.780273L1.13135 0.729004L0.78418 0.381836L0.73291 0.432617Z" fill="white" />
- </g>
+              <g>
+                <rect height="0.842285" opacity="0" width="1.26318" x="0" y="0" />
+                <path d="M0.15332 0.842285L1.03955 0.842285C1.12695 0.842285 1.17822 0.791504 1.17822 0.690918L1.17822 0.151855C1.17822 0.0512695 1.12646 0.000488281 1.0249 0.000488281L0.138672 0.000488281C0.0512695 0.000488281 0 0.0512695 0 0.151855L0 0.690918C0 0.791504 0.0517578 0.842285 0.15332 0.842285ZM0.150391 0.767578C0.102051 0.767578 0.074707 0.740723 0.074707 0.69043L0.074707 0.151367C0.074707 0.101562 0.102051 0.0751953 0.150391 0.0751953L1.02734 0.0751953C1.07568 0.0751953 1.10352 0.101562 1.10352 0.151855L1.10352 0.690918C1.10352 0.740723 1.07568 0.767578 1.02734 0.767578ZM0.588867 0.549805C0.620117 0.549805 0.650391 0.538086 0.678223 0.512695L1.1377 0.0991211L1.08691 0.0478516L0.635742 0.45459C0.620605 0.468262 0.60498 0.474609 0.588867 0.474609C0.572754 0.474609 0.557129 0.468262 0.541992 0.45459L0.0908203 0.0478516L0.0400391 0.0991211L0.499512 0.512695C0.527344 0.538086 0.557617 0.549805 0.588867 0.549805ZM0.0981445 0.779785L0.444824 0.432617L0.394043 0.381836L0.0473633 0.728516ZM1.08057 0.780273L1.13135 0.729004L0.78418 0.381836L0.73291 0.432617Z" fill="white" />
+              </g>
             </svg>
 
             <p className='p-3 text-lg text-[#ededed]'>Email</p>
