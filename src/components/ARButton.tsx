@@ -27,7 +27,14 @@ const ARButton: React.FC<ARButtonProps> = ({ usdzFile }) => {
 
   // Do not render if ARKit is not supported
   if (!isARKitSupported) {
-    return null;
+    return (
+      <p
+        className=" text-grey pt-2 text-sm inline-flex items-center"
+      >
+        Please open this page on an iOS device to view in AR
+       
+      </p>
+    );
   }
 
   return (

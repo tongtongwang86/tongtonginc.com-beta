@@ -223,25 +223,24 @@ export default async function revolute() {
         <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)", color: '#f4f4f4' }}>See Revolute in 3D. </div>
 
         <div className="w-full h-fit flex flex-col justify-center ">
-          <UI.ARButton usdzFile='/assets/revolute/models/revolute.usdz' />
+          <UI.ARButton usdzFile='https://tongtonginc.com/assets/revolute/models/revolute.usdz' />
+          <div
+            className='flex w-full justify-center '
+            style={{ maxHeight: "60dvh" }}
+          >
+            <div
 
-          <div 
-  className='flex w-full justify-center ' 
-  style={{ maxHeight: "60dvh" }} 
->
-  <div 
+              style={{
+                aspectRatio: "1/1",
+                height: "min(60dvh, 100%)",
+                width: "min(60dvh, 100%)"
+              }}
+            >
+              <UI.ThreeCanvas />
+            </div>
 
-    style={{ 
-      aspectRatio: "1/1", 
-      height: "min(60dvh, 100%)", 
-      width: "min(60dvh, 100%)" 
-    }} 
-  >
-<UI.ThreeCanvas /> 
-  </div>
 
-  
-</div>
+          </div>
 
           {/* <UI.ThreeCanvas /> */}
 
