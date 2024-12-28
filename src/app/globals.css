@@ -7,20 +7,23 @@
   --background: #FBF2E6;
   --background2:#FDF7F2;
   --navgradient: rgba(255, 252, 246, 0);
+  
   --logocolor: #161925ff;
-  --logoHover:rgba(44, 70, 109, 0.359);
+
+  --logoHover:rgb(220, 220, 220);
+
   --foreground: #161925ff;
   --highlightText: #161925ff;
   --svg-icon: invert(0%) sepia(91%) saturate(2064%) hue-rotate(185deg) brightness(95%) contrast(96%);
 
-  --gradient-day: radial-gradient(ellipse at bottom, #fbf2e6 0%, #fdf7f2 100%);
-  --navbar-day: #d5d7f5;
+  --gradient-day: radial-gradient(ellipse at bottom, #ffffef 0%, #fee2ff 100%);
+  --navbar-day: #fcebfd;
 
-  --gradient-sunset: radial-gradient(ellipse at bottom left, #fde9d7 0%, #fbf2e6 60%);
-  --navbar-sunset: #f6c0c0;
+  --gradient-sunset: radial-gradient(ellipse at bottom left, #ff9855 0%, #ffdecd 60%);
+  --navbar-sunset: #fae0d0;
   
-  --gradient-night: radial-gradient(ellipse at bottom, #f3f3f2 0%, transparent 100%);
-  --navbar-night: #d5c3f3;
+  --gradient-night: radial-gradient(ellipse at bottom, #d8e7ff 0%, #ccc6ff 100%);
+  --navbar-night: #d0d0fa;
 
 }
 
