@@ -226,15 +226,15 @@ export default async function revolute() {
           <UI.ARButton usdzFile='/assets/revolute/models/revolute.usdz' />
 
           <div 
-  className='flex w-full justify-center  outline' 
-  style={{ maxHeight: "50dvh" }} 
+  className='flex w-full justify-center ' 
+  style={{ maxHeight: "60dvh" }} 
 >
   <div 
-    className='bg-slate-500 outline' 
+
     style={{ 
       aspectRatio: "1/1", 
-      height: "min(50dvh, 100%)", 
-      width: "min(50dvh, 100%)" 
+      height: "min(60dvh, 100%)", 
+      width: "min(60dvh, 100%)" 
     }} 
   >
 <UI.ThreeCanvas /> 
