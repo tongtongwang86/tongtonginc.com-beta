@@ -230,6 +230,7 @@ export default function Page3() {
       />
       <main className="flex flex-col justify-center items-center h-full  ">
 
+        <UI.LastCommitDate/>
 
         <div className="flex justify-center items-center min-h-screen">
           <div
@@ -315,9 +316,6 @@ export default function Page3() {
                           }} />
                         <div className="text-xl w-full">{item.name}</div>
                         </div>
-
-
-
                       </SuperEllipse>
                     </button>
                   </li>
@@ -326,6 +324,7 @@ export default function Page3() {
             </div>
           </div>
         </div>
+       
       </main>
     </div>)
   );

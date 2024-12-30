@@ -10,12 +10,11 @@ const NotFound: React.FC = () => {
     const makeApiRequest = async () => {
       const payload = {
         messages: [
-          { content: "You are a 404 generator that writes no longer than 50 words", role: "system" },
-          { content: "Write a funny and creative 404 error message with emojis", role: "user" },
+          { content: "You are a 404 generator that writes no longer than 30 words", role: "system" },
+          { content: "Write a creative 404 error message ending with a emoji", role: "user" },
         ],
         stream: "true",
       };
-//https://api.tongtonginc.com/ai/v1/chat/completions
       try {
         const response = await fetch("https://api.tongtonginc.com/ai/v1/chat/completions", {
           method: "POST",
@@ -92,6 +91,7 @@ const NotFound: React.FC = () => {
         </h1> */}
 
         <UI.TextContainer>
+          
           <div
             id="response-container"
             ref={containerRef}
