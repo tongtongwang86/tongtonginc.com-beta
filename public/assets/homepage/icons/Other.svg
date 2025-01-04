@@ -1,1 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?> <!--Generator: Apple Native CoreSVG 326--> <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"> <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 59.5379 12.77">  <g>   <rect height="12.77" opacity="0" width="59.5379" x="0" y="0"/>   <path d="M52.8311 12.7212C56.3454 12.7212 59.1961 9.87932 59.1961 6.37279C59.1961 2.84184 56.3454 0 52.8311 0C49.3168 0 46.4661 2.84184 46.4661 6.37279C46.4661 9.87932 49.3168 12.7212 52.8311 12.7212Z" fill="black" fill-opacity="0.8"/>   <path d="M29.5936 12.7212C33.1168 12.7212 35.9587 9.87932 35.9587 6.37279C35.9587 2.84184 33.1168 0 29.5936 0C26.0793 0 23.2375 2.84184 23.2375 6.37279C23.2375 9.87932 26.0793 12.7212 29.5936 12.7212Z" fill="black" fill-opacity="0.8"/>   <path d="M6.36503 12.7212C9.87932 12.7212 12.7378 9.87932 12.7378 6.37279C12.7378 2.84184 9.87932 0 6.36503 0C2.84184 0 0 2.84184 0 6.37279C0 9.87932 2.84184 12.7212 6.36503 12.7212Z" fill="black" fill-opacity="0.8"/>  </g> </svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #231f20;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="50" cy="16.62" r="9.12"/>
+  <circle class="cls-1" cx="50" cy="50" r="9.12"/>
+  <circle class="cls-1" cx="50" cy="83.38" r="9.12"/>
+</svg>
