@@ -157,11 +157,11 @@ const ThreeCanvas = () => {
     <>
       {loading && (
       <div className=" animate-pulse bg-zinc-900 flex flex-col rounded-3xl scale-75 aspect-square  justify-center items-center text-center text-white text-2xl transition-all duration-1000" style={{ opacity: loading ? 1 : 0 }}>
-        Loading
+      Loading
       </div>
       )}
 
-      <div ref={canvasRef} className=" aspect-square h-full w-full transition-opacity duration-1000 " style={{ opacity: loading ? 0 : 1 }} />
+      <div ref={canvasRef} className=" aspect-square h-full w-full transition-opacity duration-1000 rounded-3xl" style={{ outline: "1.5px solid #1f1f1f", opacity: loading ? 0 : 1 }} />
     </>
   );
 };
