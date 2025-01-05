@@ -30,7 +30,7 @@ const ThreeCanvas = () => {
 
     // Scene Setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(20, 1, 0.1, 1000);
     camera.position.set(-4, 3, 7);
 
     const initializeScene = () => {
@@ -161,7 +161,7 @@ const ThreeCanvas = () => {
       </div>
       )}
 
-      <div ref={canvasRef} className=" aspect-square h-full w-full transition-opacity duration-1000 rounded-3xl" style={{ outline: "1.5px solid #1f1f1f", opacity: loading ? 0 : 1 }} />
+      <div ref={canvasRef} className=" aspect-square h-full w-full transition-opacity duration-1000 rounded-3xl" style={{ opacity: loading ? 0 : 1 }} />
     </>
   );
 };

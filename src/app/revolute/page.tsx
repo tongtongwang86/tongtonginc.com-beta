@@ -229,11 +229,11 @@ export default async function revolute() {
             style={{ maxHeight: "60dvh" }}
           >
             <div
-
+              className='m-5'
               style={{
                 aspectRatio: "1/1",
-                height: "min(60dvh, 100%)",
-                width: "min(60dvh, 100%)"
+                height: "min(40dvh, 100%)",
+                width: "min(40dvh, 70%)"
               }}
             >
               <UI.ThreeCanvas />
