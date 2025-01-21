@@ -445,7 +445,7 @@ export default async function revolute() {
         <UI.ScrollFade className="text-left flex-shrink basis-3/6">
           <div className="text-5xl font-sans font-semibold " style={{ fontSize: "calc(1.5em + 2vw)", color: '#f4f4f4' }}>Developer friendly</div>
 
-          <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Revolute and its components are still under development. With support for developer tools like nRF Connect, Zephyr RTOS, custom debugger boards, and open-source hardware and software files, the system welcomes contributions from all developers. If you have any questions, please feel free to contact us via Email at tongtong@tongtonginc.com </span>
+          <span className="text-xl font-sans" style={{ color: '#d8d8d8' }}>Revolute and its components are still under development. With support for developer tools like Zephyr RTOS, custom debugger boards, and open-source hardware and software files, the system welcomes contributions from all developers. If you have any questions, please feel free to contact us via Email at tongtong@tongtonginc.com </span>
 
         </UI.ScrollFade>
 
