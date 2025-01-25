@@ -34,7 +34,7 @@ export default function Page3() {
       description:
         "Revolute, a compact and versatile jog wheel the size of a keyboard key, it supports bluetooth and is fully wireless. Use it to improve your workflows like automating brush size, scrubbing in a timeline, or repeatedly pressing a key quickly in a game.",
       icon: "/assets/homepage/icons/Revolute.svg",
-      photo: "/assets/homepage/hero/Revolute.png",
+      photo: "/assets/homepage/hero/Revolute.webp",
       buttons: [
         { label: "Learn More", link: "/revolute" },
       ],
