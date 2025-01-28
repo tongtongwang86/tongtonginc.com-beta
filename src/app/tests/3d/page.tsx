@@ -12,6 +12,10 @@ export default function threed() {
     { title: "Maxwell", usdzFile: "/models/3d/maxwell.usdz" },
     { title: "Revolute V2.2 Magnetics", usdzFile: "/models/3d/RevoluteV2.2 magnetics.usdz" },
     { title: "Revolute V2.2", usdzFile: "/models/3d/RevoluteV2.2.usdz" },
+    { title: "Visionpro", usdzFile: "/models/3d/apple-vision-pro.usdz" },
+    { title: "plant", usdzFile: "/models/3d/plant.usdz" },
+    { title: "pod", usdzFile: "/models/3d/pod.usdz" },
+    { title: "herousdz", usdzFile: "/models/3d/herousd.usdz" },
   ];
 
   return (
