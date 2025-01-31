@@ -14,6 +14,7 @@ export default function threed() {
     { title: "Revolute V2.2", usdzFile: "/models/3d/RevoluteV2.2.usdz" },
     { title: "Visionpro", usdzFile: "/models/3d/apple-vision-pro.usdz" },
     { title: "plant", usdzFile: "/models/3d/plant.usdz" },
+    { title: "plant2", usdzFile: "/models/3d/plant2.usdz" },
     { title: "pod", usdzFile: "/models/3d/pod.usdz" },
     { title: "herousdz", usdzFile: "/models/3d/herousd.usdz" },
   ];
