@@ -202,7 +202,7 @@ export default function Page3() {
 
   return (
     (<div className="relative h-full w-screen transition-all duration-500 " style={{ backgroundImage: state.gradient }}>
-      <Image
+      {/* <Image
         // Path relative to the public folder
         src="/assets/homepage/christmas/bg.svg"
         alt="Christmas Background"
@@ -216,18 +216,8 @@ export default function Page3() {
           maxWidth: "100%",
           height: "auto",
           objectFit: "cover"
-        }} />
-      <UI.Snow
-        snowflakeCount={50}        // Number of snowflakes
-        speedMin={0.2}              // Minimum falling speed
-        speedMax={1}              // Maximum falling speed
-        windSpeedMin={-0.5}         // Minimum horizontal speed (wind)
-        windSpeedMax={0.5}          // Maximum horizontal speed (wind)
-        radiusMin={2}               // Minimum radius (size)
-        radiusMax={4}               // Maximum radius (size)
-        timeScale={100}
-        horizontalSpeedScale={1} 
-      />
+        }} /> */}
+      <UI.Wavebg/>
       <main className="flex flex-col justify-center items-center h-full  ">
 
         <UI.LastCommitDate/>
