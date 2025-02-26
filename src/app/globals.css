@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --nav: #FBF2E6;
   --background: #FBF2E6;
   --background2:#FDF7F2;
@@ -24,6 +24,31 @@
   
   --gradient-night: radial-gradient(ellipse at bottom, #d8e7ff 0%, #ccc6ff 100%);
   --navbar-night: #d0d0fa;
+
+} */
+
+:root {
+  
+  --nav: #161925ff;
+  --background: #161925ff;
+  --background2: #1c1d2cff;
+  --navgradient: #24253900;
+  --foreground: #ded2b4ff;
+  --logocolor: #ded2b4ff;
+  --logoHover:rgba(222, 210, 180, 0.8);
+  --highlightText: #ded2b4;
+
+  --svg-icon: invert(100%) sepia(91%) saturate(1%)  brightness(100%) contrast(100%);
+
+  --gradient-day: radial-gradient(ellipse at bottom, #1b2735 0%, #1c1d2c 100%);
+  --navbar-day: #1c1d2c;
+
+  --gradient-sunset: radial-gradient(ellipse at bottom left, #3b2413 0%, #090a0f 60%);
+  --navbar-sunset: #000000;
+
+  --gradient-night: radial-gradient(ellipse at bottom, #1b2735 0%, #000000 100%);
+  --navbar-night: #000000;
+
 
 }
 
