@@ -9,7 +9,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 // Define types for ref states
 const Wavebg: React.FC = () => {
   // State variables for user controls
-  const [maxAmplitude, setMaxAmplitude] = useState<number>(0.5);
+  const [maxAmplitude, setMaxAmplitude] = useState<number>(0.7);
   const [lineLength, setLineLength] = useState<number>(30);
   const [numLines, setNumLines] = useState<number>(50);
   const [lineColor, setLineColor] = useState<string>("#FFFFFFFF");
@@ -138,7 +138,7 @@ const Wavebg: React.FC = () => {
         for (let i = 0; i < pos.count; i++) {
           const x = pos.getX(i);
           const y = pos.getY(i);
-          const z = maxAmplitude * simplexRef.current.noise3d(x / 2, y / 2, t / 5000);
+          const z = maxAmplitude * simplexRef.current.noise3d(x / 3, y / 3, t / 8000);
           pos.setZ(i, z);
         }
         pos.needsUpdate = true;

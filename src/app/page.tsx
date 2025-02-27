@@ -239,7 +239,7 @@ export default function Page3() {
               </div>
 
               {/* Animated Details Panel */}
-              <SuperEllipse p1={17} p2={50} className="transition-all  bg-white/10 backdrop-blur-lg rounded-2xl" style={{ height: containerHeight ? `${containerHeight}px` : "0px", transition: "height 0.5s ease" }}>
+              <SuperEllipse p1={17} p2={50} className="transition-all  bg-white/10 backdrop-blur-md rounded-2xl" style={{ height: containerHeight ? `${containerHeight}px` : "0px", transition: "height 0.5s ease" }}>
               <div className="rounded-[45px] shadow-visionprohome  " style={{ height: containerHeight ? `${containerHeight}px` : "0px", transition: "height 0.5s ease" }}>
                 {selectedItem && (
                   <div ref={detailsRef} className="p-6 text-left">
@@ -289,7 +289,7 @@ export default function Page3() {
                       onClick={() => handleItemClick(item.name)}
                       className={`justify-center w-10/12 content-center rounded-2xl  overflow-hidden ${selectedItem === item.name ? "transform transition-all scale-110 outline" : ""}`}
                     >
-                      <SuperEllipse p1={6} p2={20} className={` bg-white/10 backdrop-blur-lg  transition-all duration-500 hover:bg-white/30 `}>
+                      <SuperEllipse p1={6} p2={20} className={` bg-white/10 backdrop-blur-md  transition-all duration-500 hover:bg-white/30 `}>
 
                       <div className="w-full  items-center p-4 flex flex-row rounded-2xl shadow-visionprohome transition-all">
                         <Image
