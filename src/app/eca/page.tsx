@@ -84,12 +84,7 @@ const ECA: React.FC = () => {
               Arduino IDE Download
             </Link>
             
-            <Link
-              className="px-6 py-4 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold text-2xl text-center"
-              href="/eca/electronics/lesson3/"
-            >
-              Lesson 3
-            </Link>
+       
             {/* Add other static links as needed */}
           </div>
       
