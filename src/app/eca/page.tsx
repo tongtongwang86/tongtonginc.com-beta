@@ -33,6 +33,7 @@ const ECA: React.FC = () => {
       logoColor="var(--logocolor)"
       hoverShadowColor="var(--logoHover)"
     >
+      <UI.Wavebg/>
       <div className="max-w-full px-5 py-10">
         <h1 className="text-5xl font-bold mb-12 text-center">Exploring ECA</h1>
 
@@ -74,7 +75,7 @@ const ECA: React.FC = () => {
         </section>
 
         {/* Electronics Section */}
-        <section className="max-w-5xl mx-auto shadow-visionprohome rounded-3xl p-8 mb-16">
+        <section className="max-w-5xl mx-auto shadow-visionprohome rounded-3xl p-8 mb-16 backdrop-blur-md">
           <h2 className="text-3xl font-bold mb-6 text-center text-white">Electronics Engineering ECA</h2>
           <div className="flex flex-wrap justify-center gap-6 m-5">
             <Link
