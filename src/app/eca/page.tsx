@@ -47,12 +47,12 @@ const ECA: React.FC = () => {
             >
               SculptGL
             </Link>
-            {/* <Link
+            <Link
               className="px-6 py-4 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold text-2xl text-center"
-              href="/eca/3dart/teachermodel"
+              href="https://www.tinkercad.com/joinclass/NGLD2PUBG"
             >
-              Models
-            </Link> */}
+              Tinkercad
+            </Link>
             {/* Add other static links as needed */}
           </div>
             
