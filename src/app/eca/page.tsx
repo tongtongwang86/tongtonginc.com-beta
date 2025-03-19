@@ -53,6 +53,13 @@ const ECA: React.FC = () => {
             >
               Tinkercad
             </Link>
+
+            <Link
+              className="px-6 py-4 bg-white/10 hover:bg-white/30 transition-all duration-500 shadow-visionprohome backdrop-blur-lg rounded-full font-bold text-2xl text-center"
+              href="https://www.onshape.com"
+            >
+              Onshape
+            </Link>
             {/* Add other static links as needed */}
           </div>
             
