@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import * as THREE from 'three';
-import { SimplexNoise } from 'three/addons/math/SimplexNoise.js';
+import { SimplexNoise } from 'three/examples/jsm/math/SimplexNoise.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 // Define types for ref states
