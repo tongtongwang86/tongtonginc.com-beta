@@ -39,8 +39,8 @@ const Lesson3 = () => {
         }
       `}</style>
 
-      <h1 className="text-6xl font-bold mb-8 center"> --- Lesson 3 PPT --- </h1>
-<UI.PDFViewer file='/assets/eca/electronics/3_compressed.pdf'>
+      <h1 className="text-6xl font-bold mb-8 center"> --- Lesson 4 PPT --- </h1>
+<UI.PDFViewer file='/assets/eca/electronics/apr2_compressed.pdf'>
 
 </UI.PDFViewer>
     </UI.BodyContainer>

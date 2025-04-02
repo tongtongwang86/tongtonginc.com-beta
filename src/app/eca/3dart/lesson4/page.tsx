@@ -5,7 +5,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-const Lesson3 = () => {
+const Lesson1 = () => {
  
 
   const [copied, setCopied] = useState(false);
@@ -39,12 +39,12 @@ const Lesson3 = () => {
         }
       `}</style>
 
-      <h1 className="text-6xl font-bold mb-8 center"> --- Lesson 3 PPT --- </h1>
-<UI.PDFViewer file='/assets/eca/electronics/3_compressed.pdf'>
+      <h1 className="text-6xl font-bold mb-8 center"> --- Lesson 4 PPT --- </h1>
+<UI.PDFViewer file='/assets/eca/art/Apr3_compressed.pdf'>
 
 </UI.PDFViewer>
     </UI.BodyContainer>
   );
 };
 
-export default Lesson3;
+export default Lesson1;
